@@ -1,0 +1,141 @@
+/* Main container */
+.earnings-container {
+     background-color: #b0d4ff;
+    padding: 60px;
+    text-align: center;
+    color: #1a1a1a; /* Dark text for light bg */
+    height: 110vh;
+    overflow: hidden;
+}
+
+/* Globe Image Section */
+.globe-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    height: 70vh;
+    width: 40vw;
+    left: 30%;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Zoom In Effect on Hover */
+.globe-container:hover {
+    transform: scale(1.1);
+}
+
+.globe-img {
+    width: 33vw;
+    height: 60vh;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Overlay Text */
+.overlay-text {
+    position: absolute;
+    text-align: center;
+    top: 75%;
+}
+
+.overlay-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #efe5e5;
+}
+
+.subtext {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #efe4e4;
+}
+
+.description {
+    font-size: 1rem;
+    opacity: 0.8;
+    color: #fef9f9;
+}
+
+/* Earnings Cards Slider */
+.earnings-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 5%;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    /* background-color: #f0f4ff; */
+}
+
+/* Continuous Scrolling Effect */
+.earnings-cards {
+    display: flex;
+    gap: 15px;
+    height: 15vh;
+    width: max-content;
+    animation: scrollCards 30s linear infinite;
+    /* background-color: #f0f4ff; */
+}
+
+@keyframes scrollCards {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Individual Earnings Card */
+.card-flag {
+    background-color: #022eb4;
+    padding: 35px;
+    border-radius: 10px;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    flex: 0 0 auto;
+}
+
+.card-flag:hover {
+    transform: scale(1.05);
+}
+
+/* Flag container section */
+.flag-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    /* background-color: #f0f4ff; */
+    padding: 3px 10px;
+    border-radius: 6px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flag image */
+.flag-img {
+    width: 30px;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #f0f4ff;
+}
+
+/* Flag label text */
+.flag-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222222;
+}
+
+/* Earnings amount text */
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #222222;
+}

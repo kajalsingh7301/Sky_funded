@@ -1,0 +1,241 @@
+/* FAQ Main Section */
+.faq-main-container {
+     background-color: #b0d4ff;
+    min-height: 200vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 350vh;
+}
+
+/* Heading Container */
+.faq-1-container {
+    width: 45vw;
+    text-align: center;
+    position: relative;
+    padding-top: 10%;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Main Heading */
+.faq-1-heading {
+    font-size: 4rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+   background: linear-gradient(90deg, #011026, #3388ff, #010f20);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Sub Heading */
+.faq-2-container {
+    font-size: 2.8rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    background: linear-gradient(90deg, #011026, #3388ff, #01316b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 8%;
+}
+
+/* Box Main Container */
+.faq-box-container {
+    width: 80vw;
+    margin: 10vh auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Each Box */
+.faq-box-container1 {
+    position: relative;
+    height: 54vh;
+    width: 25vw;
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px 15px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.faq-box-container1:hover {
+    height: 60vh;
+}
+
+/* Overlay Image */
+.faq-overlay-img {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    z-index: 2;
+    transition: 0.4s ease-in-out;
+}
+
+.faq-box-container1:hover .faq-overlay-img {
+    opacity: 0;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Hover Effect for Box */
+.faq-box-container1::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+   background: linear-gradient(90deg, #011026, #3388ff, #01316b);
+    transform: skewY(345deg);
+    transition: 0.5s;
+    z-index: 0;
+}
+
+.faq-box-container1:hover::before {
+    top: -70%;
+}
+
+/* Content Inside Box */
+.faq-box-container1-content {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    color: #111;
+    padding-top: 15px;
+    transition: 0.4s ease-in-out;
+}
+
+.faq-box-container1:hover .faq-box-container1-content {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 20px;
+}
+
+.faq-box-container1-content h3 {
+    font-size: 1.8rem;
+    color: #0052cc;
+    margin-top: 10%;
+}
+
+.faq-box-container1-content p {
+    font-size: 1rem;
+    color: #222;
+    margin-top: 10%;
+}
+
+
+/* =================== QNA Section Start =================== */
+
+.qna-div {
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: rgba(3, 14, 53, 0.553);
+    color: white;
+    font-size: 1.4rem;
+    margin-left: 7%;
+    margin-right: 60px;
+    /* margin-top: 10%; */
+    box-shadow: rgba(32, 29, 29, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px;  Add this */
+    /* border: 2px solid white; */
+}
+
+
+/* QNA Single Question Container */
+.details {
+    .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* padding: 15px 20px; */
+        margin: 20px auto;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        /* margin-bottom: 20px;  Add this */
+    }
+    
+}
+
+.details:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Question Heading */
+.details h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+/* Dropdown Icon */
+.details span {
+    font-size: 1.8rem;
+    color: #f5f5f5;
+    transform: rotate(0deg);
+    transition: 0.3s ease;
+}
+
+/* Rotate Dropdown Icon when Active */
+.details.active span {
+    transform: rotate(180deg);
+}
+
+/* Answer Container */
+.faq-answer {
+    margin: 10px auto;
+    padding: 10px 20px;
+    width: 65%;
+    color: #ddd;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    background-color: rgba(43, 10, 231, 0.05);
+    border-radius: 5px;
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+}
+
+/* =================== QNA Section End =================== */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    /* width: 60vw; */
+  }
+  
+  .faq-icon {
+    transition: transform 0.3s ease;
+    font-size: 20px;
+  }
+  
+  .faq-icon.rotate {
+    transform: rotate(180deg);
+  }
+  

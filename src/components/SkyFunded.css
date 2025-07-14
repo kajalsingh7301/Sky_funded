@@ -1,0 +1,380 @@
+.Skyfunded-parent-div {
+     background-color: #b0d4ff;
+    height: 180vh;
+    
+}
+
+/* Zoom-in effect when page loads */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.sky-funded-container {
+     background-color: #b0d4ff;
+    height: 30vh;
+    width: 55vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    left: 23%;
+    top: 3%;
+}
+
+.sky-fund-head-div {
+    background: linear-gradient(90deg, #001534, #527ab5, #05152a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    font-size: 5rem;
+    /* font-family: sans-serif; */
+    font-family: 'Times New Roman', Times, serif;
+
+    animation: zoomIn 2s ease-in-out;
+    flex-direction: column;
+  
+}
+.sky-fund-head-down-para1{
+    color: rgb(12, 12, 12);
+    font-size: 0.9rem;
+    margin-top: 20px;
+    font-weight: lighter;
+}
+.sky-fund-head-down-para2{
+    color:rgb(51, 7, 208);
+    font-size: 0.9rem;
+    margin-top: 20px;
+    font-weight: lighter;
+}
+.guaranteed-side-div{
+ /* background-color: aliceblue; */
+ height:80vh;
+ width: 95vw;
+ position: relative;
+ top: 10%;
+ display: flex;
+ flex-direction: column;
+ animation: slide-left 2.5s ease-in-out;
+
+}
+
+.guaranteed-side-div1{
+    background: linear-gradient(180deg, #c1bbfa, #3388ff, #4204ed);
+    height: 37vh;
+    width: 36vw;
+    position: relative;
+    left: 6%;
+    border-radius: 20px;
+
+   
+}
+
+@keyframes slide-left {
+    from {
+        margin-left: -100%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
+
+.guaranteed-side-div2{
+    background:  #0052cc;
+    height: 35vh;
+    width: 36vw;
+    position: relative;
+    left: 6%;
+    border-radius: 20px;
+    top: 5%;
+    gap: 10%;
+   
+}
+.guaranteed-side-div1-img{
+    display: flex;
+    flex-direction: row;
+    
+}
+.guarantee-img{
+    height: 14vh;
+    width: 6vw;
+    margin-top: 5%;
+    margin-left: 5%;
+
+}
+.guaranteed-para-div{
+    /* background-color: #3388ff; */
+    margin-left: 6%;
+    width: 40vw;
+    height: 35vh;
+    /* gap: 10px; */
+}
+.guarantee-p1{
+    font-size: 3rem;
+    font-weight:bolder;
+    color: white;
+    margin-top: 3px;
+}
+.guarantee-p2{
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.guarantee-p3{
+    color: white;
+    font-size: 0.9rem;
+    /* font-weight: bold; */
+    margin-top: 5px;
+}
+.shake-hand-img{
+    height: 11vh;
+    width: 6vw;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+.shake-p1{
+    font-size: 2.3rem;
+    font-weight:bolder;
+    color: white;
+    margin-top: 15px; 
+    margin-left: 25px;
+}
+.shake-p2{
+    color: white;
+    margin-top: 3%;
+    left: -10%;
+}
+.name-div {
+    /* background-color: #3388ff; */
+    position: absolute; /* Make sure it moves relative to its parent */
+    left: 3%; /* Moves it further left outside its parent div */
+    width: fit-content; /* Adjust width as needed */
+}
+.shake-p3{
+    color: white;
+    margin-top:5%;
+    left: -10%;
+}
+
+.sky-fund-right-div {
+    background: linear-gradient(180deg, #601EB4, #764aee);
+    height: 75vh;
+    width: 52vw;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    position: absolute; /* Enables free positioning */
+    top: 0; /* Moves it to the top */
+    right: 0; 
+    animation: slide-right 2.5s ease-in-out;
+}
+@keyframes slide-right {
+    from {
+        margin-left: 100%;
+    }
+    to {
+        margin-left: 0%;
+    }
+}
+
+.Skyfund-right-side-inside-div1 {
+
+height: 30vh;
+width: 30vw;
+margin-top: 5%;
+}
+
+.Skyfund-right-side-inside-div2 {
+    /* background-color: #be0b0b; */
+    height: 45vh;
+    width:42vw;
+    /* left: 30%; */
+    margin-top: 7%;
+    margin-right: 8px;
+    border-radius: 20px;
+    }
+    .mt_5_video{
+        object-fit: cover;
+        width: 30vw;
+        margin-top: 0%;
+        margin-right: 8px;
+        border-radius: 20px;
+
+    }
+.Trade-p{
+    color: white;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.Trade-p1{
+    color: gold;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-left: 17px;
+}
+.Trade-p2{
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 2px;
+    margin-left: 22px;
+}
+.download-button-div{
+    background-color: #04275b;
+    color: white;
+    border-radius: 40px;
+    font-size: 1rem;
+    width: 12vw;
+    height: 7vh;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-left: 15px;
+}
+
+.download-button-div:hover{
+    background-color:#601EB4 ;
+    border: 2px solid white;
+}
+.down-div {
+    /* background-color: #04275b; */
+    height: 20vh;
+    width: 50vw;
+    position: absolute; /* Allows free movement */
+    right: 0; /* Moves it fully to the right */
+    z-index: 2;
+    border-radius: 20px;
+    top: 65%;
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    /* margin-top: 10px; */
+    margin-right: 10px;
+    
+}
+.down-full-div {
+    /* background-color: antiquewhite; */
+    height: 55vh;
+    width: 90vw;
+    position: relative;
+    top: 13%;
+    left: 6%;
+    animation: slideUp 2s ease-in-out forwards;
+    display: flex;
+    flex-direction: row;
+}
+@keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+.down-full-side-div1{
+    background: linear-gradient(140deg, #8298f2, #3e55ec,#10013b);
+    height: 47vh;
+    width: 42vw;
+    border-radius: 20px;
+    margin-top: 30px;
+    /* font-family: 'Times New Roman', Times, serif; */
+}
+.down-full-side-div2{
+    height:  47vh;
+    width: 24vw;
+background-color:  #17153a;
+margin-top: 30px;
+border-radius: 20px;
+margin-left: 10px;
+animation: slideUp 2.5s ease-in-out forwards;
+}
+.down-full-side-div3{
+    height:  47vh;
+    width: 24vw;
+background-color:  #17153a;
+margin-top: 30px;
+border-radius: 20px;
+margin-left: 10px;
+animation: slideUp 3s ease-in-out forwards;
+}
+.down-side-div-p1{
+    color: white;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.sky-funded-stats{
+    color:white;
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    margin-left: 35px;
+    margin-top: 10px;
+}
+.stat-value{
+    font-size: 1.5rem;
+    color:  white;
+    margin-top: 10px;
+}
+.sky-img{
+    display: flex;
+   margin-top: 30px;
+   margin-left: 120px;
+}
+.sky-funded-p1{
+    color: white;
+    font-size: 1.8rem;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.sky-funded-p2{
+    color: white;
+   
+    margin-top: 15px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.time-img{
+    display: flex;
+   margin-top: 30px;
+   margin-left: 120px;
+}
+.time-p1{
+    color: white;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    font-weight: bold;
+    
+    margin-left: 20px; 
+}
+.time-p2{
+    color: white;
+    margin-top: 15px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.link-download{
+    text-decoration: none;
+}
+

@@ -1,0 +1,168 @@
+/* Container */
+.challenge-container {
+    background-color: #b0d4ff;; /* light sky blue background */
+    color: #0c0f1a; /* dark text for readability on light bg */
+    padding: 40px 15px; /* reduced padding a bit */
+    text-align: center;
+    min-height: 120vh;
+}
+
+/* Title & Subtitle */
+.title {
+    font-size: 4rem;
+    font-weight: bolder;
+    margin-bottom: 10px;
+    background: linear-gradient(180deg, #051f46, #083370, #1b7cdc); /* nice blue gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.highlight {
+    color: #0c0f1a; /* dark text for highlight */
+}
+
+.subtitle {
+    color: #283e68; /* darker blue text */
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto 25px auto; /* slightly reduced bottom margin */
+}
+
+/* Card Grid */
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px; /* reduced gap from 30px to 15px */
+    justify-content: center;
+    margin-top: 50px; /* reduced margin */
+    animation: slideUp 2s ease-in-out forwards;
+}
+
+/* Card Animation Delay */
+.challenge-card:nth-child(1) { animation-delay: 0.3s; }
+.challenge-card:nth-child(2) { animation-delay: 0.6s; }
+.challenge-card:nth-child(3) { animation-delay: 0.9s; }
+.challenge-card:nth-child(4) { animation-delay: 1.2s; }
+.challenge-card:nth-child(5) { animation-delay: 1.5s; }
+
+/* Individual Card */
+.challenge-card {
+    background-color: #16213e; /* dark blue card background */
+    border-radius: 12px;
+    padding: 15px; /* reduced padding from 20px */
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(22, 33, 62, 0.7); /* subtle dark shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    color: #dbe9ff; /* light text on dark background */
+}
+
+/* Hover Effect */
+.challenge-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(94, 172, 245, 0.7);
+    border: 1px solid #5eacf5; /* sky blue border on hover */
+}
+
+/* Popular Tag */
+.popular-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #5eacf5; /* sky blue */
+    color: #0c0f1a; /* dark text */
+    font-weight: bold;
+    padding: 8px 10px; /* reduced padding */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    text-align: center;
+}
+
+/* Card Content */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+}
+
+.image-text-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px; /* reduced gap from 15px */
+}
+
+.challenge-image {
+    width: 70px; /* reduced size */
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid #5eacf5; /* sky blue border */
+}
+
+.text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 18px; /* reduced font size */
+    font-weight: bold;
+    margin: 5px 0;
+    color: #a8c7ff; /* lighter sky blue text */
+}
+
+.card-description {
+    color: #b0b3c0;
+    font-size: 13px; /* slightly smaller */
+    margin-top: 5px;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 12px; /* reduced margin */
+    flex-grow: 1;
+}
+
+.feature {
+    border-bottom: 1px solid #283e68; /* dark blue border */
+    padding: 4px 0; /* reduced padding */
+    color: #d0d6e3;
+}
+
+.start-btn {
+    background-color: #5eacf5; /* sky blue button */
+    color: #0c0f1a; /* dark text on button */
+    border: none;
+    padding: 9px; /* slightly reduced padding */
+    width: 100%;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px; /* reduced margin */
+    transition: background-color 0.3s ease;
+}
+
+.start-btn:hover {
+    background-color: #3a89d9; /* darker sky blue on hover */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .challenge-grid {
+        grid-template-columns: 1fr;
+    }
+}

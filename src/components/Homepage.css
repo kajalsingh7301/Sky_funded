@@ -1,0 +1,240 @@
+.sky-funded-hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 5%;
+    background-color: #b0d4ff;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.sky-funded-left {
+    max-width: 600px;
+    position: relative;
+    animation: slideLeft 1.5s ease-out forwards;
+    flex: 1;
+    z-index: 2;
+}
+
+@keyframes slideLeft {
+    0% {
+        left: -100px;
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.sky-funded-badge {
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: transparent;
+    background-image: linear-gradient(90deg, #050505, #012c3f, #073f56);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shine 3s linear infinite;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5), 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+@keyframes shine {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.where-trust-meet-trading {
+    background-color: #0604a5;
+    color: white;
+    height: auto;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 2px solid blue;
+    font-size: 1rem;
+    margin: 40px 0 30px 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sky-funded-title {
+    font-size: 3rem;
+    margin: 20px 0;
+    color: #000;
+    width: 100%;
+}
+
+.sky-funded-title span {
+    color: #035f86;
+}
+
+.sky-funded-desc {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #0b0b0b;
+}
+
+.sky-funded-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.sky-funded-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+}
+
+.sky-funded-feature img {
+    width: 60px;
+    height: 60px;
+}
+
+.sky-funded-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.sky-funded-primary-btn,
+.sky-funded-secondary-btn {
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.sky-funded-primary-btn {
+    background-color: #38bdf8;
+    color: #0f172a;
+    border: none;
+}
+
+.sky-funded-primary-btn:hover {
+    background-color: #0ea5e9;
+}
+
+.sky-funded-secondary-btn {
+    background-color: transparent;
+    color: #38bdf8;
+    border: 2px solid #38bdf8;
+}
+
+.sky-funded-secondary-btn:hover {
+    background-color: #38bdf8;
+    color: #fff;
+}
+
+.sky-funded-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.sky-funded-right img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+}
+
+/* Animations for text fade in */
+.where-trust-meet-trading,
+.sky-funded-title,
+.sky-funded-desc {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation-fill-mode: forwards;
+}
+
+.where-trust-meet-trading {
+    animation: slideInText 1s ease-out 0.3s forwards;
+}
+
+.sky-funded-title {
+    animation: slideInText 1s ease-out 0.6s forwards;
+}
+
+.sky-funded-desc {
+    animation: slideInText 1s ease-out 0.9s forwards;
+}
+
+@keyframes slideInText {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Coin animation */
+.coin {
+    width: 350px; /* Increased size */
+    height: auto;
+    animation: slideCoin 3s ease-in-out infinite alternate;
+    position: relative;
+    cursor: pointer;
+}
+
+@keyframes slideCoin {
+    0% { left: 0; }
+    50% { left: 30px; }
+    100% { left: 0; }
+}
+
+/* Background Video */
+.sky-funded-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140vh;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.25;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .sky-funded-hero {
+        flex-direction: column;
+        padding: 60px 5%;
+    }
+
+    .sky-funded-left,
+    .sky-funded-right {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .sky-funded-title {
+        font-size: 2.5rem;
+        width: 100%;
+    }
+
+    .sky-funded-badge {
+        font-size: 4rem;
+    }
+
+    .where-trust-meet-trading {
+        width: auto;
+        padding: 10px 15px;
+    }
+
+    .coin {
+        width: 320px; /* Increased responsive size */
+    }
+}

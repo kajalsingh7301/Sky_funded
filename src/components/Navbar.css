@@ -1,0 +1,290 @@
+/* Navbar Main Container */
+.sky-funded-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #03153b;
+  z-index: 1000;
+  transition: all 0.4s ease-in-out;
+  height: 12vh;
+}
+
+/* Scrolled Effect */
+.sky-funded-navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.sky-funded-logo-img {
+  height: 135px;
+  width: auto;
+  object-fit: contain;
+  margin-top: 35px;
+  margin-left: -30px;
+}
+
+/* Logo Section */
+.sky-funded-logop {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #87CEEB; /* changed to sky blue */
+  cursor: pointer;
+  gap: 8px;
+  transition: transform 0.3s ease;
+}
+
+.sky-funded-logop span {
+  color: #2c7ae6;
+}
+
+.sky-funded-logop:hover {
+  transform: scale(1.1);
+  color: #4c7fef;
+}
+
+/* Navigation Links Container */
+.sky-funded-nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #03153b;
+  padding: 10px 100px;
+  border-radius: 30px;
+  gap: 40px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Navigation Links Styling */
+.sky-funded-nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.sky-funded-nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7c3aed, #2563eb);
+  transition: width 0.4s ease;
+  border-radius: 50px;
+}
+
+.sky-funded-nav-links a:hover::after {
+  width: 100%;
+}
+
+.sky-funded-nav-links a:hover {
+  background: linear-gradient(90deg, #7c3aed, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(124, 58, 237, 0.7);
+  transform: scale(1.05);
+}
+
+/* Dropdown Container */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Dropdown Title */
+.dropdown-title {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.dropdown-title:hover {
+  background: linear-gradient(90deg, #7c3aed, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(124, 58, 237, 0.7);
+  transform: scale(1.05);
+}
+
+/* Dropdown Content (Column layout) */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #03153b;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 999;
+  min-width: 180px;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
+/* Buttons Container */
+.button-div {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  width: 18vw;
+}
+
+/* Platform Button Styling */
+.platform-button {
+  background-color: #2563eb;
+  padding: 8px 25px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.platform-button:hover {
+  background-color: #1e40af;
+  transform: translateY(-2px);
+}
+
+/* Login Button Styling */
+/* .login-button {
+  padding: 18px 25px;
+  border: 1px solid #2563eb;
+  color: white;
+  background-color: transparent;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 40px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 40px;
+} */
+
+.login-button {
+  background-color: transparent;
+  color: white;
+  padding: 8px 25px;
+  border-radius: 30px;
+  border: 2px solid #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  min-width: 80px;
+  height: 35px;
+}
+
+.login-button:hover {
+  background-color: #2563eb;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+
+/* Navbar Animation Classes */
+.slide-down {
+  transform: translateY(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.slide-up {
+  transform: translateY(-100%);
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sky-funded-nav-links {
+    gap: 20px;
+    padding: 8px 20px;
+  }
+
+  .sky-funded-logo {
+    font-size: 1.5rem;
+  }
+
+  .platform-button,
+  .login-button {
+    padding: 6px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sky-funded-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;
+    height: auto;
+    gap: 15px;
+  }
+
+  .sky-funded-nav-links {
+    flex-direction: column;
+    gap: 15px;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .button-div {
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 0;
+    padding-right: 0;
+    width: 100%;
+    border: none;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  .dropdown-content a {
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+}

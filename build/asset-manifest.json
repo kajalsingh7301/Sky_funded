@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e610dd46.css",
+    "main.js": "/static/js/main.8868700e.js",
+    "static/js/453.021db965.chunk.js": "/static/js/453.021db965.chunk.js",
+    "static/media/Finance Business Video Background.mp4": "/static/media/Finance Business Video Background.b792cd75b599ab3f860e.mp4",
+    "static/media/coin.gif": "/static/media/coin.5b36240557ee826cbe18.gif",
+    "static/media/bgvideo.mp4": "/static/media/bgvideo.d29023db3608d513d850.mp4",
+    "static/media/graph.mp4": "/static/media/graph.c0ceb05fb50173ca9478.mp4",
+    "static/media/mt_5_video.mp4": "/static/media/mt_5_video.f170ca7a8b9c9b19559d.mp4",
+    "static/media/wave.gif": "/static/media/wave.546bb82e4254371ff98e.gif",
+    "static/media/globe-image.jpg": "/static/media/globe-image.0affb02fff9504b2cff1.jpg",
+    "static/media/coin-vid.mp4": "/static/media/coin-vid.45e87c251fa4c83389e7.mp4",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.1815e00441357e01619e.ttf",
+    "static/media/guranteed_img.jpg": "/static/media/guranteed_img.44b2b0719da8b5639cf5.jpg",
+    "static/media/Registerimg.jpg": "/static/media/Registerimg.6f04da2b7fd237cda8df.jpg",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.c210719e60948b211a12.woff2",
+    "static/media/footer-bg.png": "/static/media/footer-bg.7d0a7cc8f1797cd7acfd.png",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/howworks_2 (3).jpg": "/static/media/howworks_2 (3).21b77182d27a6a9629d4.jpg",
+    "static/media/howworks_2 (2).jpg": "/static/media/howworks_2 (2).267411342e7d7ffc20c4.jpg",
+    "static/media/payment_method_img2.jpg": "/static/media/payment_method_img2.6775d9afc18cc50b0489.jpg",
+    "static/media/howworks_2 (1).jpg": "/static/media/howworks_2 (1).a9bbcc5c82c5c6b1c99c.jpg",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
+    "static/media/payment_method_img1.jpg": "/static/media/payment_method_img1.4aef3640ce31aebadd0e.jpg",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.e610dd46.css.map": "/static/css/main.e610dd46.css.map",
+    "main.8868700e.js.map": "/static/js/main.8868700e.js.map",
+    "453.021db965.chunk.js.map": "/static/js/453.021db965.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e610dd46.css",
+    "static/js/main.8868700e.js"
+  ]
+}
