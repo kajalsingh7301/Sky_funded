@@ -20,7 +20,7 @@ const Homepage = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:5000')
+    fetch('https://api.treassurefunded.com')
       .then((res) => res.text())
       .then((data) => setBackendMessage(data))
       .catch((err) => console.error('Error fetching backend:', err));

@@ -107,7 +107,7 @@ const AdminPanel = () => {
   const [showModal, setShowModal] = useState(false);
 
   const username = localStorage.getItem("username");
-  const baseURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+  const baseURL = process.env.REACT_APP_BACKEND_URL || "https://api.treassurefunded.com";
   const extraNotification = "🎉 Your account was upgraded to Pro!";
 
   const simpleNotification = "Your profile was viewed 3 times today.";

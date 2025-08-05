@@ -20,7 +20,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post("https://api.treassurefunded.com/api/auth/login", {
         email: identifier.includes("@") ? identifier : undefined,
         username: !identifier.includes("@") ? identifier : undefined,
         password,
