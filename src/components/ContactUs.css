@@ -3,10 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #b0d4ff; /* Light blue */
-    color: #021740; /* Dark text */
+    background-color: #000; /* Deep black */
+    color: #ffd700; /* Gold text */
     padding: 40px 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     text-align: center;
     height: 250vh;
 }
@@ -16,8 +16,8 @@
     height: 50vh;
     width: 45vw;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(2, 23, 64, 0.5);
-    background-color: #021740; 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background-color: #111;
 }
 
 /* Contact Info container */
@@ -25,6 +25,7 @@
     flex-direction: column;
     align-items: center;
     font-size: 1.8rem;
+    color: #ffd700;
 }
 
 /* Info div holding info boxes */
@@ -44,10 +45,12 @@
     padding: 15px;
     border-radius: 5px;
     text-align: center;
-    height: 15vh;
+    height: 16vh;
     min-width: 180px;
-    background-color: #031d5c; /* Dark blue */
-    color: white;
+    background-color: #111; 
+    color: #ffd700;
+    border: 1px solid #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 /* Icons inside info box */
@@ -60,19 +63,20 @@
 .info-box p {
     font-size: 15px;
     font-weight: bold;
+    color: #ffe066;
 }
 
 /* Social Links box */
 .social-links {
     margin-top: 30px;
     text-align: center;
-    background-color: #031d5c; /* Dark blue */
+    background-color: #111;
     height: 30vh;
     width: 45vw;
     margin-left: 27px;
     border-radius: 10px;
-    box-shadow: rgba(2, 23, 64, 0.4) 0px 7px 29px 0px;
-    color: white;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    color: #ffd700;
 }
 
 /* Social Links text */
@@ -93,12 +97,12 @@
 
 /* Social icon style */
 .social-icon {
-    color: white;
+    color: #ffd700;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #1e73ff;
+    color: #ffcc00;
     transform: scale(1.1);
 }
 
@@ -132,22 +136,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid blue;
+    border: 2px solid #ffd700;
     margin-left: 45%;
     margin-top: -10%;
     font-size: 1.2rem;
+    background-color: transparent;
+    color: #ffd700;
 }
 
-/* Contact button */
 .contact-us {
-    background-color: #0052cc;
+    background-color: #ffd700;
+    color: #000;
     margin-top: 70px;
-    border-color: white;
+    border-color: #ffd700;
 }
 
 .contact-us:hover {
     background: transparent;
-    border-color: #0052cc;
+    color: #ffd700;
+    border-color: #ffd700;
     height: 6.2vh;
     width: 10.2vw;
 }
@@ -158,7 +165,7 @@
     font-family: 'Times New Roman', Times, serif;
     margin: 25px 25%;
     font-weight: bolder;
-    background: linear-gradient(90deg, #030e20, #00050cf4, #01152e);
+    background: linear-gradient(90deg, #ffd700, #b8860b);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -168,6 +175,7 @@
 .container-contact-para {
     font-size: 1.1rem;
     margin-top: 20px;
+    color: #ffe066;
 }
 
 /* Side bar div */
@@ -197,18 +205,18 @@
     margin: 30px 30px 0;
     width: 45vw;
     height: 60vh;
-    background-color: #031d5c; /* Dark blue */
+    background-color: #111;
     border-radius: 15px;
-    box-shadow: rgba(2, 23, 64, 0.4) 0 7px 29px 0;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
     margin-top: 30px;
     padding-top: 40px;
     padding-bottom: 30px;
-    color: white;
+    color: #ffd700;
 }
 
-/* Contact form section with dark background */
+/* Contact form section */
 .contact-form-section {
-    background-color: #021740; /* Dark blue */
+    background-color: #111;
     padding: 50px 20px;
     display: flex;
     flex-direction: column;
@@ -220,16 +228,15 @@
     width: 45vw;
     position: relative;
     left: 55%;
-    margin-top: 15px;
-    box-shadow: rgba(2, 23, 64, 0.4) 0px 7px 29px 0px;
-    color: white;
     margin-top: -60px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    color: #ffd700;
 }
 
 /* Contact form text */
 .contact-form-content {
     width: 100%;
-    color: white;
+    color: #ffd700;
     text-align: center;
     font-size: 1rem;
     height: 10vh;
@@ -240,17 +247,18 @@
     font-size: 3rem;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
-    background: linear-gradient(90deg, #dfe1e2, #94b3d9);
+    background: linear-gradient(90deg, #ffd700, #daa520);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    margin-top: -3%;
+    margin-top: -10%;
 }
 
 /* Paragraph below subheading */
 .p-dd {
     font-size: 1rem;
     margin-top: 15px;
+    color: #ffe066;
 }
 
 /* Contact form alignment */
@@ -264,7 +272,6 @@
 /* Form row styling */
 .form-row {
     display: flex;
-    /* gap: -100px; */
     flex-wrap: wrap;
 }
 
@@ -272,10 +279,10 @@
 .input-box {
     position: relative;
     width: 35vw;
-    background-color: #021740; /* Dark blue */
+    background-color: #111;
     margin-top: -10px;
     margin-bottom: 20px;
-    color: white;
+    color: #ffd700;
     margin-left: 45px;
     border-radius: 5px;
 }
@@ -284,19 +291,17 @@
 .input-box input,
 .input-box textarea {
     width: 100%;
-    padding: 10px 10px 10px 50px; 
-    background-color: #021740; /* Dark blue */
+    padding: 10px 10px 10px 50px;
+    background-color: #111;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ffd700;
     outline: none;
-    color: white;
+    color: #ffd700;
 }
 
 .input-box textarea {
     height: 60px;
     border-radius: 5px;
-    /* padding-left: 50px; */
-    color: white;
 }
 
 /* Input icon */
@@ -305,7 +310,7 @@
     top: 45%;
     left: 20px;
     transform: translateY(-50%);
-    color: #1e73ff;
+    color: #ffd700;
     font-size: 28px;
 }
 
@@ -314,14 +319,15 @@
     margin-bottom: 18px;
     margin-top: 10px;
     text-align: left;
+    color: #ffe066;
 }
 .privacy-policy label {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 50px;
 }
 .privacy-policy a {
-    color: red;
-    text-decoration: none;
+    color: #ffd700;
+    text-decoration: underline;
 }
 .privacy {
     height: 20px;
@@ -333,15 +339,15 @@
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background: #1e73ff;
+    background: #ffd700;
     border: none;
     border-radius: 25px;
-    color: white;
+    color: #000;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
 .submit-btn:hover {
-    background: #1558cc;
+    background: #ffcc00;
 }

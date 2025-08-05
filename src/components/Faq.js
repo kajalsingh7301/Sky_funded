@@ -6,6 +6,7 @@ import faqimg3 from "../Assets/faq3.jpg";
 import faqoverlay from "../Assets/faqoverlay.jpg"; 
 import faqoverlay2 from "../Assets/faqoverlay2.jpg"; 
 import faqoverlay3 from "../Assets/faqoverlay3.jpg"; 
+import money from "../Assets/money.png";
 
 const FAQItem = () => {
 
@@ -21,7 +22,7 @@ const FAQItem = () => {
 
   const faqData = [
     {
-      question: "What is Sky Funded?",
+      question: "What is Treasure Funded?",
       answer: "Sky Funded is a prop firm that allows traders to get funded by passing an evaluation phase and proving their trading skills."
     },
     {
@@ -67,6 +68,8 @@ const FAQItem = () => {
 
       <div className='faq-1-container'>
         <h1 className='faq-1-heading'>Your Guide to Everything You Need to Know!</h1>
+        <div className='moneydiv'>
+        <img src={money} alt="overlay" className='money' /></div>
       </div>
 
       <div className='faq-2-container'>

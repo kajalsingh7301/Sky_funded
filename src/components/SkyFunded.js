@@ -11,7 +11,7 @@ const SkyFundedPage = () => {
     <div className="Skyfunded-parent-div">
       <div className="sky-funded-container">
         <div className="sky-fund-head-div">
-          Why Sky Funded ?
+          Why Treasure Funded ?
           <div className="sky-fund-head-down-para1">
             Trade with the most trusted, reliable, and highest-paying prop firm
           </div>
@@ -61,7 +61,7 @@ const SkyFundedPage = () => {
                    target="_blank"
                    rel="noopener noreferrer"
                    className="link-download">
-  <button className="download-button-div">Download MT5</button>
+  <div className="download-button-div">Download MT5</div>
 </a>
           </div>
           <div className="Skyfund-right-side-inside-div2">
@@ -117,3 +117,4 @@ const SkyFundedPage = () => {
 };
 
 export default SkyFundedPage;
+

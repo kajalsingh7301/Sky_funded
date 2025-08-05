@@ -7,7 +7,7 @@ const ChallengePlans = () => {
   const [activeMainTab, setActiveMainTab] = useState("SkyFunded Challenge");
   const navigate = useNavigate();
 
-  const mainTabs = ["SkyFunded Challenge", "SkyFunded Lite Challenge", "Evaluation", "Express"];
+  const mainTabs = ["TreasureFunded Challenge", "TreasureFunded Lite Challenge", "Evaluation", "Express"];
 
   const step1Data = [
     ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
@@ -136,9 +136,9 @@ const ChallengePlans = () => {
 
       {/* Buy Plan Button */}
       <div className="buy-plan-container">
-        <button className="buy-plan-btn" onClick={() => navigate("/login")}>
+        <div className="buy-plan-btn" onClick={() => navigate("/login")}>
           Buy a Plan
-        </button>
+        </div>
       </div>
     </div>
   );

@@ -31,27 +31,27 @@ const ChallengeCard = ({ challenge, onEdit, onDelete, onViewDetails }) => (
         ></div>
       </div>
       <div className="challenge-actions">
-        <button
+        <div
           className="btn view-btn"
           onClick={() => onViewDetails(challenge.id)}
           aria-label={`View details of ${challenge.name}`}
         >
           View Details
-        </button>
-        <button
+        </div>
+        <div
           className="btn edit-btn"
           onClick={() => onEdit(challenge.id)}
           aria-label={`Edit ${challenge.name}`}
         >
           <FaEdit /> Edit
-        </button>
-        <button
+        </div>
+        <div
           className="btn delete-btn"
           onClick={() => onDelete(challenge.id)}
           aria-label={`Delete ${challenge.name}`}
         >
           <FaTrashAlt /> Delete
-        </button>
+        </div>
       </div>
     </div>
   </div>

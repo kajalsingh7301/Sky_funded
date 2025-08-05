@@ -6,6 +6,7 @@ import "./ChallengePage.css";
 import cimg1 from "../Assets/challenge_img.jpg";
 import cimg2 from "../Assets/sky-fund-c2.jpg";
 import cimg3 from "../Assets/challenge_3.jpg";
+import { FaShoppingCart, FaUserCircle, FaChartLine, FaCheckCircle, FaMoneyBillWave } from 'react-icons/fa';
 
 const ChallengePage = () => {
   const navigate = useNavigate();
@@ -24,8 +25,8 @@ const ChallengePage = () => {
           <div className="popular-tag">Popular Plan</div>
           <div className="card-content">
             <img src={cimg1} alt="Billionaire Challenge" className="challenge-image" />
-            <h3 className="card-title">Sky Funded Challenge</h3>
-            <p className="card-description">The most popular package amongst BullionFunded traders</p>
+            <h3 className="card-title">Treasure Funded Challenge</h3>
+            <p className="card-description">The most popular package amongst Treasure Funded traders</p>
             <ul className="feature-list">
               <li className="feature">Upto 95% Profit Split</li>
               <li className="feature">20% Profit Share in Challenge Phase</li>
@@ -33,9 +34,9 @@ const ChallengePage = () => {
               <li className="feature">No Time Limit</li>
               <li className="feature">News Trading Allowed</li>
             </ul>
-            <button className="start-btn" onClick={() => navigate("/login")}>
+            <div className="start-btn" onClick={() => navigate("/login")}>
               Start Challenge
-            </button>
+            </div>
           </div>
         </div>
 
@@ -43,7 +44,7 @@ const ChallengePage = () => {
         <div className="challenge-card">
           <div className="card-content">
             <img src={cimg2} alt="Billionaire Lite Challenge" className="challenge-image" />
-            <h3 className="card-title">Sky Funded Lite Challenge</h3>
+            <h3 className="card-title">Treasure Funded Lite Challenge</h3>
             <p className="card-description">The most affordable package for new and upcoming traders</p>
             <ul className="feature-list">
               <li className="feature">Upto 95% Profit Split</li>
@@ -52,9 +53,9 @@ const ChallengePage = () => {
               <li className="feature">Lowest Profit Target</li>
               <li className="feature">News Trading Allowed</li>
             </ul>
-            <button className="start-btn" onClick={() => navigate("/login")}>
+            <div className="start-btn" onClick={() => navigate("/login")}>
               Start Challenge
-            </button>
+            </div>
           </div>
         </div>
 
@@ -71,9 +72,9 @@ const ChallengePage = () => {
               <li className="feature">Up to 150% Reward</li>
               <li className="feature">News Trading Allowed</li>
             </ul>
-            <button className="start-btn" onClick={() => navigate("/login")}>
+            <div className="start-btn" onClick={() => navigate("/login")}>
               Start Challenge
-            </button>
+            </div>
           </div>
         </div>
 
@@ -90,12 +91,54 @@ const ChallengePage = () => {
               <li className="feature">Up to 150% Reward</li>
               <li className="feature">News Trading Not Allowed</li>
             </ul>
-            <button className="start-btn" onClick={() => navigate("/login")}>
+            <div className="start-btn" onClick={() => navigate("/login")}>
               Start Challenge
-            </button>
+            </div>
           </div>
         </div>
       </div>
+
+      <div className="steps-container">
+  <h2 className="section-title">How Treasure Funded Works</h2>
+  <div className="step-flow">
+    {[
+      {
+        title: "Purchase the Plan",
+        desc: "Choose the plan that suits you best and complete the purchase in just a few clicks.",
+        icon: <FaShoppingCart />,
+      },
+      {
+        title: "Account Access",
+        desc: "Get instant access to your trading account after completing the purchase.",
+        icon: <FaUserCircle />,
+      },
+      {
+        title: "Active Trading",
+        desc: "Start trading following the rules of your selected plan.",
+        icon: <FaChartLine />,
+      },
+      {
+        title: "Meet the Criteria",
+        desc: "Trade realistically, follow the rules, and request a payout.",
+        icon: <FaCheckCircle />,
+      },
+      {
+        title: "Payout",
+        desc: "Receive your profits directly into your bank account or wallet.",
+        icon: <FaMoneyBillWave />,
+      },
+    ].map((step, index) => (
+      <div className="step-box" key={index}>
+        <div className="step-icon">{step.icon}</div>
+        <div className="step-text">
+          <h4>{step.title}</h4>
+          <p>{step.desc}</p>
+        </div>
+        <div className="step-label">Step 0{index + 1}</div>
+      </div>
+    ))}
+  </div>
+</div>
     </div>
   );
 };

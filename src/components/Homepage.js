@@ -13,14 +13,14 @@ import TradersFeedback from './TradersFeedback';
 import Tablesteps from './Tablesteps';
 import { Link } from "react-router-dom";
 import coin from '../Assets/coin.gif';
-// import bgvideo from '../Assets/bgvideo.mp4';
+import bg from '../Assets/bg.mp4';
 
 const Homepage = () => {
   const [backendMessage, setBackendMessage] = useState('');
 
   useEffect(() => {
 
-    fetch('http://localhost:3001')
+    fetch('http://localhost:5000')
       .then((res) => res.text())
       .then((data) => setBackendMessage(data))
       .catch((err) => console.error('Error fetching backend:', err));
@@ -30,18 +30,18 @@ const Homepage = () => {
     <>
       <div className="sky-funded-hero">
         {/* Background Video */}
-        {/* <video autoPlay loop muted playsInline className="sky-funded-bg-video">
-          <source src={bgvideo} type="video/mp4" />
+        <video autoPlay loop muted playsInline className="sky-funded-bg-video">
+          <source src={bg} type="video/mp4" />
           Your browser does not support the video tag.
-        </video> */}
+        </video>
 
         <div className="sky-funded-left">
-          <span className="sky-funded-badge">SKY FUNDED</span>
+          <span className="sky-funded-badge">TREASURE FUNDED</span>
           <div className='where-trust-meet-trading'>
             Where Trust Meets Trading
           </div>
           <h1 className="sky-funded-title">
-            <span>Sky Funded:</span> Trusted Accounts, Highest Payouts, Get Certified
+            <span>Treasure Funded:</span> Trusted Accounts, Highest Payouts, Get Certified
           </h1>
           <p className="sky-funded-desc">
             Know the highest possibilities of your trading. Trade with assurance when working with a financially secure trading prop firm like us.
@@ -64,15 +64,15 @@ const Homepage = () => {
 
           <div className="sky-funded-buttons">
             <Link to="/register">
-              <button className="sky-funded-primary-btn">Get Funded</button>
+              <div className="sky-funded-primary-btn1">Get Funded</div>
             </Link>
-            <button className="sky-funded-secondary-btn">Join Us</button>
+            <div className="sky-funded-secondary-btn1">Join Us</div>
           </div>
         </div>
 
-        <div className="sky-funded-right">
+        {/* <div className="sky-funded-right">
           <img src={coin} alt="Trading Animation" className="coin" />
-        </div>
+        </div> */}
       </div>
 
       {/* Additional Components */}
@@ -89,3 +89,4 @@ const Homepage = () => {
 };
 
 export default Homepage;
+

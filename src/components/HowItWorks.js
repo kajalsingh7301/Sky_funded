@@ -15,7 +15,7 @@ const HowItWorks = () => {
 
         <div className="how-para1">
           <p className="how-para">
-            How to Get Started with <br /> Sky Funded
+            How to Get Started with <br /> Treasure Funded
           </p>
 
           <p className="content-para">

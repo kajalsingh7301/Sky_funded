@@ -191,7 +191,7 @@ const FeedbackSection = () => {
           Traders <span className="highlight">Feedback</span>
         </h2>
         <p className="feedback-subtitle">
-          Sky Funded stands out with traders like you! Discover what real
+          Treasure Funded stands out with traders like you! Discover what real
           traders are saying about our top-tier prop trading firm.
         </p>
         <p className="rating">

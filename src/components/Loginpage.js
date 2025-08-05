@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./Loginpage.css";
 import illustration from "../Assets/wave.gif";
 import axios from "axios";
+import rocket from "../Assets/rocket.png";
 
 const Login = () => {
   const [identifier, setIdentifier] = useState(""); // username or email
@@ -44,13 +45,13 @@ const Login = () => {
         <div className="left-section">
           <h1>Welcome Back!</h1>
           <p>To keep you connected, please login with your personal info.</p>
-          <img src={illustration} alt="Illustration" />
+          <img src={rocket} alt="Illustration" className="rocket" />
         </div>
 
         <div className="right-section">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>Email or Username <span>*</span></label>
+             <div className="labelclass"> <label className="label">Email or Username <span>*</span></label></div>
               <div className="input-box">
                 <i className="fas fa-user"></i>
                 <input
@@ -102,7 +103,7 @@ const Login = () => {
           </p>
 
           <p className="copyright">
-            © Copyright 2025 SkyFunded. All Rights Reserved.
+            © Copyright 2025 TreasureFunded. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -138,8 +138,6 @@ const Deposit = () => {
         await response.json();
         setShowCongrats(true);
         setSaveMessage('');
-
-        // Delay reset to allow success message to be visible
         setTimeout(() => {
           setShowCongrats(false);
           resetForm();
@@ -274,6 +272,41 @@ const Deposit = () => {
         )}
       </div>
 
+      <div className="challenge-plans-section">
+        <h2>Or Select a Challenge Plan</h2>
+        <div className="plan-cards">
+          {[
+            { account: "$6,000", fee: 59, target: "$144", dailyLoss: "$300", overallLoss: "$600" },
+            { account: "$15,000", fee: 119, target: "$360", dailyLoss: "$750", overallLoss: "$1,500" },
+            { account: "$25,000", fee: 199, target: "$600", dailyLoss: "$1,250", overallLoss: "$2,500" },
+            { account: "$50,000", fee: 299, target: "$1,200", dailyLoss: "$2,500", overallLoss: "$5,000" },
+            { account: "$100,000", fee: 549, target: "$2,400", dailyLoss: "$5,000", overallLoss: "$10,000" },
+            { account: "$200,000", fee: 999, target: "$4,800", dailyLoss: "$10,000", overallLoss: "$20,000" },
+          ].map((plan, idx) => (
+            <div className="plan-card" key={idx}>
+              <h3>{plan.account} Account</h3>
+              <p className="plan-fee">Fee: ${plan.fee}</p>
+              <ul className="plan-details">
+                <li><strong>Profit Target:</strong> {plan.target}</li>
+                <li><strong>Max Daily Loss:</strong> {plan.dailyLoss}</li>
+                <li><strong>Max Overall Loss:</strong> {plan.overallLoss}</li>
+                <li><strong>Profit Split:</strong> 95%</li>
+              </ul>
+              <button
+                className="buy-now-btn"
+                onClick={() => {
+                  setAmount(String(plan.fee));
+                  setSelectedMethod('');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                Buy Now
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="deposit-right-panel">
         <h2>Note:</h2>
         <ul>
@@ -288,4 +321,3 @@ const Deposit = () => {
 };
 
 export default Deposit;
-

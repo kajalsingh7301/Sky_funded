@@ -69,6 +69,7 @@ const Registration = () => {
 
   return (
     <div className="sky-funded-register-container">
+      <div className='todiv'>
       <div className="sky-funded-register-left">
         <h2>Let's get you set up</h2>
         <p>It should only take a couple of minutes to create your account.</p>
@@ -76,7 +77,7 @@ const Registration = () => {
       </div>
 
       <div className="sky-funded-register-right">
-        <h1 className="sky-funded-logo">SkyFunded</h1>
+        <h1 className="sky-funded-logo">TreasureFunded</h1>
         <form className="sky-funded-register-form" onSubmit={handleSubmit}>
           <div className="sky-funded-form-row">
             <div className="sky-funded-input-group">
@@ -139,10 +140,11 @@ const Registration = () => {
           </div>
 
           <button type="submit" className="sky-funded-register-btn">Register</button>
-          <p className="sky-funded-login-link">
+<p className="sky-funded-login-link">
             Already have an account? <span>Login</span>
           </p>
         </form>
+      </div>
       </div>
     </div>
   );

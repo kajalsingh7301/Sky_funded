@@ -1,13 +1,16 @@
-/* Existing styles (keep your current styles here) */
+/* BLACK & GOLDEN THEME - Based on expertemirates.com */
 
 .deposit-container {
-  display: flex;
+  /* display: flex; */
   gap: 40px;
   padding: 30px;
-  background: #0a0b2b;
+  background: #000;
   border-radius: 10px;
-  color: white;
+  color: #FFD700;
   font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .deposit-left-panel {
@@ -20,6 +23,7 @@
   font-weight: 700;
   font-size: 28px;
   margin-bottom: 25px;
+  color: #FFD700;
 }
 
 .deposit-left-panel label {
@@ -27,6 +31,7 @@
   font-size: 16px;
   margin-top: 15px;
   margin-bottom: 8px;
+  color: #E5C267;
 }
 
 .deposit-left-panel input[type='number'] {
@@ -35,8 +40,13 @@
   border-radius: 7px;
   border: none;
   outline: none;
-  background-color: #1e1e4a;
-  color: white;
+  background-color: #1a1a1a;
+  color: #FFD700;
+  box-shadow: inset 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.deposit-left-panel input[type='number']:focus {
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
 }
 
 .payment-method-list {
@@ -46,7 +56,7 @@
 }
 
 .payment-method-item {
-  background-color: #1e1e4a;
+  background-color: #1a1a1a;
   padding: 15px 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -54,7 +64,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   border: 2px solid transparent;
 }
 
@@ -67,6 +77,7 @@
 .payment-method-item span {
   flex-grow: 1;
   font-weight: 600;
+  color: #FFD700;
 }
 
 .payment-method-item input[type='radio'] {
@@ -75,218 +86,151 @@
 
 .payment-method-item.active,
 .payment-method-item:hover {
-  background-color: #3c34e3;
-  border-color: #7e6fff;
+  background-color: #2d2d2d;
+  border-color: #FFD700;
+  transform: translateY(-2px);
 }
 
 button {
   margin-top: 30px;
   padding: 15px 20px;
-  background: linear-gradient(90deg, #6e54ff, #4b3de2);
+  background: linear-gradient(90deg, #FFD700, #E6B800);
   border: none;
   border-radius: 10px;
-  color: white;
+  color: #000;
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
-  transition: background 0.4s ease;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  transition: background 0.4s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  background: linear-gradient(90deg, #4b3de2, #6e54ff);
+  background: linear-gradient(90deg, #E6B800, #FFD700);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
 .deposit-right-panel {
   flex: 1;
-  background-color: #1e1e4a;
+  background-color: #1a1a1a;
   border-radius: 12px;
   padding: 30px 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
 }
 
 .deposit-right-panel h2 {
   font-weight: 700;
   font-size: 24px;
-  color: #9b8fff;
+  color: #E5C267;
 }
 
 .deposit-right-panel p {
   font-weight: 800;
   font-size: 36px;
-  color: white;
+  color: #FFD700;
 }
 
 .history-link {
   font-size: 14px;
-  color: #6e54ff;
+  color: #FFD700;
   text-decoration: underline;
   cursor: pointer;
 }
 
-/* New Section Styles */
-
-/* Important Notes */
-.deposit-notes {
-  margin-top: 40px;
-  background-color: #2a2a6a;
+.deposit-notes,
+.deposit-faq,
+.recent-deposits {
+  margin-top: 30px;
+  background-color: #1a1a1a;
   border-radius: 10px;
   padding: 20px 25px;
-  box-shadow: 0 0 12px rgba(110, 84, 255, 0.25);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  color: #E5C267;
 }
 
-.deposit-notes h3 {
+.deposit-notes h3,
+.deposit-faq h3,
+.recent-deposits h3 {
   font-size: 20px;
   font-weight: 700;
+  color: #FFD700;
   margin-bottom: 15px;
-  color: #a89fff;
+  text-align: center;
 }
 
-.deposit-notes ul {
+.deposit-notes ul,
+.deposit-faq ul,
+.recent-deposits ul {
   list-style-type: disc;
   padding-left: 20px;
-}
-
-.deposit-notes ul li {
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: #d0cdfc;
-}
-
-/* FAQ Section */
-.deposit-faq {
-  margin-top: 30px;
-  background-color: #2a2a6a;
-  border-radius: 10px;
-  padding: 20px 25px;
-  box-shadow: 0 0 12px rgba(110, 84, 255, 0.25);
-}
-
-.deposit-faq h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #a89fff;
-}
-
-.faq-item {
-  margin-bottom: 15px;
 }
 
 .faq-item h4 {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  color: #cbcaff;
+  color: #FFD700;
   margin-bottom: 5px;
 }
 
-.faq-item p {
-  font-weight: 400;
+.faq-item p,
+.recent-deposits ul li,
+.deposit-notes ul li {
   font-size: 14px;
-  color: #e1e0ff;
+  color: #E5C267;
   margin-left: 10px;
-  line-height: 1.3;
 }
 
-/* Recent Deposits */
-.recent-deposits {
-  width: 100%;
-  background-color: #2a2a6a;
-  border-radius: 10px;
-  padding: 20px 20px;
-  box-shadow: 0 0 12px rgba(110, 84, 255, 0.25);
-  color: #cbcaff;
-  font-weight: 600;
-}
-
-.recent-deposits h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #a89fff;
-  text-align: center;
-}
-
-.recent-deposits ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.recent-deposits ul li {
-  margin-bottom: 12px;
-  font-size: 14px;
-  background-color: #1e1e4a;
-  border-radius: 6px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .deposit-container {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .deposit-left-panel,
-  .deposit-right-panel {
-    width: 100%;
-  }
-
-  .payment-method-list {
-    flex-direction: column;
-  }
-
-  .payment-method-item {
-    justify-content: flex-start;
-  }
-}
 .deposit-bonus {
-  background: #124a6f;
-  border-left: 5px solid #00aaff;
+  background: #2d2d2d;
+  border-left: 5px solid #FFD700;
   padding: 15px 20px;
   margin: 20px 0 10px 0;
   border-radius: 8px;
   font-weight: 600;
-  color: #0077cc;
+  color: #FFD700;
 }
 
 .deposit-steps {
-  background: #fff8e1;
-  border-left: 5px solid #ffb300;
+  background: #1a1a1a;
+  border-left: 5px solid #FFD700;
   padding: 15px 20px;
   margin-bottom: 20px;
   border-radius: 8px;
-  color: black;
+  color: #E5C267;
 }
 
 .deposit-steps ol {
   margin-left: 20px;
   padding-left: 10px;
-  color: #664d03;
+  color: #FFD700;
 }
 
 .deposit-steps li {
   margin-bottom: 8px;
 }
-.qr-code-img {
+
+.qr-code-img,
+.qr-image {
   width: 150px;
-  height: 150px;
+  height: auto;
   margin: 20px 0;
+  border-radius: 8px;
   object-fit: contain;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
 }
+
 .congrats-message {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: #dff0d8;
-  color: #3c763d;
+  background: #FFD700;
+  color: #000;
   padding: 15px 30px;
   border-radius: 8px;
   font-weight: bold;
@@ -301,15 +245,192 @@ button:hover {
   90% { opacity: 1; transform: translateX(-50%) scale(1); }
   100% { opacity: 0; transform: translateX(-50%) scale(0.9); }
 }
+
 .qr-preview {
   margin-top: 20px;
   text-align: center;
 }
 
-.qr-image {
-  width: 200px;
-  height: auto;
+/* Responsive */
+@media (max-width: 900px) {
+  .deposit-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .deposit-left-panel,
+  .deposit-right-panel {
+    width: 100%;
+  }
+  .payment-method-list {
+    flex-direction: column;
+  }
+  .payment-method-item {
+    justify-content: flex-start;
+  }
+}
+/* Challenge Plan Section */
+.challenge-plans-section {
+  margin-top: 40px;
+  padding: 24px;
+  background: #f1f5f9;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+}
+
+.challenge-plans-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #111827;
+  text-align: center;
+}
+
+.plan-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.plan-card {
+  background-color: #0c0c0c;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  max-width: 100%;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
+}
+
+.plan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.plan-card h3 {
+  font-size: 1.4rem;
+  color: #f4f5f6;
+  margin-bottom: 10px;
+}
+
+.plan-fee {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #16a34a;
+  margin-bottom: 10px;
+}
+
+.plan-card p {
+  font-size: 0.95rem;
+  color: #f0f2f5;
+  margin-bottom: 16px;
+}
+
+.buy-now-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 500;
   border-radius: 8px;
-  margin-top: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .plan-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .plan-card {
+    width: 100%;
+  }
+}
+.challenge-plans-section {
+  margin-top: 40px;
+  background-color: #111;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.challenge-plans-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffcc00;
+  text-shadow: 0 0 5px #ffcc00;
+}
+
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.plan-card {
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+}
+
+.plan-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #ffcc00;
+}
+
+.plan-fee {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 15px;
+  background-color: #ffcc00;
+  color: #000;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.plan-details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+  text-align: left;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.plan-details li {
+  margin: 4px 0;
+}
+
+.buy-now-btn {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background-color: #ffd700;
 }

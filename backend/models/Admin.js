@@ -5,11 +5,12 @@ const adminSchema = new mongoose.Schema(
   {
     email: { type: String, required: true, unique: true, lowercase: true, trim: true },
     password: { type: String, required: true },
-    role: { type: String, default: 'admin' }, // Role field added here
+    role: { type: String, default: 'admin' },
   },
   { timestamps: true }
 );
 
+// Hash password before saving
 adminSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
@@ -21,7 +22,7 @@ adminSchema.pre('save', async function (next) {
   }
 });
 
-// Method to compare passwords
+// Password comparison method
 adminSchema.methods.comparePassword = async function (enteredPassword) {
   return bcrypt.compare(enteredPassword, this.password);
 };

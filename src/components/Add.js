@@ -27,10 +27,10 @@ export default function FundedTradingAd() {
           instantly regain access to it thanks to our special buyback feature.
         </p>
         <div className="ad-buttons">
-          <button className="btn-login" onClick={() => navigate("/login")}>
+          <div className="btn-login" onClick={() => navigate("/login")}>
             Login
-          </button>
-          <button className="btn-join">Join Community</button>
+          </div>
+          <div className="btn-join">Join Community</div>
         </div>
       </div>
     </div>

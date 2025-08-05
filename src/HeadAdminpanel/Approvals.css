@@ -1,0 +1,97 @@
+.approval-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.approval-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.approval-filters {
+  display: flex;
+  gap: 10px;
+}
+
+.approval-filters button {
+  padding: 8px 14px;
+  background: #eee;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.approval-filters .active {
+  background: #007bff;
+  color: white;
+}
+
+.approval-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.approval-card {
+  padding: 16px;
+  background: #f9f9f9;
+  border-left: 6px solid transparent;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.approval-card.approved {
+  border-left-color: #28a745;
+  background: #e8f5e9;
+}
+
+.approval-card.declined {
+  border-left-color: #dc3545;
+  background: #fdecea;
+}
+
+.approval-card.deleted {
+  border-left-color: #6c757d;
+  background: #f1f1f1;
+}
+
+.approval-actions button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-approve {
+  background: #28a745;
+  color: white;
+}
+
+.btn-decline {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-delete {
+  background: #6c757d;
+  color: white;
+}
+
+.no-approvals {
+  text-align: center;
+  font-size: 16px;
+  color: #999;
+  padding: 40px 0;
+}

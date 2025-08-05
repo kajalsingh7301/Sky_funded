@@ -63,10 +63,10 @@ const ContactUs = () => {
       <div className="contact-main">
         <h1 className="contact1div">Contact us</h1>
         <h2 className="container2div">
-          "Contact Us for Expert Sky Funded Guidance & Support"
+          "Contact Us for Expert Treasure Funded Guidance & Support"
         </h2>
         <p className="container-contact-para">
-          "Need assistance with Sky Funded? Our team is ready to help! <br />
+          "Need assistance with Treasure Funded? Our team is ready to help! <br />
           Get expert guidance and support tailored to your needs. Expect responsive <br />
           service and seamless communication every step of the way." <br />
           Does that fit what you're looking for?
@@ -197,9 +197,9 @@ const ContactUs = () => {
               </label>
             </div>
 
-            <button type="submit" className="submit-btn">
+            <div type="submit" className="submit-btn">
               Submit
-            </button>
+            </div>
           </form>
 
           {status && (

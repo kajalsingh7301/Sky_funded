@@ -73,3 +73,55 @@
 }
 
 
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.approve-btn,
+.decline-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Default */
+.approve-btn {
+  background: #e0f7e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+.decline-btn {
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+/* Hover */
+.approve-btn:hover {
+  background-color: #c8e6c9;
+}
+.decline-btn:hover {
+  background-color: #ffcdd2;
+}
+
+/* Active Click */
+.approve-btn.active {
+  background-color: #4caf50 !important;
+  color: #fff;
+}
+.decline-btn.active {
+  background-color: #f44336 !important;
+  color: #fff;
+}
+
+.screenshot-thumb {
+  width: 40px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}

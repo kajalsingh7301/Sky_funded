@@ -1,8 +1,8 @@
 /* Container */
 .challenge-container {
-    background-color: #b0d4ff;; /* light sky blue background */
-    color: #0c0f1a; /* dark text for readability on light bg */
-    padding: 40px 15px; /* reduced padding a bit */
+    background-color: #000; /* deep black */
+    color: #ffd700; /* rich gold text */
+    padding: 40px 15px;
     text-align: center;
     min-height: 120vh;
 }
@@ -12,29 +12,30 @@
     font-size: 4rem;
     font-weight: bolder;
     margin-bottom: 10px;
-    background: linear-gradient(180deg, #051f46, #083370, #1b7cdc); /* nice blue gradient */
+    background: linear-gradient(180deg, #ffd700, #b8860b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 .highlight {
-    color: #0c0f1a; /* dark text for highlight */
+    color: #ffd700;
 }
 
 .subtitle {
-    color: #283e68; /* darker blue text */
+    color: #e5c100;
     font-size: 20px;
     max-width: 600px;
-    margin: 0 auto 25px auto; /* slightly reduced bottom margin */
+    margin: 0 auto 25px auto;
 }
 
 /* Card Grid */
 .challenge-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px; /* reduced gap from 30px to 15px */
+    gap: 20px;
     justify-content: center;
-    margin-top: 50px; /* reduced margin */
+    margin-top: 50px;
     animation: slideUp 2s ease-in-out forwards;
 }
 
@@ -47,12 +48,12 @@
 
 /* Individual Card */
 .challenge-card {
-    background-color: #16213e; /* dark blue card background */
+    background-color: #111; /* near black */
     border-radius: 12px;
-    padding: 15px; /* reduced padding from 20px */
+    padding: 15px;
     text-align: left;
     position: relative;
-    box-shadow: 0 4px 12px rgba(22, 33, 62, 0.7); /* subtle dark shadow */
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -60,15 +61,15 @@
     height: 100%;
     max-width: 350px;
     margin: 0 auto;
-    border: 1px solid transparent;
-    color: #dbe9ff; /* light text on dark background */
+    border: 1px solid #333;
+    color: #ffd700;
 }
 
 /* Hover Effect */
 .challenge-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(94, 172, 245, 0.7);
-    border: 1px solid #5eacf5; /* sky blue border on hover */
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+    border: 1px solid #ffd700;
 }
 
 /* Popular Tag */
@@ -77,10 +78,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #5eacf5; /* sky blue */
-    color: #0c0f1a; /* dark text */
+    background-color: #ffd700;
+    color: #000;
     font-weight: bold;
-    padding: 8px 10px; /* reduced padding */
+    padding: 8px 10px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     text-align: center;
@@ -99,16 +100,16 @@
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 10px; /* reduced gap from 15px */
+    gap: 12px;
 }
 
 .challenge-image {
-    width: 70px; /* reduced size */
+    width: 70px;
     height: 70px;
     border-radius: 8px;
     object-fit: cover;
     flex-shrink: 0;
-    border: 2px solid #5eacf5; /* sky blue border */
+    border: 2px solid #ffd700;
 }
 
 .text-content {
@@ -118,46 +119,51 @@
 }
 
 .card-title {
-    font-size: 18px; /* reduced font size */
+    font-size: 18px;
     font-weight: bold;
     margin: 5px 0;
-    color: #a8c7ff; /* lighter sky blue text */
+    color: #ffe066;
 }
 
 .card-description {
-    color: #b0b3c0;
-    font-size: 13px; /* slightly smaller */
+    color: #d4af37;
+    font-size: 13px;
     margin-top: 5px;
 }
 
+/* Features */
 .feature-list {
     list-style: none;
     padding: 0;
-    margin-top: 12px; /* reduced margin */
+    margin-top: 12px;
     flex-grow: 1;
 }
 
 .feature {
-    border-bottom: 1px solid #283e68; /* dark blue border */
-    padding: 4px 0; /* reduced padding */
-    color: #d0d6e3;
+    border-bottom: 1px solid #333;
+    padding: 5px 0;
+    color: #fef3b0;
 }
 
+/* Button */
 .start-btn {
-    background-color: #5eacf5; /* sky blue button */
-    color: #0c0f1a; /* dark text on button */
+    background-color: #ffd700;
+    color: #000;
     border: none;
-    padding: 9px; /* slightly reduced padding */
+    padding: 10px;
     width: 100%;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 12px; /* reduced margin */
-    transition: background-color 0.3s ease;
+    margin-top: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .start-btn:hover {
-    background-color: #3a89d9; /* darker sky blue on hover */
+    background-color: #ffcc00;
+    color: #111;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 /* Responsive */
@@ -165,4 +171,82 @@
     .challenge-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.steps-container {
+  padding: 60px 30px;
+  background: #0a0a0a;
+  color: #ffd700;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  text-shadow: 0 0 10px #ffd700aa;
+}
+
+.step-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.step-box {
+  background: #1a1a1a;
+  border-radius: 15px;
+  padding: 30px 20px;
+  width: 230px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+.step-icon {
+  font-size: 36px;
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.step-text h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.step-text p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.step-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #000, #333);
+  border: 1px solid #ffd70055;
+  padding: 5px 12px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #ffd700;
+  border-radius: 20px;
+  box-shadow: 0 0 8px #ffd70033;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .step-flow {
+    flex-direction: column;
+    align-items: center;
+  }
 }

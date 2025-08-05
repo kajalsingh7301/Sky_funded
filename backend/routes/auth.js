@@ -1,36 +1,4 @@
-// // 
-// // REGISTER USER
-// router.post('/register', async (req, res) => {
-//   try {
-//     const { username, fullName, email, phone, password, confirmPassword, country, referralId } = req.body;
 
-//     if (password !== confirmPassword) {
-//       return res.status(400).json({ msg: 'Passwords do not match' });
-//     }
-
-//     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
-//     if (existingUser) {
-//       return res.status(400).json({ msg: 'Username or email already exists' });
-//     }
-
-//     const newUser = new User({
-//       username,
-//       fullName,
-//       email,
-//       phone,
-//       password, // Let Mongoose pre-save hook hash this
-//       country,
-//       referralId,
-//     });
-
-//     await newUser.save();
-
-//     res.status(201).json({ msg: 'User registered successfully' });
-//   } catch (err) {
-//     console.error('Registration error:', err.message);
-//     res.status(500).json({ msg: 'Server error' });
-//   }
-// });
 
 
 const express = require('express');
@@ -38,7 +6,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const Admin = require('../models/Admin'); // Optional: if you use admins separately
+// const Admin = require('../models/Admin'); // Optional: if you use admins separately
 
 // REGISTER USER
 router.post('/register', async (req, res) => {

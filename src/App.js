@@ -27,19 +27,24 @@ import Profile from './pages/Profile';
 import AdminChallengePage from './pages/AdminChallengePage';
 import Transaction from './pages/Transactions';
 import Settings from './pages/Settings';
-import Deposit from './pages/Deposit'; // ✅ NEW Deposit Page import
+import Deposit from './pages/Deposit';
 
-import Layout from './components/Layout';  // **Import Layout component**
+import Layout from './components/Layout';
 
-import HeadAdminpanel from './HeadAdminpanel/HeadAdminpanel';  // <-- NEW import
-import Adminlogin from './HeadAdminpanel/Adminlogin';          // <-- Import AdminLogin
+import HeadAdminpanel from './HeadAdminpanel/HeadAdminpanel';
+import Adminlogin from './HeadAdminpanel/Adminlogin';
 import UsersPage from './HeadAdminpanel/UsersPage';
+import ReferEarn from "./pages/ReferEarn"; 
+import Certificates from "./pages/Certificates";
+import SupportTickets from './pages/SupportTickets';
+import Kyc from './pages/Kyc';
+
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Routes for non-admin pages */}
+        {/* Public Pages */}
         <Route path="/" element={<Common />}>
           <Route index element={<Homepage />} />
           <Route path="/firstnextpage" element={<Firstnextpage />} />
@@ -60,10 +65,10 @@ const App = () => {
           <Route path="/traders-feedback" element={<TradersFeedback />} />
         </Route>
 
-        {/* Admin Login (unprotected) */}
+        {/* Admin Login */}
         <Route path="/adminlogin" element={<Adminlogin />} />
 
-        {/* Admin Panel Routes (Protected + Layout wrapper) */}
+        {/* Protected Admin Routes */}
         <Route
           path="/dashboard"
           element={
@@ -75,11 +80,51 @@ const App = () => {
           }
         />
         <Route
+          path="/kyc"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Kyc />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/refer-earn"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <ReferEarn />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/support"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <SupportTickets />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/profile"
           element={
             <ProtectedRoute>
               <Layout>
                 <Profile />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Certificates"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Certificates />
               </Layout>
             </ProtectedRoute>
           }
@@ -125,27 +170,25 @@ const App = () => {
           }
         />
 
-        {/* New route for HeadAdminpanel */}
+        {/* Head Admin Panel */}
         <Route
           path="/headadmin"
           element={
             <ProtectedRoute>
-            
-                <HeadAdminpanel />
-           
+              <HeadAdminpanel />
             </ProtectedRoute>
           }
         />
         <Route
-  path="/headadmin/users"
-  element={
-    <ProtectedRoute>
-      <UsersPage />
-    </ProtectedRoute>
-  }
-/>
+          path="/headadmin/users"
+          element={
+            <ProtectedRoute>
+              <UsersPage />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* Agar /admin/* se koi route aaye to AdminPanel hi render karna (optional) */}
+        {/* Default route for /admin/* */}
         <Route
           path="/admin/*"
           element={
@@ -162,5 +205,3 @@ const App = () => {
 };
 
 export default App;
-
-

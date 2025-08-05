@@ -1,3 +1,4 @@
+// Same imports
 import React, { useEffect, useState } from "react";
 import "./AdminDepositPage.css";
 
@@ -10,16 +11,15 @@ const AdminDepositsPage = () => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [isAdminView, setIsAdminView] = useState(false);
+  const [statuses, setStatuses] = useState({}); // NEW STATE
   const limit = 1000;
 
   const getSafe = (value, fallback = "N/A") => value || fallback;
 
-  // Calculate total pages
   const totalPages = Math.ceil(total / limit);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (!token) {
       setError("No token found. Please login.");
       setLoading(false);
@@ -49,17 +49,12 @@ const AdminDepositsPage = () => {
       })
       .then((data) => {
         if (data && Array.isArray(data.deposits)) {
-          // Sort deposits by createdAt descending (recent first)
-          const sortedDeposits = data.deposits.sort(
-            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-          );
-
-          setDeposits(sortedDeposits);
+          const sorted = data.deposits.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          setDeposits(sorted);
           setTotal(data.total || 0);
           setError(null);
 
-          // Detect admin view based on presence of userId object in deposits
-          if (sortedDeposits.length > 0 && sortedDeposits[0].userId) {
+          if (sorted.length > 0 && sorted[0].userId) {
             setIsAdminView(true);
           } else {
             setIsAdminView(false);
@@ -75,6 +70,13 @@ const AdminDepositsPage = () => {
       })
       .finally(() => setLoading(false));
   }, [page]);
+
+  const handleStatus = (id, type) => {
+    setStatuses((prev) => ({
+      ...prev,
+      [id]: prev[id] === type ? null : type,
+    }));
+  };
 
   const handlePrev = () => setPage((prev) => Math.max(prev - 1, 1));
   const handleNext = () => setPage((prev) => (prev < totalPages ? prev + 1 : prev));
@@ -99,42 +101,61 @@ const AdminDepositsPage = () => {
                   <th>Amount</th>
                   <th>Screenshot</th>
                   <th>Date</th>
+                  {isAdminView && <th>Action</th>}
                 </tr>
               </thead>
               <tbody>
                 {deposits.length === 0 ? (
                   <tr>
-                    <td colSpan={isAdminView ? 6 : 4} style={{ textAlign: "center" }}>
+                    <td colSpan={isAdminView ? 7 : 5} style={{ textAlign: "center" }}>
                       No deposits found.
                     </td>
                   </tr>
                 ) : (
-                  deposits.map((dep) => (
-                    <tr key={dep._id}>
-                      {isAdminView && <td>{getSafe(dep.userId?.username)}</td>}
-                      {isAdminView && <td>{getSafe(dep.userId?.email)}</td>}
-                      <td>{getSafe(dep.paymentMethod)}</td>
-                      <td>${parseFloat(dep.amount).toFixed(2)}</td>
-                      <td>
-                        {dep.screenshotUrl ? (
-                          <a
-                            href={`${BASE_URL}${dep.screenshotUrl}`}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            <img
-                              src={`${BASE_URL}${dep.screenshotUrl}`}
-                              alt="screenshot"
-                              className="screenshot-thumb"
-                            />
-                          </a>
-                        ) : (
-                          "No Screenshot"
+                  deposits.map((dep) => {
+                    const status = statuses[dep._id];
+
+                    return (
+                      <tr key={dep._id}>
+                        {isAdminView && <td>{getSafe(dep.userId?.username)}</td>}
+                        {isAdminView && <td>{getSafe(dep.userId?.email)}</td>}
+                        <td>{getSafe(dep.paymentMethod)}</td>
+                        <td>${parseFloat(dep.amount).toFixed(2)}</td>
+                        <td>
+                          {dep.screenshotUrl ? (
+                            <a href={`${BASE_URL}${dep.screenshotUrl}`} target="_blank" rel="noreferrer">
+                              <img
+                                src={`${BASE_URL}${dep.screenshotUrl}`}
+                                alt="screenshot"
+                                className="screenshot-thumb"
+                              />
+                            </a>
+                          ) : (
+                            "No Screenshot"
+                          )}
+                        </td>
+                        <td>{dep.createdAt ? new Date(dep.createdAt).toLocaleString() : "N/A"}</td>
+                        {isAdminView && (
+                          <td>
+                            <div className="action-buttons">
+                              <button
+                                className={`approve-btn ${status === "approved" ? "active" : ""}`}
+                                onClick={() => handleStatus(dep._id, "approved")}
+                              >
+                                Approve
+                              </button>
+                              <button
+                                className={`decline-btn ${status === "declined" ? "active" : ""}`}
+                                onClick={() => handleStatus(dep._id, "declined")}
+                              >
+                                Decline
+                              </button>
+                            </div>
+                          </td>
                         )}
-                      </td>
-                      <td>{dep.createdAt ? new Date(dep.createdAt).toLocaleString() : "N/A"}</td>
-                    </tr>
-                  ))
+                      </tr>
+                    );
+                  })
                 )}
               </tbody>
             </table>
@@ -158,5 +179,3 @@ const AdminDepositsPage = () => {
 };
 
 export default AdminDepositsPage;
-
-

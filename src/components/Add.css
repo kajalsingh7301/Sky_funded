@@ -1,16 +1,16 @@
 .ad-background {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* Text color */
-  background-color: #b0d4ff; /* Updated lightish pastel blue */
+  background-color: #0d0d0d; /* deep black */
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+  color: #ffd700; /* golden text */
 }
 
 .background-video {
@@ -24,7 +24,7 @@
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 0;
-  filter: brightness(0.6); /* optional, to darken video for text contrast */
+  filter: brightness(0.3); /* darker video for gold pop */
 }
 
 .ad-container {
@@ -35,17 +35,14 @@
   text-align: center;
   height: 60vh;
   width: 60vw;
-  color: #001f3f;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: #ffd700;
+  box-shadow: 0 4px 30px rgba(255, 215, 0, 0.1);
   border-radius: 1.5rem;
-
-  /* Remove any border or background */
   border: none;
   background: none;
-  overflow: hidden; /* clip the glowing border */
+  overflow: hidden;
 }
 
-/* Glowing animated border using pseudo-elements */
 .ad-container::before,
 .ad-container::after {
   content: "";
@@ -57,25 +54,23 @@
   bottom: 0;
   background: linear-gradient(
     45deg,
-    #ff595e,
-    #ffca3a,
-    #8ac926,
-    #1982c4,
-    #6a4c93,
-    #ff6700
+    #ffd700,
+    #b8860b,
+    #daa520,
+    #ffcc00,
+    #f5d742
   );
   background-size: 400%;
   z-index: -1;
-  animation: glow 20s linear infinite;
+  animation: glow 15s linear infinite;
 }
 
-/* Inner white background */
 .ad-container::after {
   top: 4px;
   left: 4px;
   right: 4px;
   bottom: 4px;
-  background: #ffffff;
+  background: #0d0d0d; /* pure dark inside */
   animation: none;
   z-index: -1;
 }
@@ -92,31 +87,13 @@
   }
 }
 
-.ad-heading {
-  font-size: 3rem;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bolder;
-  background: linear-gradient(90deg, #0074d9, #00bfff, #add8e6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.highlight-blue {
-  font-size: 3rem;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bolder;
-  background: linear-gradient(90deg, #0074d9, #00bfff, #add8e6);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
+.ad-heading,
+.highlight-blue,
 .highlight-green {
   font-size: 3rem;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bolder;
-  background: linear-gradient(90deg, #0074d9, #00bfff, #add8e6);
+  background: linear-gradient(90deg, #ffd700, #f5deb3, #fff8dc);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -127,7 +104,7 @@
   line-height: 1.5rem;
   margin-top: 35px;
   margin-bottom: 2rem;
-  color: #001f3f;
+  color: #f5f5dc; /* off-white text */
 }
 
 .ad-buttons {
@@ -137,8 +114,8 @@
 }
 
 .btn-login {
-  background-color: #0074d9;
-  color: white;
+  background-color: #ffd700;
+  color: #000;
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
   font-weight: 600;
@@ -148,13 +125,13 @@
 }
 
 .btn-login:hover {
-  background-color: #005fa3;
+  background-color: #e5c100;
 }
 
 .btn-join {
-  border: 2px solid #0074d9;
+  border: 2px solid #ffd700;
   background-color: transparent;
-  color: #fafbfd;
+  color: #ffd700;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -163,6 +140,6 @@
 }
 
 .btn-join:hover {
-  background-color: #e6f7ff;
-  color: #00090f;
+  background-color: #ffd700;
+  color: #000;
 }

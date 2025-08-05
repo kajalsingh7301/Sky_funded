@@ -8,9 +8,12 @@ function authenticateToken(req, res, next) {
 
   if (!token) return res.status(401).json({ msg: 'No token provided' });
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) return res.status(403).json({ msg: 'Invalid or expired token' });
-    req.user = user; // user contains the decoded payload { id, username, role }
+
+    // Use decoded payload directly (contains id, username, role)
+    req.user = decoded;
+
     next();
   });
 }

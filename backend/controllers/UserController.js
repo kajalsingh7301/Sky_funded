@@ -1,22 +1,55 @@
-const User = require('../models/User'); // Assuming you're using mongoose for MongoDB
+const User = require('../models/User');
 const sendEmail = require('../utils/sendEmail');
+
+// Get approved users (for Approvals.js page)
+exports.getApprovedUsers = async (req, res) => {
+  try {
+    const approvedUsers = await User.find({ isApproved: true }).select('-password');
+    res.status(200).json(approvedUsers);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching approved users', error: err });
+  }
+};
+
+// Get all users
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find().select('-password');
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching users', error: err });
+  }
+};
+
+// Approve user
+exports.approveUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    user.isApproved = true;
+    await user.save();
+
+    await sendEmail({
+      to: user.email,
+      subject: 'Account Approved',
+      text: `Hello ${user.fullName},\n\nYour account has been approved. You can now log in to your dashboard.\n\n- SkyFunded Team`,
+    });
+
+    res.status(200).json({ message: 'User approved and email sent' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error approving user', error: err });
+  }
+};
 
 // Fetch user details
 exports.getUserDetails = async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.params.username });
+    const user = await User.findOne({ username: req.params.username }).select('-password');
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.json({
-      fullName: user.fullName,
-      email: user.email,
-      phone: user.phone,
-      country: user.country,
-      profileImage: user.profileImage,
-      emailNotifications: user.emailNotifications,
-      smsAlerts: user.smsAlerts,
-    });
+    res.json(user);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching user details', error: err });
   }
@@ -54,8 +87,8 @@ exports.updateNotificationPreferences = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    user.emailNotifications = emailNotifications !== undefined ? emailNotifications : user.emailNotifications;
-    user.smsAlerts = smsAlerts !== undefined ? smsAlerts : user.smsAlerts;
+    user.emailNotifications = emailNotifications ?? user.emailNotifications;
+    user.smsAlerts = smsAlerts ?? user.smsAlerts;
 
     await user.save();
 
@@ -74,10 +107,10 @@ exports.changePassword = async (req, res) => {
     const user = await User.findOne({ username });
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    const isPasswordCorrect = await user.comparePassword(currentPassword); // Assuming you've implemented comparePassword method in your User model
+    const isPasswordCorrect = await user.comparePassword(currentPassword);
     if (!isPasswordCorrect) return res.status(400).json({ message: 'Current password is incorrect' });
 
-    user.password = newPassword; // Assuming password hashing is handled in pre-save hook
+    user.password = newPassword;
     await user.save();
 
     res.json({ message: 'Password updated successfully' });

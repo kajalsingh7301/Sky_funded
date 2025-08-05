@@ -1,8 +1,9 @@
 import React from 'react';
 import "./Evaluation.css";
-import challengeVideo from "../Assets/graph.mp4";
+// import challengeVideo from "../Assets/graph.mp4";
 import iconimg from "../Assets/benefit_img1 (1).jpg"; 
 import iconimg2 from "../Assets/benefit_img2.jpg";
+import mobile from "../Assets/mobile.png";
 
 const SkyFundedEvaluationPage = () => {
   return (
@@ -19,17 +20,15 @@ const SkyFundedEvaluationPage = () => {
           <div className='eva1-button'>Start Challenge Now</div>
         </div>
         <div className='eva-2'>
-          <video autoPlay loop muted className="background-video2">
-            <source src={challengeVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <img src={mobile} alt="icon" className=" background-video2" />
+         
         </div>
       </div>
 
       <div className='evaluation-main-2'>
         <h3 className='evaluation-main-head'>Evaluation Challenge Rules</h3>
         <p className='evaluation-main-para'>
-          Discover why SkyFunded’s Evaluation Challenge stands out from the rest!
+          Discover why TreasureFunded’s Evaluation Challenge stands out from the rest!
         </p>
       </div>
 
@@ -84,7 +83,7 @@ const SkyFundedEvaluationPage = () => {
       </div>
 
       <div className="express-container-3">
-        Why Choose SkyFunded <br/>as Your Prop Firm?
+        Why Choose TreasureFunded <br/>as Your Prop Firm?
       </div>
 
       <div className="express-3">

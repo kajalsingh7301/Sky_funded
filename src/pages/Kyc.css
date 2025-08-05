@@ -1,0 +1,87 @@
+/* src/pages/KycPage.css */
+
+.kyc-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 35px 30px;
+  background: #f9f9ff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.kyc-container:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.kyc-container h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.kyc-container p {
+  font-size: 15px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.kyc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.kyc-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.kyc-form label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: #222;
+  font-weight: 500;
+}
+
+.kyc-form input,
+.kyc-form select {
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.kyc-form input:focus,
+.kyc-form select:focus {
+  border-color: #4a6eff;
+  box-shadow: 0 0 0 3px rgba(74, 110, 255, 0.15);
+  outline: none;
+}
+
+.submit-btn {
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #4a6eff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #3a58d6;
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}

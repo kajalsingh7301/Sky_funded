@@ -7,26 +7,50 @@ const UsersPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const fetchUsers = async () => {
+    try {
+      const token = localStorage.getItem('adminToken');
+      if (!token) throw new Error('Please login as admin first.');
+
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/all-users`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setUsers(res.data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.response?.data?.msg || err.message || 'Failed to load users');
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const token = localStorage.getItem('adminToken');
-        if (!token) throw new Error('Please login as admin first.');
-
-        const res = await axios.get('/api/admin/all-users', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-
-        setUsers(res.data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.response?.data?.message || err.message || 'Failed to load users');
-        setLoading(false);
-      }
-    };
-
     fetchUsers();
   }, []);
+
+  const handleApproval = async (userId, status) => {
+    try {
+      const token = localStorage.getItem('adminToken');
+      if (!token) throw new Error('Please login as admin first.');
+
+      await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/api/admin/approve-user/${userId}`,
+        {}, // No body required for status
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      setUsers((prev) =>
+        prev.map((user) =>
+          user._id === userId ? { ...user, approvalStatus: status } : user
+        )
+      );
+    } catch (err) {
+      console.error('Approval error:', err);
+      alert('Failed to update approval status');
+    }
+  };
 
   if (loading) return <div>Loading users...</div>;
   if (error) return <div style={{ color: 'red' }}>{error}</div>;
@@ -43,18 +67,16 @@ const UsersPage = () => {
             <th>Phone</th>
             <th>Country</th>
             <th>Role</th>
-            <th>Active Challenges</th>
-            <th>Total Profit</th>
-            <th>Total Balance</th>
+            <th>Approval</th>
           </tr>
         </thead>
         <tbody>
           {users.length === 0 ? (
             <tr>
-              <td colSpan="9">No users found.</td>
+              <td colSpan="7">No users found.</td>
             </tr>
           ) : (
-            users.map(user => (
+            users.map((user) => (
               <tr key={user._id}>
                 <td>{user.username}</td>
                 <td>{user.fullName}</td>
@@ -62,9 +84,20 @@ const UsersPage = () => {
                 <td>{user.phone}</td>
                 <td>{user.country}</td>
                 <td>{user.role}</td>
-                <td>{user.activeChallenges || 0}</td>
-                <td>{user.totalProfit || 0}</td>
-                <td>{user.totalBalance || 0}</td>
+                <td>
+                  <div
+                    className={`approve-btn ${user.approvalStatus === 'approved' ? 'active-approve' : ''}`}
+                    onClick={() => handleApproval(user._id, 'approved')}
+                  >
+                    {user.approvalStatus === 'approved' ? 'Approved' : 'Approve'}
+                  </div>
+                  <div
+                    className={`decline-btn ${user.approvalStatus === 'declined' ? 'active-decline' : ''}`}
+                    onClick={() => handleApproval(user._id, 'declined')}
+                  >
+                    {user.approvalStatus === 'declined' ? 'Declined' : 'Decline'}
+                  </div>
+                </td>
               </tr>
             ))
           )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import flogo from "../Assets/flogo.png"; // replace with your actual logo filename
+import tf1 from "../Assets/tf1.png"; 
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +30,7 @@ const Navbar = () => {
     >
       <div className="sky-funded-logop">
         <Link to="/">
-          <img src={flogo} alt="SkyFunded Logo" className="sky-funded-logo-img" />
+          <img src={tf1} alt="SkyFunded Logo" className="sky-funded-logo-img" />
         </Link>
       </div>
 
@@ -63,7 +63,7 @@ const Navbar = () => {
           onMouseEnter={() => setIsPlatformOpen(true)}
           onMouseLeave={() => setIsPlatformOpen(false)}
         >
-          <button className="platform-button">Platform</button>
+          <div className="platform-buttonn">Platform</div>
           {isPlatformOpen && (
             <div className="dropdown-content">
               <Link to="/login">Login</Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
         </div>
 
         <Link to="/login">
-          <button className="login-button">Login</button>
+          <div className="login-buttons">Login</div>
         </Link>
       </div>
     </nav>

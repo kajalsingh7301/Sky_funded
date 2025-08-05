@@ -107,9 +107,9 @@ const AdminPanel = () => {
   const [showModal, setShowModal] = useState(false);
 
   const username = localStorage.getItem("username");
+  const baseURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
   const extraNotification = "🎉 Your account was upgraded to Pro!";
 
-  // Simple new notification and recent activity
   const simpleNotification = "Your profile was viewed 3 times today.";
   const simpleRecentActivity = "Monthly team meeting held on 21st May.";
 
@@ -120,7 +120,7 @@ const AdminPanel = () => {
     }
 
     axios
-      .get(`http://localhost:5000/api/user/${username}`)
+      .get(`${baseURL}/api/users/${username}`) // ✅ Corrected endpoint
       .then((response) => {
         setUserData(response.data);
       })
@@ -128,7 +128,7 @@ const AdminPanel = () => {
         setError("Failed to load user data");
         console.error(err);
       });
-  }, [username]);
+  }, [username, baseURL]);
 
   if (error) {
     return (
@@ -200,11 +200,7 @@ const AdminPanel = () => {
             </div>
           </div>
 
-          <div
-            className="stat-card"
-            role="region"
-            aria-label="Monthly Revenue"
-          >
+          <div className="stat-card" role="region" aria-label="Monthly Revenue">
             <div className="stat-card-icon">
               <FaDollarSign />
             </div>
@@ -217,11 +213,7 @@ const AdminPanel = () => {
             </div>
           </div>
 
-          <div
-            className="stat-card"
-            role="region"
-            aria-label="Happy Customers"
-          >
+          <div className="stat-card" role="region" aria-label="Happy Customers">
             <div className="stat-card-icon">
               <FaSmile />
             </div>
