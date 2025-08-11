@@ -8,7 +8,7 @@ body, html {
 
 .slider-container {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,19 +21,19 @@ body, html {
 }
 
 .slider-title {
-  background: linear-gradient(90deg, #ffd700, #b28c00, #ffd700);
+  background: linear-gradient(90deg, #ffd700, #fff2a8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-weight: 700;
-  font-size: 5rem;
-  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  font-family: 'sans-serif';
   margin-top: 0%;
   margin-bottom: 10px;
 }
 
 .slider-subtitle {
-  font-size: 18px;
+  font-size:1.1rem ;
   color: #e0e0e0;
   margin-bottom: 40px;
   max-width: 600px;

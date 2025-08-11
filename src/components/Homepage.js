@@ -10,9 +10,10 @@ import SkyFunded from './SkyFunded';
 import EarningsPage from './EarningsPage';
 import FeedbackSlider from './FeedbackSlider';
 import TradersFeedback from './TradersFeedback';
+import ExpertBanner from './ExpertBanner';
 import Tablesteps from './Tablesteps';
 import { Link } from "react-router-dom";
-import coin from '../Assets/coin.gif';
+// import coin from '../Assets/coin.gif';
 import bg from '../Assets/bg.mp4';
 
 const Homepage = () => {
@@ -63,9 +64,9 @@ const Homepage = () => {
           </div>
 
           <div className="sky-funded-buttons">
-            <Link to="/register">
-              <div className="sky-funded-primary-btn1">Get Funded</div>
-            </Link>
+           <Link to="/register" className="sky-funded-primary-btn1">
+  Get Funded
+</Link>
             <div className="sky-funded-secondary-btn1">Join Us</div>
           </div>
         </div>
@@ -83,6 +84,7 @@ const Homepage = () => {
       <EarningsPage />
       <FeedbackSlider />
       <TradersFeedback />
+      <ExpertBanner/>
       <Tablesteps />
     </>
   );

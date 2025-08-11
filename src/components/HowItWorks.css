@@ -1,38 +1,34 @@
+/* ========== Base Styling ========== */
 .howitworks-parent {
-  background-color: #000; /* Black background */
+  background-color: #000;
+  padding: 0;
+  margin: 0;
 }
 
 .howItWorks-container {
   background-color: #000;
-  height: 90vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5% 2%;
+  box-sizing: border-box;
 }
 
 .how-it-works-div1 {
-  height: 5vh;
-  width: 8vw;
-  border: 2px solid #ffd700; /* Gold border */
+  border: 2px solid #ffd700;
   color: #ffd700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  padding: 8px 16px;
   border-radius: 25px;
-  margin-top: 10%;
   background-color: transparent;
+  font-size: 1rem;
 }
 
 .how-para {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  margin-top: 7%;
-  margin-bottom: 25px;
-  font-size: 3.7rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 3rem;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bolder;
   background: linear-gradient(90deg, #ffd700, #ffcc00, #f5d742);
@@ -43,26 +39,22 @@
 
 .content-para {
   color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  margin-top: 3px;
+  margin: 10px auto 30px;
+  max-width: 800px;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
 }
 
 .start-div {
   color: #000;
   background-color: #ffd700;
-  height: 6vh;
-  width: 10vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 12px 25px;
   border-radius: 25px;
-  margin-top: 35px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  margin-top: 20px;
 }
 
 .start-div:hover {
@@ -71,35 +63,29 @@
   color: #ffd700;
 }
 
+/* ========== Flip Cards Container ========== */
 .flip-parent-div {
   background-color: #000;
-  height: 70vh;
+  padding: 50px 0;
 }
 
 .flip-child {
-  height: 60vh;
-  width: 80vw;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  text-align: center;
-  margin-left: 10%;
   gap: 30px;
 }
 
-/* Flip Animation */
 .flip-child-1 {
   background-color: transparent;
-  width: 30vw;
-  height: 55vh;
+  width: 300px;
   perspective: 1000px;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 400px;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -117,52 +103,94 @@
   border-radius: 10px;
   backface-visibility: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* Front Side */
 .flip-card-front {
   background-color: #111;
   color: #ffd700;
   font-family: 'Times New Roman', Times, serif;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
 }
 
-/* Back Side */
 .flip-card-back {
   background-color: #1c1c1c;
   color: #ffd700;
   transform: rotateY(180deg);
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 40px;
 }
 
 .flip-img1,
 .flip-img2 {
-  height: 15vh;
-  width: 40%;
-  filter: sepia(1) saturate(5) hue-rotate(15deg); /* Tint gold */
-}
-
-.flip-img2 {
-  position: relative;
-  top: -10px;
+  height: 100px;
+  width: auto;
+  margin-bottom: 15px;
+  filter: sepia(1) saturate(5) hue-rotate(15deg);
 }
 
 .flip-card-back-div {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: lighter;
-  margin-top: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-top: 20px;
   color: #f5f5f5;
+  text-align: center;
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 768px) {
+  .howItWorks-container {
+    padding: 20px 10px;
+    height: auto; /* Auto height so all cards fit */
+  }
+
+  .flip-parent-div {
+    padding: 20px 0;
+    height: auto;
+    overflow-y: auto; /* Scroll inside section if content exceeds screen height */
+    max-height: 100vh;
+  }
+
+  .flip-child {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .flip-child-1 {
+    width: 90%;
+    max-width: 340px;
+  }
+
+  .flip-card-inner {
+    height: auto; /* Let height grow with content */
+    min-height: 320px;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    height: auto;
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-para {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+
+  .flip-child {
+    gap: 50px;
+  }
+
+  .flip-card-inner {
+    min-height: 280px;
+  }
+
+  .flip-card-back-div {
+    font-size: 0.85rem;
+  }
 }

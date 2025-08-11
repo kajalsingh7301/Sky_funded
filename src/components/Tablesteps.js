@@ -7,7 +7,7 @@ const ChallengePlans = () => {
   const [activeMainTab, setActiveMainTab] = useState("SkyFunded Challenge");
   const navigate = useNavigate();
 
-  const mainTabs = ["TreasureFunded Challenge", "TreasureFunded Lite Challenge", "Evaluation", "Express"];
+  const mainTabs = ["SkyFunded Challenge", "SkyFunded Lite Challenge", "Evaluation", "Express"];
 
   const step1Data = [
     ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
@@ -56,28 +56,30 @@ const ChallengePlans = () => {
   ];
 
   const renderTable = (data) => (
-    <div className="table-grid times-new-roman">
-      {data.map((row, rowIndex) =>
-        row.map((cell, colIndex) => {
-          const isFee = row[0].toLowerCase().includes("fee") || cell.toString().toLowerCase().includes("fee");
-          const isProfitSplit = row[0].toLowerCase().includes("profit split");
-          const isAmount = /\$\d/.test(cell);
+    <div className="table-scroll-wrapper">
+      <div className="table-grid times-new-roman">
+        {data.map((row, rowIndex) =>
+          row.map((cell, colIndex) => {
+            const isFee = row[0].toLowerCase().includes("fee") || cell.toString().toLowerCase().includes("fee");
+            const isProfitSplit = row[0].toLowerCase().includes("profit split");
+            const isAmount = /\$\d/.test(cell);
 
-          let classNames = `cell ${rowIndex === 0 ? "header" : ""} ${colIndex === 0 ? "feature-name" : ""}`;
-          if (isFee || isProfitSplit) classNames += " underline-important";
-          if (isAmount && colIndex !== 0 && rowIndex !== 0) classNames += " highlight-amount";
+            let classNames = `cell ${rowIndex === 0 ? "header" : ""} ${colIndex === 0 ? "feature-name" : ""}`;
+            if (isFee || isProfitSplit) classNames += " underline-important";
+            if (isAmount && colIndex !== 0 && rowIndex !== 0) classNames += " highlight-amount";
 
-          return (
-            <div key={`${rowIndex}-${colIndex}`} className={classNames}>
-              {rowIndex === 1 && colIndex !== 0 ? (
-                <button className="plan-btn">{cell}</button>
-              ) : (
-                cell
-              )}
-            </div>
-          );
-        })
-      )}
+            return (
+              <div key={`${rowIndex}-${colIndex}`} className={classNames}>
+                {rowIndex === 1 && colIndex !== 0 ? (
+                  <button className="plan-btn">{cell}</button>
+                ) : (
+                  cell
+                )}
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
   );
 
@@ -110,7 +112,6 @@ const ChallengePlans = () => {
 
   return (
     <div className="challenge-wrapper">
-      {/* Header Tabs */}
       <div className="main-tab-header">
         {mainTabs.map((tab, index) => (
           <button
@@ -123,10 +124,8 @@ const ChallengePlans = () => {
         ))}
       </div>
 
-      {/* Table Content */}
       {renderContent()}
 
-      {/* Footer Info */}
       <div className="footer-info">
         <span>• Lifetime Payout 95%</span>
         <span>• 150% Reward</span>
@@ -134,7 +133,6 @@ const ChallengePlans = () => {
         <span>• No Minimum Trading Days</span>
       </div>
 
-      {/* Buy Plan Button */}
       <div className="buy-plan-container">
         <div className="buy-plan-btn" onClick={() => navigate("/login")}>
           Buy a Plan

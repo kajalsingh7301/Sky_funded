@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "./EarningsPage.css";
-import globeImg from "../Assets/globe-image.jpg";
+import reVideo from "../Assets/re.mp4";
 
 const earningsData = [
   { country: "United States", amount: "$98,335", flag: "🇺🇸", code: "us" },
@@ -21,32 +21,19 @@ const earningsData = [
 ];
 
 const EarningsPage = () => {
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (sliderRef.current) {
-        const cardWidth = sliderRef.current.querySelector(".card-flag")?.offsetWidth || 220;
-        sliderRef.current.scrollLeft += cardWidth;
-
-        // Reset scroll when end is reached (smooth looping)
-        if (
-          sliderRef.current.scrollLeft + sliderRef.current.offsetWidth >=
-          sliderRef.current.scrollWidth
-        ) {
-          sliderRef.current.scrollLeft = 0;
-        }
-      }
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="earnings-container">
       <div className="earnings-header">
         <div className="globe-container">
-          <img src={globeImg} alt="globe" className="globe-img" />
+          <video
+            className="globe-video"
+            src={reVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+          ></video>
+
           <div className="overlay-text">
             <h1>$100+ Million</h1>
             <p className="subtext">Earned by Traders Globally at FundingPips</p>
@@ -55,9 +42,9 @@ const EarningsPage = () => {
         </div>
       </div>
 
-      <div className="earnings-slider" ref={sliderRef}>
+      <div className="earnings-slider">
         <div className="earnings-cards">
-          {earningsData.map((item, index) => (
+          {[...earningsData, ...earningsData].map((item, index) => (
             <div key={`${item.code}-${index}`} className="card-flag">
               <div className="flag-container">
                 <img

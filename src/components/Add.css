@@ -143,3 +143,70 @@
   background-color: #ffd700;
   color: #000;
 }
+/* Mobile view fixes */
+@media (max-width: 768px) {
+  .ad-background {
+    height: auto;
+    min-height: 100vh;
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .ad-container {
+    width: 95%;
+    height: auto;
+    padding: 1.2rem;
+    border-radius: 1rem;
+  }
+
+  .ad-heading,
+  .highlight-blue,
+  .highlight-green {
+    font-size: 2rem;
+    line-height: 2.2rem;
+  }
+
+  .ad-text {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    margin-top: 20px;
+    margin-bottom: 1.2rem;
+  }
+
+  .ad-buttons {
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .btn-login,
+  .btn-join {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    border-radius: 20px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .ad-heading,
+  .highlight-blue,
+  .highlight-green {
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+  }
+
+  .ad-text {
+    font-size: 0.85rem;
+    line-height: 1.2rem;
+  }
+
+  .btn-login,
+  .btn-join {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 0.45rem 0;
+  }
+}

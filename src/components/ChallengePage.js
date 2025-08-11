@@ -14,7 +14,7 @@ const ChallengePage = () => {
   return (
     <div className="challenge-container">
       <h1 className="title">
-        Start a <span className="highlight">Challenge</span>
+        Start a Challenge
       </h1>
       <p className="subtitle">
         Choose your account and funds to begin your trading journey with Bullion funded.
@@ -60,7 +60,7 @@ const ChallengePage = () => {
         </div>
 
         {/* Challenge 3 */}
-        <div className="challenge-card">
+        <div className="challenge-card3">
           <div className="card-content">
             <img src={cimg3} alt="Evaluation" className="challenge-image" />
             <h3 className="card-title">Evaluation</h3>

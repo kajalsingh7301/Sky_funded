@@ -156,6 +156,8 @@
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
   min-width: 180px;
   text-align: center;
+  text-decoration: none; /* Remove underline */
+  outline: none;
 }
 
 .sky-funded-primary-btn1:hover {
@@ -225,6 +227,7 @@
   .sky-funded-primary-btn1,
   .sky-funded-secondary-btn1 {
     width: 80%;
+    text-decoration: none;
   }
 
   .sky-funded-title {

@@ -26,12 +26,13 @@
 }
 
 .eva1-head{
-    background: linear-gradient(90deg, gold, white, gold);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: bolder;
-    font-size: 4rem;
+     background: linear-gradient(90deg, #ffd700, #fff2a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: 'sans-serif';
     font-family: 'Times New Roman', Times, serif;
     margin-left: 4%;
     margin-top: 25%;
@@ -116,12 +117,13 @@
   height: 20vh;
 }
 .evaluation-main-head{
-   background: linear-gradient(90deg, #011026, #3388ff, #01316b);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: bolder;
-    font-size: 4rem;
+    background: linear-gradient(90deg, #ffd700, #fff2a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: 'sans-serif';
     font-family: 'Times New Roman', Times, serif;
     margin-top: 12%; 
 }
@@ -133,13 +135,13 @@ margin-top: 30px;
 
 
 .evaluation-main-head{
-    background: linear-gradient(90deg, gold, white, gold);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: bolder;
-    font-size: 4rem;
-    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(90deg, #ffd700, #fff2a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: 'sans-serif';
     margin-left: 4%;
     /* margin-top: 25%; */
 }
@@ -149,12 +151,153 @@ margin-top: 30px;
     color: gold;
 } */
  .express-container-3{
-    background: linear-gradient(90deg, gold, white, gold);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: bolder;
-    font-size: 4rem;
-    font-family: 'Times New Roman', Times, serif;
+     background: linear-gradient(90deg, #ffd700, #fff2a8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  font-size: 3rem;
+  font-family: 'sans-serif';
+   
     /* margin-left: 4%; */
  }
+ /* Responsive for tablets and smaller screens */
+@media (max-width: 1024px) {
+  .evaluation {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+
+  .eva-1, .eva-2 {
+    width: 90vw;
+    height: auto;
+    margin: 0 auto;
+    position: static;
+    transform: none !important; /* Cancel zoom and positioning on small */
+    opacity: 1 !important;
+  }
+
+  .eva1-head {
+    font-size: 2.5rem;
+    margin-left: 0;
+    margin-top: 15%;
+    text-align: center;
+  }
+
+  .eva1-pra, .eva1-bars {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .eva1-button {
+    width: 70vw;
+    height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+
+  .eva1-button:hover {
+    height: 50px;
+    width: 70vw;
+  }
+
+  .evaluation-main-head {
+    font-size: 2.5rem;
+    margin-left: 0;
+    margin-top: 5%;
+    text-align: center;
+  }
+
+  .evaluation-main-para {
+    font-size: 1rem;
+    margin: 20px 10px;
+    text-align: center;
+  }
+}
+
+/* Responsive for phones */
+@media (max-width: 480px) {
+  .eva1-head {
+    font-size: 2rem;
+    margin-top: 10%;
+  }
+
+  .eva1-pra, .eva1-bars {
+    font-size: 0.9rem;
+  }
+
+  .eva1-button {
+    width: 90vw;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .eva1-button:hover {
+    height: 45px;
+    width: 90vw;
+  }
+
+  .evaluation-main-head {
+    font-size: 2rem;
+  }
+
+  .evaluation-main-para {
+    font-size: 0.9rem;
+  }
+}
+/* Base card styles for eva-1 and eva-2 */
+.eva-1, .eva-2 {
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  padding: 20px;
+  margin: 20px auto;
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.eva-1:hover, .eva-2:hover {
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
+}
+
+/* Responsive for tablets and smaller */
+@media (max-width: 1024px) {
+  .eva-1, .eva-2 {
+    width: 90vw;
+    height: auto;
+    margin: 20px auto;
+    padding: 25px;
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+  }
+}
+
+/* Responsive for phones */
+@media (max-width: 480px) {
+  .eva-1, .eva-2 {
+    width: 95vw;
+    padding: 20px;
+    margin: 15px auto;
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.35);
+  }
+
+  .eva1-head {
+    font-size: 1.8rem;
+    margin-top: 8%;
+  }
+
+  .eva1-pra, .eva1-bars {
+    font-size: 0.9rem;
+    margin: 10px 5px;
+  }
+
+  .eva1-button {
+    width: 90vw;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+}

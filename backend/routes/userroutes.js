@@ -9,7 +9,7 @@ const { authenticateToken, authorizeRoles } = require('../middleware/auth');
 
 const router = express.Router();
 
-console.log("✅ userroutes.js loaded");
+
 
 // ========== Multer Config ==========
 const storage = multer.diskStorage({

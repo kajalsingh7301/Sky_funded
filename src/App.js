@@ -18,6 +18,7 @@ import Express from './components/Express';
 import Evaluation from './components/Evaluation';
 import HowItWorks from './components/HowItWorks';
 import Faq from './components/Faq';
+import ExpertBanner from './components/ExpertBanner';
 
 import AdminPanel from './pages/AdminPanel';
 import Homepage from './components/Homepage';
@@ -63,6 +64,7 @@ const App = () => {
           <Route path="/earnings-page" element={<EarningsPage />} />
           <Route path="/feedback-slider" element={<FeedbackSlider />} />
           <Route path="/traders-feedback" element={<TradersFeedback />} />
+          <Route path="/expert-banner" element={<ExpertBanner/>}/>
         </Route>
 
         {/* Admin Login */}

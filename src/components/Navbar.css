@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0 50px;
+  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,290 +11,165 @@
   z-index: 1000;
   transition: all 0.4s ease-in-out;
   height: 12vh;
-  box-shadow: 0 2px 12px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Scrolled Effect */
-.sky-funded-navbar.scrolled {
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
-}
-
-/* Logo Image */
+/* Logo */
 .sky-funded-logo-img {
-  height: 95px;
-  width: auto;
-  object-fit: contain;
-  /* margin-top: 35px; */
-  margin-left: -30px;
+  height: 55px;
 }
 
-/* Logo Text */
-.sky-funded-logop {
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ffd700;
-  cursor: pointer;
-  gap: 8px;
-  transition: transform 0.3s ease;
-}
-
-.sky-funded-logop span {
-  color: #fff8d0;
-}
-
-.sky-funded-logop:hover {
-  transform: scale(1.05);
-  color: #ffcc00;
-}
-
-/* Navigation Links Container */
+/* Nav Links */
 .sky-funded-nav-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #1a1a1a;
-  padding: 10px 100px;
-  border-radius: 30px;
-  gap: 40px;
-  text-align: center;
-  margin: 0 auto;
-  box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+  gap: 30px;
 }
 
-/* Navigation Links Styling */
 .sky-funded-nav-links a {
-  color: #ffd700;
+  color: #ffc800;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  position: relative;
-  transition: all 0.4s ease;
-}
-
-.sky-funded-nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -4px;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #ffd700, #fff8d0);
-  transition: width 0.4s ease;
-  border-radius: 50px;
-}
-
-.sky-funded-nav-links a:hover::after {
-  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
 .sky-funded-nav-links a:hover {
-  color: #fff8d0;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
-  transform: scale(1.05);
+  color: #fff;
 }
 
-/* Dropdown Container */
+/* Dropdown Styling */
 .dropdown {
   position: relative;
+}
+
+.dropdown-title {
+  color: #ffc800;
   cursor: pointer;
 }
 
-/* Dropdown Title */
-.dropdown-title {
-  color: #ffd700;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.dropdown-title:hover {
-  color: #fff8d0;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-  transform: scale(1.05);
-}
-
-/* Dropdown Content (Column layout) */
 .dropdown-content {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #1a1a1a;
-  padding: 10px 0;
+  background-color: #0d0d0d;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(255, 215, 0, 0.15);
-  z-index: 999;
-  min-width: 180px;
+  padding: 10px 0;
+  min-width: 140px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Dropdown Links */
 .dropdown-content a {
-  padding: 10px 20px;
-  color: #ffd700;
+  padding: 8px 20px;
+  color: #fff;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  transition: 0.2s;
 }
 
 .dropdown-content a:hover {
-  background-color: rgba(255, 215, 0, 0.05);
-  color: #fff8d0;
+  background-color: #222;
 }
 
-/* Buttons Container */
+/* Button Section */
 .button-div {
   display: flex;
-  gap: 10px;
-  margin-left: auto;
-  width: 18vw;
+  align-items: center;
+  gap: 15px;
 }
 
-/* Platform Button Styling */
-.platform-buttonn {
-  background-color: #ffd700;
-  padding: 8px 25px;
-  border-radius: 10px;
+.platform-buttonn,
+.login-buttons {
+  background-color: #ffc800;
   color: #000;
+  padding: 6px 14px;
+  font-size: 0.9rem;
   font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.platform-buttonn:hover {
-  background-color: #ffcc00;
-  transform: translateY(-2px);
-}
-
-/* Login Button Styling */
-.login-buttons{
-  background-color: gold;
-  color: #0a0a0a;
-  padding: 8px 25px;
-  border-radius: 10px;
-  border: 2px solid #ffd700;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  min-width: 80px;
-  height: 35px;
+  border-radius: 5px;
   text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.login-button:hover {
-  background-color: #ffd700;
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+.platform-buttonn:hover,
+.login-buttons:hover {
+  background-color: #e6b800;
 }
 
-/* Navbar Animation Classes */
-.slide-down {
-  transform: translateY(0);
-  transition: transform 0.6s ease-in-out;
-}
-
+/* Slide Effects */
 .slide-up {
   transform: translateY(-100%);
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .sky-funded-nav-links {
-    gap: 20px;
-    padding: 8px 20px;
-  }
-
-  .sky-funded-logo {
-    font-size: 1.5rem;
-  }
-
-  .platform-button,
-  .login-button {
-    padding: 6px 18px;
-    font-size: 0.9rem;
-    background-color: gold;
-  }
+.slide-down {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
 }
 
-@media (max-width: 768px) {
+.scrolled {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
   .sky-funded-navbar {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px 20px;
     height: auto;
-    gap: 15px;
   }
 
   .sky-funded-nav-links {
     flex-direction: column;
-    gap: 15px;
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    margin: 0;
+    width: 100%;
+    gap: 12px;
+    margin-top: 10px;
   }
 
-  .button-div {
-    flex-direction: column;
-    gap: 10px;
-    margin-left: 0;
-    padding-right: 0;
-    width: 100%;
-    border: none;
+  .sky-funded-nav-links a {
+    font-size: 1rem;
+    padding: 8px 0;
   }
 
   .dropdown-content {
     position: static;
     box-shadow: none;
-    border-radius: 0;
-    background: transparent;
-    padding: 0;
+    padding-left: 10px;
   }
 
-  .dropdown-content a {
-    padding: 8px 0;
-    font-size: 1rem;
+  .button-div {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .platform-buttonn,
+  .login-buttons {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+    border-radius: 4px;
   }
 }
-.login-button-link {
-  background-color: gold;
-  color: #ffd700;
-  padding: 8px 25px;
-  border-radius: 30px;
-  border: 2px solid #ffd700;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  min-width: 80px;
-  height: 35px;
-  text-decoration: none;
-}
+@media screen and (max-width: 768px) {
+  .platform-buttonn,
+  .login-buttons {
+    padding: 6px 12px;     /* kam padding */
+    font-size: 0.85rem;    /* chhota font */
+    border-radius: 4px;
+    width: auto;           /* full width hatake content ke hisaab se */
+    min-width: 90px;       /* minimum width */
+    display: inline-block;
+  }
 
-.login-button-link:hover {
-  background-color: #ffd700;
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+  .button-div {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+  }
 }
-

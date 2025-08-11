@@ -1,20 +1,6 @@
 import React from "react";
 import "./TradersFeedback.css";
-import EthereumIcon from "../Assets/payment_method_img1.jpg";
-import BitcoinIcon from "../Assets/payment_method_img2.jpg";
-import USDCIcon from "../Assets/payment_method_img3.jpg";
-import PayPalIcon from "../Assets/payment_method_img4.jpg";
-import MasterCardIcon from "../Assets/payment_method_img1.jpg";
-import VisaIcon from "../Assets/payment_method_img2.jpg";
-import p1 from "../Assets/p1.jpg";
-import p2 from "../Assets/p2.jpg";
-import p3 from "../Assets/p3.jpg";
-import p4 from "../Assets/p4.jpg";
-import p5 from "../Assets/p5.jpg";
-import p6 from "../Assets/p6.jpg";
-import p7 from "../Assets/p7.jpg";
-import p8 from "../Assets/p8.jpg";
-import p9 from "../Assets/p9.jpg";
+
 
 const feedbacks = [
   {
@@ -30,7 +16,7 @@ const feedbacks = [
     daysAgo: "4 days ago",
     title: "Great support and environment",
     message:
-      "The company offers excellent support and a transparent evaluation process. ",
+      "The company offers excellent support and a transparent evaluation process.",
     rating: 5,
   },
   {
@@ -114,15 +100,6 @@ const feedbacks = [
     rating: 5,
   },
   {
-    name: "Sophia Martinez",
-    daysAgo: "3 days ago",
-    title: "Impressed with customer service",
-    message:
-      "The team helped me through every step. Very patient and knowledgeable staff.",
-    rating: 5,
-  },
-  // New feedbacks below
-  {
     name: "James O'Connor",
     daysAgo: "1 day ago",
     title: "Smooth onboarding",
@@ -147,49 +124,20 @@ const feedbacks = [
     rating: 5,
   },
   {
-    name: "Chen Wu",
-    daysAgo: "1 week ago",
-    title: "Fair rules and fast payouts",
-    message:
-      "Evaluation was fair and payouts were processed quickly. Great experience overall.",
-    rating: 5,
-  },
-  {
-    name: "Zara Khan",
-    daysAgo: "5 days ago",
-    title: "Helpful community and support",
-    message:
-      "I got stuck during my challenge and the support team responded quickly. ",
-    rating: 4,
-  },
-];
-
-
-const paymentMethods = [
-  { name: "Ethereum", icon: EthereumIcon },
-  { name: "Bitcoin", icon: BitcoinIcon },
-  { name: "USDC", icon: USDCIcon },
-  { name: "PayPal", icon: PayPalIcon },
-  { name: "MasterCard", icon: MasterCardIcon },
-  { name: "Visa", icon: VisaIcon },
-  { name: "Elo", icon: p1 },
-  { name: "Elo", icon: p2 },
-  { name: "Elo", icon: p3 },
-  { name: "Elo", icon: p4 },
-  { name: "Elo", icon: p5 },
-  { name: "Elo", icon: p6 },
-  { name: "Elo", icon: p7 },
-  { name: "Elo", icon: p8 },
-  { name: "Elo", icon: p9 },
+  name: "Sarah Thompson",
+  daysAgo: "2 days ago",
+  title: "Excellent experience!",
+  message:
+    "The platform is user-friendly, payouts are on time, and customer support is top-notch. Highly recommended!",
+  rating: 5,
+}
 ];
 
 const FeedbackSection = () => {
   return (
     <div className="feedback-container">
       <div className="feed-back-div">
-        <h2 className="feedback-title-1">
-          Traders <span className="highlight">Feedback</span>
-        </h2>
+        <h2 className="feedback-title-1">Traders Feedback</h2>
         <p className="feedback-subtitle">
           Treasure Funded stands out with traders like you! Discover what real
           traders are saying about our top-tier prop trading firm.
@@ -214,28 +162,9 @@ const FeedbackSection = () => {
             </div>
           ))}
         </div>
-
-        <h2 className="payment-title">Available Payment Methods</h2>
-        <div className="payment-scroll-container">
-          <div className="payment-methods">
-            {[...paymentMethods, ...paymentMethods].map((method, index) => (
-              <div className="payment-card" key={index}>
-                <img
-                  src={method.icon}
-                  alt={method.name}
-                  className="payment-icon"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
 export default FeedbackSection;
-
-
-
-

@@ -23,7 +23,7 @@ const FAQItem = () => {
   const faqData = [
     {
       question: "What is Treasure Funded?",
-      answer: "Sky Funded is a prop firm that allows traders to get funded by passing an evaluation phase and proving their trading skills."
+      answer: "Treasure Funded is a prop firm that allows traders to get funded by passing an evaluation phase and proving their trading skills."
     },
     {
       question: "How does the Evaluation work?",

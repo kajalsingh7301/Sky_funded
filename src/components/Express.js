@@ -26,9 +26,9 @@ const Express = () => {
                         <span> | </span>
                         <span>Express Model</span>
                     </div>
-                    <div className="express-button-div"></div>
+                    <div className="express-button-div">
 
-                    <div className="model-express-button">Start Challenge Now</div>
+                    <div className="model-express-button">Start Challenge Now</div></div>
                 </div>
 
                 <div className="express-container-1-2">

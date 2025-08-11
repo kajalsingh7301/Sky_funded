@@ -165,3 +165,94 @@
   color: #b28c00;
   text-decoration: underline;
 }
+/* Mobile View */
+@media (max-width: 768px) {
+  .sky-funded-register-container {
+    flex-direction: column;
+    padding: 20px 10px;
+    min-height: auto;
+  }
+
+  .todiv {
+    flex-direction: column;
+    border: none;
+  }
+
+  /* Left Panel */
+  .sky-funded-register-left {
+    max-width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding: 20px 15px;
+  }
+
+  .sky-funded-register-left h2 {
+    font-size: 22px;
+  }
+
+  .sky-funded-register-left p {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  /* Right Panel */
+  .sky-funded-register-right {
+    max-width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding: 20px 15px;
+  }
+
+  .sky-funded-logo {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  /* Form Layout */
+  .sky-funded-form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sky-funded-input-group input,
+  .sky-funded-input-group select {
+    font-size: 13px;
+    padding: 8px 8px 8px 32px;
+  }
+
+  .sky-funded-input-group .icon {
+    font-size: 14px;
+    left: 8px;
+  }
+
+  /* Checkbox */
+  .sky-funded-checkbox {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  /* Button */
+  .sky-funded-register-btn {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  /* Login Link */
+  .sky-funded-login-link {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sky-funded-register-left h2 {
+    font-size: 20px;
+  }
+
+  .sky-funded-logo {
+    font-size: 20px;
+  }
+
+  .sky-funded-register-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+}

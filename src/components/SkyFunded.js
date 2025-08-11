@@ -44,9 +44,9 @@ const SkyFundedPage = () => {
                 <p className="shake-p2">
                   Low spreads | Low Commission | Balanced Based Drawdown
                 </p>
-                <p className="shake-p3">
+                {/* <p className="shake-p3">
                   Reset and Top up | No Time limit | Allowed News Trading
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -70,10 +70,11 @@ const SkyFundedPage = () => {
               Your browser does not support the video tag.
             </video>
           </div>
-        </div>
-        <div className="down-div">
+          <div className="down-div">
           Trade with confidence on MetaTrader 5 – a platform designed to enhance your trading experience with advanced features, top-notch security, and unparalleled efficiency.
         </div>
+        </div>
+        
       </div>
       
       <div className="down-full-div">

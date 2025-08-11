@@ -59,8 +59,7 @@ const Footer = () => {
           <li>📞 Contact Us: +44 20 3734 1025</li>
           <li>📍 Exinity Limited</li>
           <li>🗺️ 5th Floor, 355 NEX Tower</li>
-          <li>📌 Rue du Savoir, Cybercity</li>
-          <li>📌 351 Oxford St, London, U </li>
+         
 
           </ul>
         </div>
@@ -110,7 +109,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-note">© 2025 Your Company. All rights reserved.</div>
+      <div className="footer-note">© 2025 Treasure Funded. All rights reserved.</div>
     </footer>
   );
 };

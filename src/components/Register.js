@@ -3,6 +3,7 @@ import './Register.css';
 import axios from 'axios';
 import { FaUser, FaEnvelope, FaPhone, FaLock, FaGlobe } from 'react-icons/fa';
 import register from "../Assets/Registerimg.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const countries = [
   "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia",
@@ -34,6 +35,8 @@ const countries = [
 ];
 
 const Registration = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     fullName: '',
@@ -70,81 +73,85 @@ const Registration = () => {
   return (
     <div className="sky-funded-register-container">
       <div className='todiv'>
-      <div className="sky-funded-register-left">
-        <h2>Let's get you set up</h2>
-        <p>It should only take a couple of minutes to create your account.</p>
-        <img src={register} alt="Registration Illustration" />
-      </div>
+        <div className="sky-funded-register-left">
+          <h2>Let's get you set up</h2>
+          <p>It should only take a couple of minutes to create your account.</p>
+          <img src={register} alt="Registration Illustration" />
+        </div>
 
-      <div className="sky-funded-register-right">
-        <h1 className="sky-funded-logo">TreasureFunded</h1>
-        <form className="sky-funded-register-form" onSubmit={handleSubmit}>
-          <div className="sky-funded-form-row">
-            <div className="sky-funded-input-group">
-              <FaUser className="icon" />
-              <input name="username" type="text" placeholder="Enter Unique Username" value={formData.username} onChange={handleChange} required />
+        <div className="sky-funded-register-right">
+          <h1 className="sky-funded-logo">TreasureFunded</h1>
+          <form className="sky-funded-register-form" onSubmit={handleSubmit}>
+            <div className="sky-funded-form-row">
+              <div className="sky-funded-input-group">
+                <FaUser className="icon" />
+                <input name="username" type="text" placeholder="Enter Unique Username" value={formData.username} onChange={handleChange} required />
+              </div>
+              <div className="sky-funded-input-group">
+                <FaUser className="icon" />
+                <input name="fullName" type="text" placeholder="Enter Full Name" value={formData.fullName} onChange={handleChange} required />
+              </div>
             </div>
-            <div className="sky-funded-input-group">
-              <FaUser className="icon" />
-              <input name="fullName" type="text" placeholder="Enter Full Name" value={formData.fullName} onChange={handleChange} required />
-            </div>
-          </div>
 
-          <div className="sky-funded-form-row">
-            <div className="sky-funded-input-group">
-              <FaEnvelope className="icon" />
-              <input name="email" type="email" placeholder="name@example.com" value={formData.email} onChange={handleChange} required />
+            <div className="sky-funded-form-row">
+              <div className="sky-funded-input-group">
+                <FaEnvelope className="icon" />
+                <input name="email" type="email" placeholder="name@example.com" value={formData.email} onChange={handleChange} required />
+              </div>
+              <div className="sky-funded-input-group">
+                <FaPhone className="icon" />
+                <input name="phone" type="tel" placeholder="Enter Phone Number" value={formData.phone} onChange={handleChange} required />
+              </div>
             </div>
-            <div className="sky-funded-input-group">
-              <FaPhone className="icon" />
-              <input name="phone" type="tel" placeholder="Enter Phone Number" value={formData.phone} onChange={handleChange} required />
-            </div>
-          </div>
 
-          <div className="sky-funded-form-row">
-            <div className="sky-funded-input-group">
-              <FaLock className="icon" />
-              <input name="password" type="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} required />
+            <div className="sky-funded-form-row">
+              <div className="sky-funded-input-group">
+                <FaLock className="icon" />
+                <input name="password" type="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} required />
+              </div>
+              <div className="sky-funded-input-group">
+                <FaLock className="icon" />
+                <input name="confirmPassword" type="password" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
+              </div>
             </div>
-            <div className="sky-funded-input-group">
-              <FaLock className="icon" />
-              <input name="confirmPassword" type="password" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
-            </div>
-          </div>
 
-          <div className="sky-funded-form-row">
-            <div className="sky-funded-input-group">
-              <FaGlobe className="icon" />
-              <select name="country" value={formData.country} onChange={handleChange} required>
-                <option value="">Select Country</option>
-                {countries.map((country, index) => (
-                  <option key={index} value={country}>{country}</option>
-                ))}
-              </select>
+            <div className="sky-funded-form-row">
+              <div className="sky-funded-input-group">
+                <FaGlobe className="icon" />
+                <select name="country" value={formData.country} onChange={handleChange} required>
+                  <option value="">Select Country</option>
+                  {countries.map((country, index) => (
+                    <option key={index} value={country}>{country}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="sky-funded-input-group">
+                <FaUser className="icon" />
+                <input
+                  name="referralId"
+                  type="text"
+                  placeholder="Referral ID"
+                  value={formData.referralId}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div className="sky-funded-input-group">
-              <FaUser className="icon" />
-              <input
-                name="referralId"
-                type="text"
-                placeholder="Referral ID"
-                value={formData.referralId}
-                onChange={handleChange}
-              />
+
+            <div className="sky-funded-checkbox">
+              <input type="checkbox" required />
+              <label>I Accept the Terms and Privacy Policy</label>
             </div>
-          </div>
 
-          <div className="sky-funded-checkbox">
-            <input type="checkbox" required />
-            <label>I Accept the Terms and Privacy Policy</label>
-          </div>
+            <button type="submit" className="sky-funded-register-btn">Register</button>
 
-          <button type="submit" className="sky-funded-register-btn">Register</button>
-<p className="sky-funded-login-link">
-            Already have an account? <span>Login</span>
-          </p>
-        </form>
-      </div>
+            <p className="sky-funded-login-link">
+              Already have an account?{" "}
+              <span onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
+                Login
+              </span>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );

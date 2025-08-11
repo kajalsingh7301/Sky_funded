@@ -1,13 +1,14 @@
 .challenge-wrapper {
   padding: 2rem;
   background-color: #000;
-  color: #fff;
+  color: #030303;
   min-height: 100vh;
   font-family: 'Times New Roman', serif;
 }
 
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 1.5rem;
@@ -17,7 +18,7 @@
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
   background-color: #1a1a1a;
-  color: #ffd700;
+  color: #fff;
   border: 1px solid #ffd700;
   font-weight: bold;
   cursor: pointer;
@@ -25,8 +26,14 @@
 }
 
 .tabs .active {
-  background-color: lab(78.47% -5.35 70.81);
+  background-color: #ffd700;
   color: #000;
+}
+
+.table-scroll-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .table-grid {
@@ -36,6 +43,7 @@
   background-color: #1e1e1e;
   border-radius: 1rem;
   overflow: hidden;
+  min-width: 700px;
 }
 
 .cell {
@@ -44,12 +52,13 @@
   text-align: center;
   font-size: 0.95rem;
   color: #eee;
+  white-space: nowrap;
 }
 
 .header {
   background-color: #333;
   font-weight: bold;
-  color: #ffd700;
+  color: #fff;
 }
 
 .feature-name {
@@ -62,19 +71,17 @@
 .underline-important {
   text-decoration: underline;
   font-weight: 600;
-  color: #ffc107; /* gold-orange highlight */
+  color: #ffc107;
 }
 
 .highlight-amount {
-  /* background-color: lab(78.47% -5.35 70.81); */
-  color:gold;
+  color: gold;
   padding: 0 0.3rem;
   border-radius: 3px;
   font-weight: 700;
 }
 
 .plan-btn {
-  background-color: lab(78.47% -5.35 70.81);
   border: none;
   color: #000;
   font-weight: bold;
@@ -100,21 +107,7 @@
   margin: 0 0.8rem;
 }
 
-/* .main-tab-header {
-  display: flex;
-  background-color: #1a1a1a;
-  border-radius: 999px;
-  padding: 0.4rem;
-  margin-bottom: 2rem;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  height: 40px;
-  width: 60%;
-  gap: 0.5rem;
-  border: 1px solid #ffffff;
-} */
-.main-tab-header{
+.main-tab-header {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -122,21 +115,34 @@
   align-items: center;
   gap: 10px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
+
 .main-tab {
-  padding: 0.5rem 1.2rem;
-  background: transparent;
-  border: none;
-  color: #ffd700;
-  font-weight: 500;
+  padding: 5px 10px;
+  border: 2px solid #ffd700;
+  background-color: black !important;
+  color: white !important;
+  font-weight: bold;
   border-radius: 999px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: 'Times New Roman', serif;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.main-tab:hover {
+  background-color: #e6c715;
+  color: #000;
 }
 
 .active-main-tab {
-  background-color: lab(78.47% -5.35 70.81);
-  color: #000;
+  background-color: #111 !important;
+  color: white !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .buy-plan-container {
@@ -149,7 +155,7 @@
 .buy-plan-btn {
   padding: 12px 28px;
   font-size: 16px;
-  background-color: lab(78.47% -5.35 70.81);
+  background-color: #ffd700;
   color: #000;
   border: none;
   border-radius: 8px;
@@ -164,46 +170,75 @@
   text-align: center;
 }
 
-
 .buy-plan-btn:hover {
   background-color: #e6c200;
 }
 
-/* .main-tab-header {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  width: 45rem;
-  height: 20px;
-  flex-wrap: wrap;
-  border: 2px solid rgb(10, 10, 10);
-  
-} */
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .table-grid {
+    min-width: 650px;
+  }
 
-.main-tab {
-  padding: 5px 10px;
-  border: 2px solid #ffd700;
-  background-color: transparent;
-  color: #ffd700;
-  font-weight: bold;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Times New Roman', serif;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
+  .cell {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tabs button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .main-tab-header {
+    gap: 0.6rem;
+  }
+
+  .main-tab {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .buy-plan-btn {
+    width: auto;
+    padding: 10px 18px;
+    font-size: 14px;
+  }
 }
 
-.main-tab:hover {
-  background-color: #ffd700;
-  color: #000;
-}
+@media (max-width: 480px) {
+  .main-tab {
+    width: 100%;
+    justify-content: center;
+  }
 
-.active-main-tab {
-  background-color: #ffd700;
-  color: #000;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  .tabs button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-info span {
+    display: block;
+    margin: 0.3rem 0;
+  }
+
+  .buy-plan-container {
+    flex-direction: column;
+  }
+
+  .buy-plan-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 0;
+  }
 }
