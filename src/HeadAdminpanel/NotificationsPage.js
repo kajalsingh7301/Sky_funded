@@ -12,7 +12,7 @@ const NotificationsPage = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/notifications');
+      const res = await axios.get('https://api.treassurefunded.com/api/notifications');
       setNotifications(res.data);
     } catch (error) {
       console.error('Error:', error);
@@ -21,7 +21,7 @@ const NotificationsPage = () => {
 
   const markAsRead = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/api/notifications/${id}/read`);
+      await axios.patch(`https://api.treassurefunded.com/api/notifications/${id}/read`);
       setNotifications(prev => prev.map(n => n._id === id ? { ...n, isRead: true } : n));
     } catch (error) {
       console.error('Error:', error);
@@ -33,7 +33,7 @@ const NotificationsPage = () => {
       await Promise.all(
         notifications
           .filter(n => !n.isRead)
-          .map(n => axios.patch(`http://localhost:5000/api/notifications/${n._id}/read`))
+          .map(n => axios.patch(`https://api.treassurefunded.com/api/notifications/${n._id}/read`))
       );
       setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
     } catch (err) {

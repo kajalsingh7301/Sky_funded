@@ -32,7 +32,7 @@ const AdminPanel = () => {
   ];
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/stats")
+    fetch("https://api.treassurefunded.com/api/stats")
       .then((res) => res.json())
       .then(setStats)
       .catch((err) => console.error("Failed to load stats:", err));

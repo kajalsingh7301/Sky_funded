@@ -35,7 +35,7 @@ const Profile = () => {
     const username = localStorage.getItem('username');
     if (!username) return;
 
-    fetch(`http://localhost:5000/api/user/${username}`)
+    fetch(`https://api.treassurefunded.com/api/user/${username}`)
       .then(res => res.json())
       .then(data => {
         setProfile(prev => ({
@@ -94,7 +94,7 @@ const Profile = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/user/${username}`, {
+      const response = await fetch(`https://api.treassurefunded.com/api/user/${username}`, {
         method: 'PUT',
         body: formData,
       });
@@ -123,7 +123,7 @@ const Profile = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/user/change-password/${username}`, {
+      const response = await fetch(`https://api.treassurefunded.com/api/user/change-password/${username}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ const Profile = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/user/update-notifications/${username}`, {
+      const response = await fetch(`https://api.treassurefunded.com/api/user/update-notifications/${username}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

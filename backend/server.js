@@ -1,12 +1,11 @@
 const express = require("express");
-const dotenv = require("dotenv");
+const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const helmet = require("helmet");
 
 // Load environment variables
-dotenv.config();
 
 // Create express app
 const app = express();
