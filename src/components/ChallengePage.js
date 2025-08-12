@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./ChallengePage.css";
 
 // Import Images
-import cimg1 from "../Assets/challenge_img.jpg";
-import cimg2 from "../Assets/sky-fund-c2.jpg";
-import cimg3 from "../Assets/challenge_3.jpg";
+// import cimg1 from "../Assets/challenge_img.jpg";
+// import cimg2 from "../Assets/sky-fund-c2.jpg";
+// import cimg3 from "../Assets/challenge_3.jpg";
+import d1 from "../Assets/d1.png";
+import d2 from "../Assets/d2.png";
+import d3 from "../Assets/d3.png";
+import d4 from "../Assets/d4.png";
 import { FaShoppingCart, FaUserCircle, FaChartLine, FaCheckCircle, FaMoneyBillWave } from 'react-icons/fa';
 
 const ChallengePage = () => {
@@ -24,7 +28,7 @@ const ChallengePage = () => {
         <div className="challenge-card">
           <div className="popular-tag">Popular Plan</div>
           <div className="card-content">
-            <img src={cimg1} alt="Billionaire Challenge" className="challenge-image" />
+            <img src={d1} alt="Billionaire Challenge" className="challenge-image" />
             <h3 className="card-title">Treasure Funded Challenge</h3>
             <p className="card-description">The most popular package amongst Treasure Funded traders</p>
             <ul className="feature-list">
@@ -43,7 +47,7 @@ const ChallengePage = () => {
         {/* Challenge 2 */}
         <div className="challenge-card">
           <div className="card-content">
-            <img src={cimg2} alt="Billionaire Lite Challenge" className="challenge-image" />
+            <img src={d2} alt="Billionaire Lite Challenge" className="challenge-image" />
             <h3 className="card-title">Treasure Funded Lite Challenge</h3>
             <p className="card-description">The most affordable package for new and upcoming traders</p>
             <ul className="feature-list">
@@ -62,7 +66,7 @@ const ChallengePage = () => {
         {/* Challenge 3 */}
         <div className="challenge-card3">
           <div className="card-content">
-            <img src={cimg3} alt="Evaluation" className="challenge-image" />
+            <img src={d3} alt="Evaluation" className="challenge-image" />
             <h3 className="card-title">Evaluation</h3>
             <p className="card-description">The only package that offers free retakes</p>
             <ul className="feature-list">
@@ -81,7 +85,7 @@ const ChallengePage = () => {
         {/* Challenge 4 */}
         <div className="challenge-card">
           <div className="card-content">
-            <img src={cimg2} alt="Express" className="challenge-image" />
+            <img src={d4} alt="Express" className="challenge-image" />
             <h3 className="card-title">Express</h3>
             <p className="card-description">The package offers profit shares without needing 5% growth</p>
             <ul className="feature-list">
