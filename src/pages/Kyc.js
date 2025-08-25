@@ -19,7 +19,7 @@ const Kyc = () => {
 
   const API_BASE =
     process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") ||
-    "http://localhost:5000";
+    "https://api.treassurefunded.com";
     // "http://treassurefunded:5000";
 
   useEffect(() => {

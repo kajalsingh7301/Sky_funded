@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 const Profile = () => {
   const defaultImage = "/default-image1.png";
   const API_BASE =
-    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://localhost:5000";
+    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "https://api.treassurefunded.com";
     // process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://treassurefunded:5000";
   const token = localStorage.getItem("token");
   const username = localStorage.getItem("username");

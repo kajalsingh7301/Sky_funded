@@ -43,7 +43,7 @@ const AdminPanel = () => {
   const [notifications, setNotifications] = useState([]);
 
   const username = localStorage.getItem("username");
-  const baseURL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+  const baseURL = process.env.REACT_APP_BACKEND_URL || "https://api.treassurefunded.com";
 
   // ✅ Memoize functions to avoid missing dependency warning
   const fetchUserData = useCallback(async () => {

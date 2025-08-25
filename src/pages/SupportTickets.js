@@ -5,7 +5,7 @@ const SupportTickets = () => {
   const token = localStorage.getItem("token"); // user token
 
   const API_BASE =
-    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://localhost:5000";
+    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "https://api.treassurefunded.com";
     // process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://treassurefunded";
 
   const [tickets, setTickets] = useState([]);

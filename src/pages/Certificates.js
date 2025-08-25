@@ -20,7 +20,7 @@ const TreasureFundedCertificates = () => {
     if (!username) return;
 
     axios
-      .get(`http://localhost:5000/api/certificate/user/${username}`)
+      .get(`https://api.treassurefunded.com/api/certificate/user/${username}`)
         // .get(`http://treassurefunded/api/certificate/user/${username}`)
       .then((res) => {
         let data = res.data;

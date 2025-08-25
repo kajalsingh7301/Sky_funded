@@ -8,7 +8,7 @@ const AdminTicketsPage = () => {
   const [error, setError] = useState("");
 
   const API_BASE =
-    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://localhost:5000";
+    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "https://api.treassurefunded.com";
 
   const adminToken = localStorage.getItem("adminToken");
 
