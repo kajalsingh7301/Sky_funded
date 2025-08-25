@@ -4,10 +4,15 @@ import "./Tablesteps.css";
 
 const ChallengePlans = () => {
   const [activeStep, setActiveStep] = useState("step1");
-  const [activeMainTab, setActiveMainTab] = useState("SkyFunded Challenge");
+  const [activeMainTab, setActiveMainTab] = useState("TreasureFunded Challenge");
   const navigate = useNavigate();
 
-  const mainTabs = ["SkyFunded Challenge", "SkyFunded Lite Challenge", "Evaluation", "Express"];
+  const mainTabs = [
+    "TreasureFunded Challenge",
+    "TreasureFunded Lite Challenge",
+    "Evaluation",
+    "Express"
+  ];
 
   const step1Data = [
     ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
@@ -85,26 +90,36 @@ const ChallengePlans = () => {
 
   const renderContent = () => {
     switch (activeMainTab) {
-      case "SkyFunded Challenge":
+      case "TreasureFunded Challenge":
         return (
           <>
             <div className="tabs">
-              <button onClick={() => setActiveStep("step1")} className={activeStep === "step1" ? "active" : ""}>
+              <button
+                onClick={() => setActiveStep("step1")}
+                className={activeStep === "step1" ? "active" : ""}
+              >
                 Step 1
               </button>
-              <button onClick={() => setActiveStep("step2")} className={activeStep === "step2" ? "active" : ""}>
+              <button
+                onClick={() => setActiveStep("step2")}
+                className={activeStep === "step2" ? "active" : ""}
+              >
                 Step 2
               </button>
             </div>
             {activeStep === "step1" ? renderTable(step1Data) : renderTable(step2Data)}
           </>
         );
-      case "SkyFunded Lite Challenge":
+
+      case "TreasureFunded Lite Challenge":
         return renderTable(liteChallengeData);
+
       case "Evaluation":
         return renderTable(evaluationData);
+
       case "Express":
         return renderTable(expressData);
+
       default:
         return null;
     }

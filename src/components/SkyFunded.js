@@ -11,7 +11,7 @@ const SkyFundedPage = () => {
     <div className="Skyfunded-parent-div">
       <div className="sky-funded-container">
         <div className="sky-fund-head-div">
-          Why Treasure Funded ?
+          Why Treasure Funded?
           <div className="sky-fund-head-down-para1">
             Trade with the most trusted, reliable, and highest-paying prop firm
           </div>
@@ -21,33 +21,26 @@ const SkyFundedPage = () => {
         </div>
       </div>
 
-      <div className="guaranteed-side-div">
-        <div className="guaranteed-side-div1">
-          <div className="guaranteed-side-div1-img">
-            <img src={guarantee} alt="guarantee" className="guarantee-img" />
-            <div className="guaranteed-para-div">
-              <p className="guarantee-p1">Guaranteed Payouts</p>
-              <p className="guarantee-p2">Get paid in 24 hours</p>
-              <p className="guarantee-p3">
+      <div className="left-right-wrapper">
+        <div className="guaranteed-side-div">
+          <div className="guaranteed-box">
+            <img src={guarantee} alt="guarantee" className="icon-img" />
+            <div className="guaranteed-text">
+              <p className="title">Guaranteed Payouts</p>
+              <p className="subtitle">Get paid in 24 hours</p>
+              <p className="description">
                 Receive your payment within 24 hours otherwise we will pay extra $1000
               </p>
             </div>
           </div>
-        </div>
 
-        <div className="guaranteed-side-div2">
-          <div className="guaranteed-side-div1-img">
-            <img src={shakehand} alt="shake" className="shake-hand-img" />
-            <div className="shake-para-div">
-              <p className="shake-p1">Adaptable Trading Conditions</p>
-              <div className="name-div">
-                <p className="shake-p2">
-                  Low spreads | Low Commission | Balanced Based Drawdown
-                </p>
-                {/* <p className="shake-p3">
-                  Reset and Top up | No Time limit | Allowed News Trading
-                </p> */}
-              </div>
+          <div className="guaranteed-box">
+            <img src={shakehand} alt="shake" className="icon-img" />
+            <div className="guaranteed-text">
+              <p className="title">Adaptable Trading Conditions</p>
+              <p className="subtitle">
+                Low spreads | Low Commission | Balanced Based Drawdown
+              </p>
             </div>
           </div>
         </div>
@@ -57,12 +50,14 @@ const SkyFundedPage = () => {
             <p className="Trade-p">TRADE ON MT5</p>
             <p className="Trade-p1">Your Choice!</p>
             <p className="Trade-p2">Best Trading Platform</p>
-            <a href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="link-download">
-  <div className="download-button-div">Download MT5</div>
-</a>
+            <a
+              href="https://play.google.com/store/apps/details?id=net.metaquotes.metatrader5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-download"
+            >
+              <div className="download-button-div">Download MT5</div>
+            </a>
           </div>
           <div className="Skyfund-right-side-inside-div2">
             <video autoPlay loop muted className="mt_5_video">
@@ -71,12 +66,11 @@ const SkyFundedPage = () => {
             </video>
           </div>
           <div className="down-div">
-          Trade with confidence on MetaTrader 5 – a platform designed to enhance your trading experience with advanced features, top-notch security, and unparalleled efficiency.
+            Trade with confidence on MetaTrader 5 – a platform designed to enhance your trading experience with advanced features, top-notch security, and unparalleled efficiency.
+          </div>
         </div>
-        </div>
-        
       </div>
-      
+
       <div className="down-full-div">
         <div className="down-full-side-div1">
           <p className="down-side-div-p1">Empowering Traders in 195+ Countries</p>
@@ -87,7 +81,7 @@ const SkyFundedPage = () => {
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <p className="stat-value">30K +</p>
+              <p className="stat-value">30K+</p>
               <p className="stat-label">Traders</p>
             </div>
             <div className="stat-divider"></div>
@@ -97,20 +91,21 @@ const SkyFundedPage = () => {
             </div>
           </div>
         </div>
-        <div className="down-full-side-div2">
-          <div className="bullion-funded-div">
-          <img src={people} alt="people" className="sky-img"/>
-          <p className="sky-funded-p1">Sky Funded Community and Support</p>
-          <p className="sky-funded-p2">Empowering traders worldwide to conquer challenges and secure funding.</p>
-          </div>
-        </div>
-        <div className="down-full-side-div3">
-        <div className="24-7-support-div">
-          <img src={time} alt="time" className="time-img"/>
-          <p className="time-p1">24/7 Pro Support</p>
-          <p className="time-p2">Our customer support team is available 24/7 to assist you, with an average response time of just 60 seconds.</p>
 
+        <div className="down-full-side-div2">
+          <img src={people} alt="people" className="sky-img" />
+          <p className="sky-funded-p1">Sky Funded Community and Support</p>
+          <p className="sky-funded-p2">
+            Empowering traders worldwide to conquer challenges and secure funding.
+          </p>
         </div>
+
+        <div className="down-full-side-div3">
+          <img src={time} alt="time" className="time-img" />
+          <p className="time-p1">24/7 Pro Support</p>
+          <p className="time-p2">
+            Our customer support team is available 24/7 to assist you, with an average response time of just 60 seconds.
+          </p>
         </div>
       </div>
     </div>
@@ -118,4 +113,3 @@ const SkyFundedPage = () => {
 };
 
 export default SkyFundedPage;
-

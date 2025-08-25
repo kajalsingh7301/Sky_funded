@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Deposit = require("../models/Deposit");
-const KYC = require("../models/Kyc");  // Correct case-sensitive import for Kyc.js
+const KYC = require("../models/KYC");
 let Ticket;
 
 try {

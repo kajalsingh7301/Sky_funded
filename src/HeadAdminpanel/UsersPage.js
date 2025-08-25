@@ -28,30 +28,6 @@ const UsersPage = () => {
     fetchUsers();
   }, []);
 
-  const handleApproval = async (userId, status) => {
-    try {
-      const token = localStorage.getItem('adminToken');
-      if (!token) throw new Error('Please login as admin first.');
-
-      await axios.put(
-        `${process.env.REACT_APP_BACKEND_URL}/api/admin/approve-user/${userId}`,
-        {}, // No body required for status
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-
-      setUsers((prev) =>
-        prev.map((user) =>
-          user._id === userId ? { ...user, approvalStatus: status } : user
-        )
-      );
-    } catch (err) {
-      console.error('Approval error:', err);
-      alert('Failed to update approval status');
-    }
-  };
-
   if (loading) return <div>Loading users...</div>;
   if (error) return <div style={{ color: 'red' }}>{error}</div>;
 
@@ -67,7 +43,7 @@ const UsersPage = () => {
             <th>Phone</th>
             <th>Country</th>
             <th>Role</th>
-            <th>Approval</th>
+            <th>Approval Status</th>
           </tr>
         </thead>
         <tbody>
@@ -84,20 +60,7 @@ const UsersPage = () => {
                 <td>{user.phone}</td>
                 <td>{user.country}</td>
                 <td>{user.role}</td>
-                <td>
-                  <div
-                    className={`approve-btn ${user.approvalStatus === 'approved' ? 'active-approve' : ''}`}
-                    onClick={() => handleApproval(user._id, 'approved')}
-                  >
-                    {user.approvalStatus === 'approved' ? 'Approved' : 'Approve'}
-                  </div>
-                  <div
-                    className={`decline-btn ${user.approvalStatus === 'declined' ? 'active-decline' : ''}`}
-                    onClick={() => handleApproval(user._id, 'declined')}
-                  >
-                    {user.approvalStatus === 'declined' ? 'Declined' : 'Decline'}
-                  </div>
-                </td>
+                <td>{user.approvalStatus}</td>
               </tr>
             ))
           )}

@@ -1,214 +1,221 @@
-// ✅ UPDATED userroutes.js
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const fs = require('fs');
-const multer = require('multer');
-const User = require('../models/User');
-const { authenticateToken, authorizeRoles } = require('../middleware/auth');
+const express = require("express");
+const fs = require("fs");
+const multer = require("multer");
+const path = require("path");
+const User = require("../models/User");
+const { authenticateToken, authorizeRoles } = require("../middleware/auth");
 
 const router = express.Router();
 
-
-
-// ========== Multer Config ==========
+/* ================= Multer (profile images) ================= */
+const UPLOAD_DIR = path.join(process.cwd(), "uploads", "profile_images");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = './uploads/profile_images';
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    cb(null, dir);
+    if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+    cb(null, UPLOAD_DIR);
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype && file.mimetype.startsWith("image/")) return cb(null, true);
+    cb(new Error("Only image files are allowed"));
+  },
+});
 
-/* ========== USER ROUTES ========== */
+/* ================= AUTH HELPERS ================= */
+function sanitizeUser(u) {
+  if (!u) return u;
+  const obj = u.toObject ? u.toObject() : u;
+  delete obj.password;
+  return obj;
+}
 
-// ✅ Register
-router.post('/register', async (req, res) => {
-  const { username, fullName, email, phone, password, confirmPassword, country, referralId } = req.body;
+/* ================= USER ROUTES ================= */
 
-  if (!username || !email || !password || !confirmPassword) {
-    return res.status(400).json({ msg: 'Please provide all required fields' });
+// Register
+router.post("/register", async (req, res) => {
+  const { username, fullName, email, phone, country, referralId } = req.body;
+  if (!username || !email) {
+    return res.status(400).json({ msg: "Please provide all required fields" });
   }
-  if (password !== confirmPassword) {
-    return res.status(400).json({ msg: 'Passwords do not match' });
-  }
-
   try {
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-    if (existingUser) return res.status(400).json({ msg: 'User already exists' });
+    if (existingUser) return res.status(400).json({ msg: "User already exists" });
 
     const newUser = new User({
       username,
       fullName,
       email,
       phone,
-      password,
       country,
       referralId,
-      role: username === 'admin' ? 'admin' : 'user',
-      approvalStatus: 'pending',
+      role: username === "admin" ? "admin" : "user",
+      approvalStatus: "pending",
     });
-
     await newUser.save();
-    res.status(201).json({ msg: 'User registered successfully' });
+    res.status(201).json({ msg: "User registered successfully" });
   } catch (err) {
-    console.error('Register error:', err);
-    res.status(500).json({ msg: 'Server error', error: err.message });
+    console.error("Register error:", err);
+    res.status(500).json({ msg: "Server error", error: err.message });
   }
 });
 
-// ✅ Login
-router.post('/login', async (req, res) => {
-  const { username, email, password } = req.body;
-
-  if (!password || (!username && !email)) {
-    return res.status(400).json({ msg: 'Please provide username/email and password' });
-  }
-
+// Get current user profile
+router.get("/profile", authenticateToken, async (req, res) => {
   try {
-    const user = await User.findOne({ $or: [{ username }, { email }] });
-    if (!user) return res.status(400).json({ msg: 'User not found' });
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(401).json({ msg: 'Incorrect password' });
-
-    const token = jwt.sign(
-      { id: user._id, username: user.username, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: '1d' }
-    );
-
-    res.status(200).json({
-      msg: 'Login successful',
-      token,
-      user: {
-        id: user._id,
-        username: user.username,
-        email: user.email,
-        fullName: user.fullName,
-        phone: user.phone,
-        role: user.role,
-        approvalStatus: user.approvalStatus,
-      },
-    });
-  } catch (err) {
-    console.error('Login error:', err);
-    res.status(500).json({ msg: 'Server error', error: err.message });
-  }
-});
-
-// ✅ Get current user profile
-router.get('/profile', authenticateToken, async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).select('-password');
-    if (!user) return res.status(404).json({ msg: 'User not found' });
+    const user = await User.findById(req.user._id).select("-password");
+    if (!user) return res.status(404).json({ msg: "User not found" });
     res.json(user);
   } catch (err) {
-    res.status(500).json({ msg: 'Server error', error: err.message });
+    res.status(500).json({ msg: "Server error", error: err.message });
   }
 });
 
-// ✅ Update profile
-router.put('/profile', authenticateToken, upload.single('profileImage'), async (req, res) => {
-  const { fullName, email, phone, country } = req.body;
+// Update profile (Step 1 + Step 2 fields, no password)
+router.put("/profile", authenticateToken, upload.single("profileImage"), async (req, res) => {
+  const {
+    fullName,
+    email,
+    phone,
+    country,
+    address,
+    dob,
+    profession,
+    linkedin,
+    github,
+    social,
+    bio,
+    skills,
+    experience,
+    education,
+    website,
+  } = req.body;
 
-  const updateFields = { fullName, email, phone, country };
+  const updateFields = {
+    ...(fullName !== undefined && { fullName }),
+    ...(email !== undefined && { email }),
+    ...(phone !== undefined && { phone }),
+    ...(country !== undefined && { country }),
+    ...(address !== undefined && { address }),
+    ...(dob !== undefined && { dob }),
+    ...(profession !== undefined && { profession }),
+    ...(linkedin !== undefined && { linkedin }),
+    ...(github !== undefined && { github }),
+    ...(social !== undefined && { social }),
+    ...(bio !== undefined && { bio }),
+    ...(skills !== undefined && { skills }),
+    ...(experience !== undefined && { experience }),
+    ...(education !== undefined && { education }),
+    ...(website !== undefined && { website }),
+  };
+
   if (req.file) {
-    updateFields.profileImageUrl = `/uploads/profile_images/${req.file.filename}`;
+    updateFields.profileImage = `/uploads/profile_images/${req.file.filename}`;
   }
 
   try {
     const updatedUser = await User.findByIdAndUpdate(req.user._id, updateFields, {
       new: true,
-    }).select('-password');
+      runValidators: true,
+    }).select("-password");
 
-    if (!updatedUser) return res.status(404).json({ msg: 'User not found' });
-    res.json(updatedUser);
+    if (!updatedUser) return res.status(404).json({ msg: "User not found" });
+    res.json({ msg: "Profile updated successfully", user: updatedUser });
   } catch (err) {
-    res.status(500).json({ msg: 'Profile update failed', error: err.message });
+    res.status(500).json({ msg: "Profile update failed", error: err.message });
   }
 });
 
-// ✅ Change password
-router.put('/profile/change-password', authenticateToken, async (req, res) => {
-  const { currentPassword, newPassword, confirmPassword } = req.body;
+/* ========== WALLET ROUTES ========== */
+router.put("/wallet/update", authenticateToken, async (req, res) => {
+  const { amount, type } = req.body; // type = "deposit" | "withdraw"
+  const amt = Number(amount);
 
-  if (!currentPassword || !newPassword || !confirmPassword) {
-    return res.status(400).json({ msg: 'All fields are required' });
-  }
-
-  if (newPassword !== confirmPassword) {
-    return res.status(400).json({ msg: 'Passwords do not match' });
+  if (!amt || amt <= 0) {
+    return res.status(400).json({ msg: "Invalid amount" });
   }
 
   try {
     const user = await User.findById(req.user._id);
-    if (!user) return res.status(404).json({ msg: 'User not found' });
+    if (!user) return res.status(404).json({ msg: "User not found" });
 
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
-    if (!isMatch) return res.status(400).json({ msg: 'Current password is incorrect' });
+    if (type === "deposit") {
+      user.balance = (user.balance || 0) + amt;
+      user.totalDeposit = (user.totalDeposit || 0) + amt;
+    } else if (type === "withdraw") {
+      if ((user.balance || 0) < amt) {
+        return res.status(400).json({ msg: "Insufficient balance" });
+      }
+      user.balance = user.balance - amt;
+    } else {
+      return res.status(400).json({ msg: "Invalid transaction type" });
+    }
 
-    user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
-
-    res.json({ msg: 'Password updated successfully' });
+    res.json({
+      msg: "Wallet updated",
+      balance: user.balance,
+      totalDeposit: user.totalDeposit,
+    });
   } catch (err) {
-    res.status(500).json({ msg: 'Password update failed', error: err.message });
+    res.status(500).json({ msg: "Failed to update wallet", error: err.message });
   }
 });
 
 /* ========== ADMIN ROUTES ========== */
 
-// ✅ Approve/Decline/Delete
-router.put('/approve/:id', authenticateToken, authorizeRoles('admin'), async (req, res) => {
+// Approve/Decline/Pending/Delete user (status)
+router.put("/approve/:id", authenticateToken, authorizeRoles("admin"), async (req, res) => {
   const { status } = req.body;
-
-  if (!['approved', 'declined', 'pending', 'deleted'].includes(status)) {
-    return res.status(400).json({ msg: 'Invalid status' });
+  if (!["approved", "declined", "pending", "deleted"].includes(status)) {
+    return res.status(400).json({ msg: "Invalid status" });
   }
-
   try {
-    const user = await User.findByIdAndUpdate(req.params.id, { approvalStatus: status }, { new: true });
-    if (!user) return res.status(404).json({ msg: 'User not found' });
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { approvalStatus: status },
+      { new: true }
+    ).select("-password");
+    if (!user) return res.status(404).json({ msg: "User not found" });
 
     res.json({ msg: `User status updated to ${status}`, user });
   } catch (err) {
-    res.status(500).json({ msg: 'Failed to update status', error: err.message });
+    res.status(500).json({ msg: "Failed to update status", error: err.message });
   }
 });
 
-// ✅ All users (Admin only)
-router.get('/all-users', authenticateToken, authorizeRoles('admin'), async (req, res) => {
+// Get all users (Admin)
+router.get("/all-users", authenticateToken, authorizeRoles("admin"), async (req, res) => {
   try {
-    const users = await User.find().select('-password');
+    const users = await User.find().select("-password");
     res.json(users);
   } catch (err) {
-    res.status(500).json({ msg: 'Failed to fetch all users', error: err.message });
+    res.status(500).json({ msg: "Failed to fetch all users", error: err.message });
   }
 });
 
-// ✅ Approved users only
-router.get('/approved-data', authenticateToken, authorizeRoles('admin'), async (req, res) => {
+// Get approved users (Admin)
+router.get("/approved-data", authenticateToken, authorizeRoles("admin"), async (req, res) => {
   try {
-    const users = await User.find({ approvalStatus: 'approved' }).select('-password');
+    const users = await User.find({ approvalStatus: "approved" }).select("-password");
     res.json(users);
   } catch (err) {
-    res.status(500).json({ msg: 'Failed to fetch approved users', error: err.message });
+    res.status(500).json({ msg: "Failed to fetch approved users", error: err.message });
   }
 });
 
-// ✅ Get single user by username
-router.get('/:username', async (req, res) => {
+// Get user by username (public)
+router.get("/:username", async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.params.username }).select('-password');
-    if (!user) return res.status(404).json({ msg: 'User not found' });
+    const user = await User.findOne({ username: req.params.username }).select("-password");
+    if (!user) return res.status(404).json({ msg: "User not found" });
     res.json(user);
   } catch (err) {
-    res.status(500).json({ msg: 'Server error', error: err.message });
+    res.status(500).json({ msg: "Server error", error: err.message });
   }
 });
 

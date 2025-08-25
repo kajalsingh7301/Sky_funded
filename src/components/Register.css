@@ -112,6 +112,22 @@
   color: #fff;
 }
 
+/* Password Eye Icon */
+.password-toggle-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #ffd700;
+  transition: color 0.2s ease-in-out;
+}
+
+.password-toggle-icon:hover {
+  color: #b28c00;
+}
+
 /* Checkbox */
 .sky-funded-checkbox {
   display: flex;
@@ -165,6 +181,23 @@
   color: #b28c00;
   text-decoration: underline;
 }
+
+/* ✅ Toastify Custom Styling */
+.Toastify__toast-theme--light {
+  background-color: #111 !important;
+  color: #ffd700 !important;
+  border: 1px solid #ffd700;
+  font-weight: bold;
+}
+
+.Toastify__progress-bar--success {
+  background: #ffd700 !important;
+}
+
+.Toastify__toast-icon {
+  color: #ffd700 !important;
+}
+
 /* Mobile View */
 @media (max-width: 768px) {
   .sky-funded-register-container {
@@ -255,4 +288,24 @@
     font-size: 13px;
     padding: 8px;
   }
+}
+/* Password Field Container */
+.password-group {
+  position: relative;
+}
+
+/* Toggle Eye Icon (Password Show/Hide) */
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;   /* 👁️ right side me */
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ffd700;   /* Golden Theme */
+  font-size: 18px;
+  transition: 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: #b28c00;
 }

@@ -18,7 +18,7 @@
   padding: 0.5rem 1.2rem;
   border-radius: 999px;
   background-color: #1a1a1a;
-  color: #fff;
+  color: #101010;
   border: 1px solid #ffd700;
   font-weight: bold;
   cursor: pointer;
@@ -75,11 +75,15 @@
 }
 
 .highlight-amount {
-  color: gold;
-  padding: 0 0.3rem;
-  border-radius: 3px;
-  font-weight: 700;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
 }
+
+
 
 .plan-btn {
   border: none;
@@ -122,7 +126,7 @@
   padding: 5px 10px;
   border: 2px solid #ffd700;
   background-color: black !important;
-  color: white !important;
+  color: rgb(5, 5, 5) !important;
   font-weight: bold;
   border-radius: 999px;
   cursor: pointer;
@@ -241,4 +245,14 @@
     font-size: 14px;
     padding: 10px 0;
   }
+}
+/* Center fee button inside table cell */
+.cell .plan-btn {
+    display: inline-flex;          /* flex for horizontal & vertical centering */
+    justify-content: center;       /* center horizontally */
+    align-items: center;           /* center vertically */
+    margin: 0 auto;                /* center the button inside the cell */
+    text-align: center;
+    width: auto;                   /* button width fits content */
+    min-width: 80px;               /* optional, makes button visible */
 }

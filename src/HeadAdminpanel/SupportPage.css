@@ -1,36 +1,48 @@
+/* ================= CONTACT US / SUPPORT PAGE ================= */
 .support-container {
-  padding: 25px;
-  max-width: 1100px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #0b0b0b;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(255, 215, 0, 0.2);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.support-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 50px rgba(255, 215, 0, 0.3);
 }
 
 .support-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
 .support-header h2 {
-  font-weight: 600;
-  font-size: 28px;
+  font-weight: 700;
+  font-size: 30px;
+  color: #ffd700; /* gold */
+  margin-bottom: 10px;
 }
 
 .search-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: white;
-  padding: 8px 15px;
-  border-radius: 10px;
-  width: 350px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  color: #444;
+  gap: 10px;
+  background: #1a1a1a;
+  padding: 10px 18px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .search-bar input {
@@ -38,64 +50,75 @@
   outline: none;
   width: 100%;
   font-size: 16px;
-  color: #333;
+  color: #ffd700;
+  background: transparent;
+}
+
+.search-bar input::placeholder {
+  color: #ccc;
 }
 
 .clear-icon {
   cursor: pointer;
-  color: #888;
-  font-size: 18px;
+  color: #ffd700;
+  font-size: 20px;
   transition: color 0.3s ease;
 }
 
 .clear-icon:hover {
-  color: #555;
+  color: #fff;
 }
 
 .support-table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 10px;
   font-size: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-top: 20px;
 }
 
 .support-table thead th {
-  background: #1976d2;
-  color: white;
-  padding: 14px 20px;
+  background: #222;
+  color: #ffd700;
+  padding: 16px 20px;
   font-weight: 700;
   text-align: left;
-  border-radius: 10px 10px 0 0;
+  border-radius: 12px 12px 0 0;
   user-select: none;
+  border-bottom: 2px solid #ffd700;
 }
 
 .support-table tbody tr {
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid #ddd;
-  transition: background-color 0.25s ease;
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .support-table tbody tr:hover {
-  background: #e3f2fd;
+  background: #2c2c2c;
+  transform: translateX(2px);
 }
 
 .support-table tbody td {
-  padding: 14px 20px;
+  padding: 16px 20px;
   vertical-align: middle;
-  color: #444;
+  color: #ffd700;
 }
 
 .status {
-  padding: 7px 18px;
-  border-radius: 25px;
+  padding: 8px 20px;
+  border-radius: 30px;
   font-weight: 700;
   font-size: 14px;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  color: white;
+  justify-content: center;
   letter-spacing: 0.05em;
   user-select: none;
+  transition: all 0.3s ease;
+  color: #fff;
 }
 
 .status.open {
@@ -103,9 +126,44 @@
 }
 
 .status.pending {
-  background-color: #ff9800; /* orange */
+  background-color: #ffb400; /* gold/orange */
 }
 
 .status.resolved {
   background-color: #4caf50; /* green */
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .support-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+  }
+
+  .support-table thead {
+    display: none; /* hide table headers on mobile */
+  }
+
+  .support-table tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    padding: 15px;
+  }
+
+  .support-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .status {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
 }

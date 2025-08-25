@@ -2,33 +2,35 @@ const mongoose = require("mongoose");
 
 const TransactionSchema = new mongoose.Schema(
   {
-    transactionId: {
-      type: String,
-      required: true,
-      unique: true, // Ensures no duplicate transaction IDs
-    },
-    amount: {
-      type: Number,
-      required: true,
-    },
-    status: {
-      type: String,
-      enum: ["pending", "approved", "failed"], // Optional: restrict to valid status
-      default: "pending",
-    },
-    date: {
-      type: Date,
-      required: true,
-    },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
+    type: {
+      type: String,
+      enum: ["deposit", "withdrawal"],
+      required: true,
+    },
+    paymentMethod: {
+      type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+    },
+    screenshot: {
+      type: String, // only for deposits, can be null for withdrawals
+      default: null,
+    },
+    status: {
+      type: String,
+      enum: ["pending", "approved", "declined"],
+      default: "pending",
+    },
   },
-  {
-    timestamps: true, // Optional: adds createdAt and updatedAt
-  }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Transaction", TransactionSchema);

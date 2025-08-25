@@ -1,318 +1,324 @@
-import React, { useState, useEffect } from 'react';
-import './Profile.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import "./Profile.css";
+import { FaUserCircle } from "react-icons/fa";
 
 const Profile = () => {
-  const defaultImage = '/default-image1.png';
+  const defaultImage = "/default-image1.png";
+  const API_BASE =
+    process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://localhost:5000";
+    // process.env.REACT_APP_BACKEND_URL?.replace(/\/+$/, "") || "http://treassurefunded:5000";
+  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
+
+  const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [toast, setToast] = useState({ visible: false, message: "", type: "" });
 
   const [profile, setProfile] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    country: '',
+    fullName: "",
+    email: "",
+    phone: "",
+    country: "",
+    dob: "",
+    address: "",
+    profession: "",
     profileImage: null,
     imagePreview: defaultImage,
+    linkedin: "",
+    github: "",
+    social: "",
+    bio: "",
+    skills: "",
+    experience: "",
+    education: "",
+    website: "",
   });
 
-  const [activeTab, setActiveTab] = useState('personal');
-  const [toastVisible, setToastVisible] = useState(false);
-
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [isChangingPassword, setIsChangingPassword] = useState(false);
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  // Notification Preferences state
-  const [notifications, setNotifications] = useState({
-    emailNotifications: true,
-    smsAlerts: false,
-  });
-
-  useEffect(() => {
-    const username = localStorage.getItem('username');
-    if (!username) return;
-
-    fetch(`https://api.treassurefunded.com/api/user/${username}`)
-      .then(res => res.json())
-      .then(data => {
-        setProfile(prev => ({
-          ...prev,
-          fullName: data.fullName,
-          email: data.email,
-          phone: data.phone,
-          country: data.country,
-          imagePreview: data.profileImage || defaultImage,
-        }));
-      })
-      .catch(err => {
-        console.error('Failed to fetch profile', err);
-      });
-  }, []);
-
-  const handleChange = (e) => {
-    setProfile({ ...profile, [e.target.name]: e.target.value });
+  /** ---------------- Toast ---------------- **/
+  const showToast = (message, type = "success") => {
+    setToast({ visible: true, message, type });
+    setTimeout(() => setToast({ visible: false, message: "", type: "" }), 3000);
   };
 
+  /** ---------------- Fetch Profile ---------------- **/
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        if (!username || !token) {
+          setLoading(false);
+          return;
+        }
+        const res = await fetch(`${API_BASE}/api/users/${username}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.message || "Failed to fetch profile");
+
+        setProfile((prev) => ({
+          ...prev,
+          fullName: data.fullName || "",
+          email: data.email || "",
+          phone: data.phone || "",
+          country: data.country || "",
+          dob: data.dob || "",
+          address: data.address || "",
+          profession: data.profession || "",
+          linkedin: data.linkedin || "",
+          github: data.github || "",
+          social: data.social || "",
+          bio: data.bio || "",
+          skills: data.skills || "",
+          experience: data.experience || "",
+          education: data.education || "",
+          website: data.website || "",
+          imagePreview: data.profileImage
+            ? data.profileImage.startsWith("http")
+              ? data.profileImage
+              : `${API_BASE}/uploads/${data.profileImage}`
+            : defaultImage,
+        }));
+      } catch (err) {
+        showToast(err.message, "error");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProfile();
+  }, [API_BASE, username, token]);
+
+  /** ---------------- Handlers ---------------- **/
+  const handleProfileChange = (e) =>
+    setProfile({ ...profile, [e.target.name]: e.target.value });
+
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
     if (file) {
       setProfile({
         ...profile,
         profileImage: file,
         imagePreview: URL.createObjectURL(file),
       });
-    } else {
-      setProfile({
-        ...profile,
-        profileImage: null,
-        imagePreview: defaultImage,
-      });
     }
   };
 
-  const handleImageError = () => {
-    setProfile((prev) => ({
-      ...prev,
-      imagePreview: defaultImage,
-    }));
+  const handleImageError = () =>
+    setProfile((prev) => ({ ...prev, imagePreview: defaultImage }));
+
+  /** ---------------- Validation ---------------- **/
+  const validateStep1 = () => {
+    const required = [
+      "fullName",
+      "email",
+      "phone",
+      "country",
+      "dob",
+      "address",
+      "profession",
+    ];
+    for (const field of required) {
+      if (!profile[field]) {
+        showToast(`Please fill in ${field}`, "error");
+        return false;
+      }
+    }
+    return true;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const validateStep2 = () => true; // optional fields, no strict validation
 
-    const username = localStorage.getItem('username');
-    const formData = new FormData();
-    formData.append('fullName', profile.fullName);
-    formData.append('email', profile.email);
-    formData.append('phone', profile.phone);
-    formData.append('country', profile.country);
-    if (profile.profileImage) {
-      formData.append('profileImage', profile.profileImage);
-    }
-
-    try {
-      const response = await fetch(`https://api.treassurefunded.com/api/user/${username}`, {
-        method: 'PUT',
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error('Failed to update profile');
-
-      setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 3000);
-    } catch (err) {
-      console.error('Error updating profile:', err);
-    }
+  const handleNext = () => {
+    if (step === 1 && !validateStep1()) return;
+    if (step === 2 && !validateStep2()) return;
+    setStep(step + 1);
   };
 
-  const handlePasswordChange = async (e) => {
-    e.preventDefault();
-
-    if (newPassword !== confirmPassword) {
-      alert('New password and confirmation do not match');
+  /** ---------------- Submit ---------------- **/
+  const handleSubmitAll = async () => {
+    if (!validateStep1() || !validateStep2()) return;
+    if (!username || !token) {
+      showToast("User not logged in", "error");
       return;
     }
 
-    const username = localStorage.getItem('username');
-    const passwordData = {
-      currentPassword,
-      newPassword,
-    };
+    let useFormData = !!profile.profileImage;
+    let body;
+    let headers = { Authorization: `Bearer ${token}` };
+
+    if (useFormData) {
+      const formData = new FormData();
+      Object.entries(profile).forEach(([key, value]) => {
+        if (key === "profileImage" && value) formData.append("profileImage", value);
+        else if (key !== "imagePreview") formData.append(key, value || "");
+      });
+      body = formData;
+    } else {
+      body = JSON.stringify({ ...profile, profileImage: undefined });
+      headers["Content-Type"] = "application/json";
+    }
 
     try {
-      const response = await fetch(`https://api.treassurefunded.com/api/user/change-password/${username}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(passwordData),
+      const res = await fetch(`${API_BASE}/api/users/profile`, {
+        method: "PUT",
+        headers,
+        body,
       });
+      const result = await res.json();
+      if (!res.ok) throw new Error(result?.message || "Failed to complete profile");
 
-      if (!response.ok) throw new Error('Failed to update password');
+      // ✅ Thank You toast
+      showToast("Thank you! Your profile has been updated successfully.", "success");
 
-      alert('Password updated successfully');
-      setCurrentPassword('');
-      setNewPassword('');
-      setConfirmPassword('');
-      setIsChangingPassword(false);
+      // Reset back to Step 1
+      setStep(1);
+
+      if (result?.user?.profileImage) {
+        setProfile((prev) => ({
+          ...prev,
+          imagePreview: result.user.profileImage.startsWith("http")
+            ? result.user.profileImage
+            : `${API_BASE}/uploads/${result.user.profileImage}`,
+          profileImage: null,
+        }));
+      }
     } catch (err) {
-      console.error('Error updating password:', err);
-      alert('Error updating password');
+      showToast(err.message, "error");
     }
   };
 
-  // Handle Notification Preferences Change
-  const handleNotificationsChange = (e) => {
-    setNotifications({
-      ...notifications,
-      [e.target.name]: e.target.checked,
-    });
+  /** ---------------- Helpers ---------------- **/
+  const headings = {
+    1: { title: "Personal Info", icon: <FaUserCircle /> },
+    2: { title: "Additional Details", icon: <FaUserCircle /> },
+    3: { title: "Review & Finish", icon: <FaUserCircle /> },
   };
 
-  // Handle Notifications Preferences submit
-  const handlePreferencesSubmit = async (e) => {
-    e.preventDefault();
-
-    const username = localStorage.getItem('username');
-    const preferencesData = {
-      emailNotifications: notifications.emailNotifications,
-      smsAlerts: notifications.smsAlerts,
-    };
-
-    try {
-      const response = await fetch(`https://api.treassurefunded.com/api/user/update-notifications/${username}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(preferencesData),
-      });
-
-      if (!response.ok) throw new Error('Failed to update preferences');
-
-      alert('Notification preferences updated successfully');
-    } catch (err) {
-      console.error('Error updating preferences:', err);
-      alert('Error updating preferences');
-    }
+  const profileCompletion = () => {
+    const total = 7;
+    const keys = [
+      "fullName",
+      "email",
+      "phone",
+      "country",
+      "dob",
+      "address",
+      "profession",
+    ];
+    const filled = keys.reduce((acc, k) => acc + (profile[k] ? 1 : 0), 0);
+    return Math.round((filled / total) * 100);
   };
+
+  if (loading) {
+    return (
+      <div className="pf-container">
+        <div className="pf-card">Loading...</div>
+      </div>
+    );
+  }
 
   return (
-    <div className="sky-funded-profile-container">
-      <div className="profile-header">
-        <h2>My Profile</h2>
-        <p>Manage your personal information and settings</p>
+    <div className="pf-container">
+      <div className="pf-header">
+        <h2>
+          {headings[step].icon} {headings[step].title}
+        </h2>
+        <p>Step {step} of 3</p>
+        <div className="progress-bar">
+          <div className="progress" style={{ width: `${profileCompletion()}%` }} />
+        </div>
       </div>
 
-      <div className="profile-tabs">
-        <button onClick={() => setActiveTab('personal')} className={activeTab === 'personal' ? 'active' : ''}>Personal Info</button>
-        <button onClick={() => setActiveTab('security')} className={activeTab === 'security' ? 'active' : ''}>Security</button>
-        <button onClick={() => setActiveTab('preferences')} className={activeTab === 'preferences' ? 'active' : ''}>Preferences</button>
-      </div>
-
-      {activeTab === 'personal' && (
-        <div className="profile-card">
-          <div className="avatar-section">
-            <img
-              src={profile.imagePreview}
-              onError={handleImageError}
-              alt="Profile"
-              className="avatar-img"
-            />
-            <label className="upload-btn">
-              Change Photo
-              <input type="file" accept="image/*" onChange={handleImageChange} />
-            </label>
+      <div className="pf-card">
+        {step === 1 && (
+          <div className="step step1">
+            <div className="avatar-section">
+              <img src={profile.imagePreview} onError={handleImageError} alt="Profile" />
+              <label className="upload-btn">
+                Change Photo
+                <input type="file" accept="image/*" onChange={handleImageChange} />
+              </label>
+            </div>
+            <div className="form">
+              {["fullName","email","phone","country","dob","address","profession"].map(
+                (field) => (
+                  <input
+                    key={field}
+                    type={field === "dob" ? "date" : "text"}
+                    name={field}
+                    placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                    value={profile[field]}
+                    onChange={handleProfileChange}
+                    required
+                  />
+                )
+              )}
+            </div>
           </div>
+        )}
 
-          <form onSubmit={handleSubmit} className="profile-form">
-            <div className="form-row">
-              <label>Full Name</label>
-              <input type="text" name="fullName" value={profile.fullName} onChange={handleChange} />
+        {step === 2 && (
+          <div className="step step2">
+            <div className="step-2-card">
+              <h3>Additional Details</h3>
+              <div className="form">
+                {[
+                  { name: "linkedin", placeholder: "LinkedIn Profile" },
+                  { name: "github", placeholder: "GitHub Profile" },
+                  { name: "social", placeholder: "Twitter / Other Social" },
+                  { name: "bio", placeholder: "Short Bio" },
+                  { name: "skills", placeholder: "Skills (comma separated)" },
+                  { name: "experience", placeholder: "Experience (e.g., 3 years)" },
+                  { name: "education", placeholder: "Education" },
+                  { name: "website", placeholder: "Website / Portfolio" },
+                ].map((field) => (
+                  <input
+                    key={field.name}
+                    type="text"
+                    name={field.name}
+                    placeholder={field.placeholder}
+                    value={profile[field.name] || ""}
+                    onChange={handleProfileChange}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="form-row">
-              <label>Email</label>
-              <input type="email" name="email" value={profile.email} onChange={handleChange} />
-            </div>
-            <div className="form-row">
-              <label>Phone</label>
-              <input type="text" name="phone" value={profile.phone} onChange={handleChange} />
-            </div>
-            <div className="form-row">
-              <label>Country</label>
-              <input type="text" name="country" value={profile.country} onChange={handleChange} />
-            </div>
-            <button type="submit" className="save-btn">Save Changes</button>
-          </form>
-        </div>
-      )}
+          </div>
+        )}
 
-      {activeTab === 'security' && (
-        <div className="profile-card">
-          {!isChangingPassword ? (
-            <button className="change-password-btn" onClick={() => setIsChangingPassword(true)}>Change Password</button>
-          ) : (
-            <div>
-              <h3>Change Password</h3>
-              <form onSubmit={handlePasswordChange}>
-                <div className="form-row">
-                  <label>Current Password</label>
-                  <div className="password-container">
-                    <input
-                      type={showCurrentPassword ? 'text' : 'password'}
-                      value={currentPassword}
-                      onChange={(e) => setCurrentPassword(e.target.value)}
-                    />
-                    <button type="button" onClick={() => setShowCurrentPassword(!showCurrentPassword)}>
-                      {showCurrentPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
+        {step === 3 && (
+          <div className="step step3">
+            <div className="step-3-card">
+              <h3>Review Your Info</h3>
+              {Object.entries(profile)
+                .filter(([k]) => k !== "profileImage" && k !== "imagePreview")
+                .map(([key, value]) => (
+                  <div className="info-row" key={key}>
+                    <span className="info-label">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                    <span className="info-value">{value || "-"}</span>
                   </div>
-                </div>
-                <div className="form-row">
-                  <label>New Password</label>
-                  <div className="password-container">
-                    <input
-                      type={showNewPassword ? 'text' : 'password'}
-                      value={newPassword}
-                      onChange={(e) => setNewPassword(e.target.value)}
-                    />
-                    <button type="button" onClick={() => setShowNewPassword(!showNewPassword)}>
-                      {showNewPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                  </div>
-                </div>
-                <div className="form-row">
-                  <label>Confirm Password</label>
-                  <div className="password-container">
-                    <input
-                      type={showConfirmPassword ? 'text' : 'password'}
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-                      {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                  </div>
-                </div>
-                <button type="submit" className="save-btn">Update Password</button>
-              </form>
+                ))}
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
 
-      {activeTab === 'preferences' && (
-        <div className="profile-card">
-          <form onSubmit={handlePreferencesSubmit}>
-            <div className="form-row">
-              <label>Email Notifications</label>
-              <input
-                type="checkbox"
-                name="emailNotifications"
-                checked={notifications.emailNotifications}
-                onChange={handleNotificationsChange}
-              />
-            </div>
+      <div className="navigation">
+        {step > 1 && (
+          <button onClick={() => setStep(step - 1)} className="back-btn">
+            Back
+          </button>
+        )}
+        {step < 3 ? (
+          <button onClick={handleNext} className="next-btn">
+            Next
+          </button>
+        ) : (
+          <button onClick={handleSubmitAll} className="finish-btn">
+            Finish
+          </button>
+        )}
+      </div>
 
-            <div className="form-row">
-              <label>SMS Alerts</label>
-              <input
-                type="checkbox"
-                name="smsAlerts"
-                checked={notifications.smsAlerts}
-                onChange={handleNotificationsChange}
-              />
-            </div>
-
-            <button type="submit" className="save-btn">Save Preferences</button>
-          </form>
-        </div>
-      )}
-
-      {toastVisible && <div className="toast">Profile updated successfully</div>}
+      {toast.visible && <div className={`toast ${toast.type}`}>{toast.message}</div>}
     </div>
   );
 };

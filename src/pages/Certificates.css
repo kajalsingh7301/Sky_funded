@@ -1,55 +1,357 @@
+/* --------------------- General Page Styles --------------------- */
 .certificate-page {
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background: #0a0a1f;
+  min-height: 100vh;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin: 20px 0;
+  color: #ffd700;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* --------------------- Intro Page --------------------- */
+.intro-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background: linear-gradient(135deg, #1a1a3a, #000);
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.intro-page h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+  color: #ffd700;
+  font-weight: 700;
+}
+
+.intro-page p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+.intro-page button {
+  padding: 12px 28px;
+  font-size: 1rem;
+  background: #ffd700;
+  color: #0a0a1f;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.intro-page button:hover {
+  background: #ffec70;
+  transform: scale(1.05);
+}
+
+/* --------------------- Challenge Dropdown --------------------- */
+.certificate-dropdown {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d0d0d;
-  padding: 20px;
-}
-
-.certificate-modal {
-  background-color: #121212;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  max-width: 450px;
-  width: 100%;
-  text-align: center;
-  color: white;
-  border: 1px solid #2a2a2a;
-}
-
-.certificate-image {
-  width: 150px;
-  height: auto;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.certificate-title {
-  font-size: 20px;
+.certificate-dropdown label {
+  color: #ffd700;
   font-weight: 600;
-  margin-bottom: 16px;
 }
 
-.certificate-desc {
-  font-size: 15px;
-  color: #bbb;
-  margin-bottom: 30px;
-  line-height: 1.6;
+.certificate-dropdown select {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ffd700;
+  background: #0a0a1f;
+  color: #ffd700;
+  width: 220px;
+  transition: all 0.3s ease;
 }
 
-.certificate-btn {
-  background: linear-gradient(to right, #6c63ff, #a855f7);
+.certificate-dropdown select:hover {
+  background: rgba(255, 215, 0, 0.05);
+}
+
+/* --------------------- Profit Input --------------------- */
+.profit-input {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.profit-input label {
+  color: #ffd700;
+  font-weight: 600;
+  align-self: center;
+}
+
+.profit-input input {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ffd700;
+  background: #0a0a1f;
+  color: #ffd700;
+  width: 150px;
+  text-align: center;
+}
+
+.profit-input button {
+  padding: 10px 22px;
+  font-size: 1rem;
+  background: #ffd700;
+  color: #0a0a1f;
+  font-weight: 700;
   border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  color: white;
-  font-weight: 500;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.profit-input button:hover {
+  background: #ffec70;
+  transform: scale(1.05);
+}
+
+/* --------------------- Certificate Card --------------------- */
+.certificate-card {
+  width: 100%;
+  max-width: 720px;
+  margin: 25px auto;
+  padding: 35px 30px;
+  background: url('../Assets/cert.png') no-repeat center center / cover;
+  border-radius: 25px;
+  color: #ffd700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
+  border: 3px solid #ffd700;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle decorative border */
+.certificate-card::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 2px dotted rgba(255, 215, 0, 0.5);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+/* --------------------- Certificate Header --------------------- */
+.certificate-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.certificate-header h2 {
+  font-size: 1.6rem;
+  background: #ffd700;
+  color: #0a0a1f;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* --------------------- Certificate Body --------------------- */
+.certificate-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.certificate-body .formal-text {
+  font-size: 1rem;
+  color: #eee;
+  margin: 6px 0;
+  font-style: italic;
+}
+
+.certificate-body .cert-name {
+  font-size: 2rem;
+  color: #ffd700;
+  font-weight: 700;
+  margin: 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.certificate-body .achievement {
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 6px 0;
+  font-weight: 500;
+}
+
+.profit-share {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin-top: 15px;
+}
+
+.date {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 12px;
+}
+
+/* --------------------- Footer & QR Code --------------------- */
+.certificate-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+  gap: 10px;
+}
+
+.certificate-footer p {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+/* --------------------- Signature --------------------- */
+.certificate-signature {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 25px;
+}
+
+.certificate-signature p {
+  font-weight: 700;
+  color: #ffd700;
+  font-size: 1.1rem;
+}
+
+.certificate-signature small {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* --------------------- Download Button --------------------- */
+.certificate-btn {
+  padding: 12px 28px;
+  font-size: 1rem;
+  margin-top: 25px;
+  background: #ffd700;
+  color: #0a0a1f;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
   transition: all 0.3s ease;
 }
 
 .certificate-btn:hover {
-  opacity: 0.9;
+  background: #ffec70;
+  transform: scale(1.05);
+}
+
+/* --------------------- Responsive --------------------- */
+@media screen and (max-width: 768px) {
+  .certificate-card {
+    max-width: 95%;
+    padding: 28px 25px;
+  }
+
+  .certificate-header h1 {
+    font-size: 1.9rem;
+  }
+
+  .certificate-header h2 {
+    font-size: 1.4rem;
+    padding: 6px 14px;
+  }
+
+  .certificate-body .cert-name {
+    font-size: 1.8rem;
+  }
+
+  .certificate-body p,
+  .profit-share {
+    font-size: 0.95rem;
+  }
+
+  .profit-input input {
+    width: 130px;
+  }
+
+  .certificate-btn,
+  .profit-input button {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .certificate-card {
+    padding: 20px;
+  }
+
+  .certificate-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .certificate-header h2 {
+    font-size: 1.2rem;
+    padding: 5px 12px;
+  }
+
+  .certificate-body .cert-name {
+    font-size: 1.5rem;
+  }
+
+  .certificate-body p,
+  .profit-share {
+    font-size: 0.85rem;
+  }
+
+  .profit-input input {
+    width: 110px;
+  }
+
+  .certificate-btn,
+  .profit-input button {
+    padding: 6px 18px;
+    font-size: 0.85rem;
+  }
 }

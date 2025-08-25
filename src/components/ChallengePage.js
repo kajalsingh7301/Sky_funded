@@ -25,8 +25,8 @@ const ChallengePage = () => {
       </p>
       <div className="challenge-grid">
         {/* Challenge 1 - Popular Plan */}
-        <div className="challenge-card">
-          <div className="popular-tag">Popular Plan</div>
+        <div className="challenge-card3">
+          {/* <div className="popular-tag">Popular Plan</div> */}
           <div className="card-content">
             <img src={d1} alt="Billionaire Challenge" className="challenge-image" />
             <h3 className="card-title">Treasure Funded Challenge</h3>
@@ -45,7 +45,7 @@ const ChallengePage = () => {
         </div>
 
         {/* Challenge 2 */}
-        <div className="challenge-card">
+        <div className="challenge-card3">
           <div className="card-content">
             <img src={d2} alt="Billionaire Lite Challenge" className="challenge-image" />
             <h3 className="card-title">Treasure Funded Lite Challenge</h3>
@@ -83,7 +83,7 @@ const ChallengePage = () => {
         </div>
 
         {/* Challenge 4 */}
-        <div className="challenge-card">
+        <div className="challenge-card3">
           <div className="card-content">
             <img src={d4} alt="Express" className="challenge-image" />
             <h3 className="card-title">Express</h3>

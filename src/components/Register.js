@@ -2,8 +2,14 @@ import React, { useState } from 'react';
 import './Register.css';
 import axios from 'axios';
 import { FaUser, FaEnvelope, FaPhone, FaLock, FaGlobe } from 'react-icons/fa';
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; 
 import register from "../Assets/Registerimg.jpg";
 import { useNavigate } from 'react-router-dom';
+
+// import toastr from "toastr"; // ❌ old toastr (keep commented)
+// import "toastr/build/toastr.min.css"; // ❌ old toastr css (keep commented)
+import { ToastContainer, toast } from "react-toastify"; // ✅ new toastify
+import "react-toastify/dist/ReactToastify.css";
 
 const countries = [
   "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia", "Australia",
@@ -48,6 +54,10 @@ const Registration = () => {
     referralId: '',
   });
 
+  // 👁️ States for toggling password visibility
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -56,22 +66,44 @@ const Registration = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
+      // toastr.error("Passwords do not match!", "Error"); // ❌ old toastr
+      toast.error("Passwords do not match!", { position: "top-right", autoClose: 3000 }); // ✅ new
       return;
     }
 
     try {
-      const res = await axios.post("https://api.treassurefunded.com/api/auth/register", formData);
-      alert("Registration successful!");
+      // ✅ correct backend API endpoint
+      const res = await axios.post("http://localhost:5000/api/auth/register", formData);
+      //  const res = await axios.post("http://treassurefunded/api/auth/register", formData);
+
+      // toastr.success("Registration successful!", "Success"); // ❌ old toastr
+      toast.success("Registration successful!", { position: "top-right", autoClose: 3000 }); // ✅ new
+
       console.log(res.data);
+
+      setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
       console.error("Registration error:", err.response?.data || err.message);
-      alert("Registration failed.");
+
+      // Check if backend says "User already exists"
+      if (err.response?.status === 400 || err.response?.status === 409) {
+        toast.error(
+          err.response?.data?.message || "User already registered with this email/username!",
+          { position: "top-right", autoClose: 3000 }
+        );
+      } else {
+        toast.error("Registration failed! Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      }
     }
   };
 
   return (
     <div className="sky-funded-register-container">
+      <ToastContainer /> {/* ✅ Required for react-toastify */}
+
       <div className='todiv'>
         <div className="sky-funded-register-left">
           <h2>Let's get you set up</h2>
@@ -85,33 +117,59 @@ const Registration = () => {
             <div className="sky-funded-form-row">
               <div className="sky-funded-input-group">
                 <FaUser className="icon" />
-                <input name="username" type="text" placeholder="Enter Unique Username" value={formData.username} onChange={handleChange} required />
+                <input name="username" type="text" placeholder="Enter Unique Username *" value={formData.username} onChange={handleChange} required />
               </div>
               <div className="sky-funded-input-group">
                 <FaUser className="icon" />
-                <input name="fullName" type="text" placeholder="Enter Full Name" value={formData.fullName} onChange={handleChange} required />
+                <input name="fullName" type="text" placeholder="Enter Full Name *" value={formData.fullName} onChange={handleChange} required />
               </div>
             </div>
 
             <div className="sky-funded-form-row">
               <div className="sky-funded-input-group">
                 <FaEnvelope className="icon" />
-                <input name="email" type="email" placeholder="name@example.com" value={formData.email} onChange={handleChange} required />
+                <input name="email" type="email" placeholder="name@example.com *" value={formData.email} onChange={handleChange} required />
               </div>
               <div className="sky-funded-input-group">
                 <FaPhone className="icon" />
-                <input name="phone" type="tel" placeholder="Enter Phone Number" value={formData.phone} onChange={handleChange} required />
+                <input name="phone" type="tel" placeholder="Enter Phone Number *" value={formData.phone} onChange={handleChange} required />
               </div>
             </div>
 
             <div className="sky-funded-form-row">
-              <div className="sky-funded-input-group">
+              <div className="sky-funded-input-group password-group">
                 <FaLock className="icon" />
-                <input name="password" type="password" placeholder="Enter Password" value={formData.password} onChange={handleChange} required />
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"} // 👁️ toggle
+                  placeholder="Enter Password *"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+                <span
+                  className="toggle-password"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </span>
               </div>
-              <div className="sky-funded-input-group">
+              <div className="sky-funded-input-group password-group">
                 <FaLock className="icon" />
-                <input name="confirmPassword" type="password" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
+                <input
+                  name="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"} // 👁️ toggle
+                  placeholder="Confirm Password *"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  required
+                />
+                <span
+                  className="toggle-password"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                </span>
               </div>
             </div>
 
@@ -119,7 +177,7 @@ const Registration = () => {
               <div className="sky-funded-input-group">
                 <FaGlobe className="icon" />
                 <select name="country" value={formData.country} onChange={handleChange} required>
-                  <option value="">Select Country</option>
+                  <option value="">Select Country *</option>
                   {countries.map((country, index) => (
                     <option key={index} value={country}>{country}</option>
                   ))}
@@ -130,7 +188,7 @@ const Registration = () => {
                 <input
                   name="referralId"
                   type="text"
-                  placeholder="Referral ID"
+                  placeholder="Referral ID (Optional)"
                   value={formData.referralId}
                   onChange={handleChange}
                 />
@@ -139,7 +197,7 @@ const Registration = () => {
 
             <div className="sky-funded-checkbox">
               <input type="checkbox" required />
-              <label>I Accept the Terms and Privacy Policy</label>
+              <label>I Accept the Terms and Privacy Policy *</label>
             </div>
 
             <button type="submit" className="sky-funded-register-btn">Register</button>

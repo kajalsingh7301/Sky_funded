@@ -1,7 +1,5 @@
-/* BLACK & GOLDEN THEME - Based on expertemirates.com */
-
+/* ---------------- GLOBAL STYLES - BLACK & GOLD ---------------- */
 .deposit-container {
-  /* display: flex; */
   gap: 40px;
   padding: 30px;
   background: #000;
@@ -10,7 +8,6 @@
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
-
 }
 
 .deposit-left-panel {
@@ -251,110 +248,7 @@ button:hover {
   text-align: center;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .deposit-container {
-    flex-direction: column;
-    padding: 20px;
-  }
-  .deposit-left-panel,
-  .deposit-right-panel {
-    width: 100%;
-  }
-  .payment-method-list {
-    flex-direction: column;
-  }
-  .payment-method-item {
-    justify-content: flex-start;
-  }
-}
-/* Challenge Plan Section */
-.challenge-plans-section {
-  margin-top: 40px;
-  padding: 24px;
-  background: #f1f5f9;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  
-}
-
-.challenge-plans-section h2 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #111827;
-  text-align: center;
-}
-
-.plan-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.plan-card {
-  background-color: #0c0c0c;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px;
-  width: 300px;
-  max-width: 100%;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.04);
-}
-
-.plan-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-}
-
-.plan-card h3 {
-  font-size: 1.4rem;
-  color: #f4f5f6;
-  margin-bottom: 10px;
-}
-
-.plan-fee {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #16a34a;
-  margin-bottom: 10px;
-}
-
-.plan-card p {
-  font-size: 0.95rem;
-  color: #f0f2f5;
-  margin-bottom: 16px;
-}
-
-.buy-now-btn {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.buy-now-btn:hover {
-  background-color: #2563eb;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .plan-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .plan-card {
-    width: 100%;
-  }
-}
+/* ---------------- CHALLENGE PLANS ---------------- */
 .challenge-plans-section {
   margin-top: 40px;
   background-color: #111;
@@ -398,13 +292,12 @@ button:hover {
 
 .plan-fee {
   font-weight: bold;
-  color: #fff;
-  margin-bottom: 15px;
-  background-color: #ffcc00;
   color: #000;
+  background-color: #ffcc00;
   display: inline-block;
   padding: 6px 12px;
   border-radius: 6px;
+  margin-bottom: 15px;
 }
 
 .plan-details {
@@ -433,4 +326,328 @@ button:hover {
 
 .buy-now-btn:hover {
   background-color: #ffd700;
+}
+
+/* ---------------- RESPONSIVE MOBILE ---------------- */
+@media (max-width: 900px) {
+  .deposit-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .deposit-left-panel,
+  .deposit-right-panel {
+    width: 100%;
+  }
+  .payment-method-list {
+    flex-direction: column;
+  }
+  .payment-method-item {
+    justify-content: flex-start;
+  }
+
+  /* Plan Cards Mobile */
+  .plan-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .deposit-left-panel h1 {
+    font-size: 22px;
+  }
+  .deposit-left-panel label {
+    font-size: 14px;
+  }
+  .deposit-left-panel input[type='number'] {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .deposit-right-panel h2 {
+    font-size: 20px;
+  }
+  .deposit-right-panel p {
+    font-size: 28px;
+  }
+  .plan-card h3 {
+    font-size: 18px;
+  }
+  .plan-fee {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .buy-now-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+/* ---------------- GLOBAL STYLES - BLACK & GOLD ---------------- */
+.deposit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 30px;
+  background: #000;
+  border-radius: 10px;
+  color: #FFD700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.deposit-left-panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.deposit-left-panel h1 {
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #FFD700;
+}
+
+.deposit-left-panel label {
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #E5C267;
+}
+
+.deposit-left-panel input[type='number'] {
+  padding: 12px 15px;
+  font-size: 16px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  background-color: #1a1a1a;
+  color: #FFD700;
+  box-shadow: inset 0 0 8px rgba(255, 215, 0, 0.3);
+  width: 100%;
+}
+
+.deposit-left-panel input[type='number']:focus {
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+.payment-method-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.payment-method-item {
+  background-color: #1a1a1a;
+  padding: 15px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1 1 120px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid transparent;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.payment-method-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.payment-method-item span {
+  flex-grow: 1;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.payment-method-item input[type='radio'] {
+  cursor: pointer;
+}
+
+.payment-method-item.active,
+.payment-method-item:hover {
+  background-color: #2d2d2d;
+  border-color: #FFD700;
+  transform: translateY(-2px);
+}
+
+/* ---------------- WALLET SECTION ---------------- */
+.wallet-address-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(255, 215, 0, 0.2);
+  margin: 10px 0;
+  word-break: break-all;
+}
+
+.copy-btn {
+  background: #FFD700;
+  border: none;
+  padding: 8px 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #000;
+  transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+  background: #E6B800;
+}
+
+.copy-message {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #E5C267;
+}
+
+/* ---------------- QR & UPLOAD ---------------- */
+.qr-preview {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.qr-preview h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #FFD700;
+}
+
+.qr-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-label {
+  font-weight: 600;
+  color: #E5C267;
+}
+
+.screenshot-preview img {
+  margin-top: 10px;
+  max-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.2);
+}
+
+/* ---------------- BUTTONS ---------------- */
+.buttons-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.back-btn,
+.save-btn {
+  padding: 15px 20px;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn {
+  background: #FFD700;
+  color: #000;
+}
+
+.back-btn:hover {
+  background: #E6B800;
+}
+
+.save-btn {
+  background: linear-gradient(90deg, #FFD700, #E6B800);
+  color: #000;
+}
+
+.save-btn:hover {
+  background: linear-gradient(90deg, #E6B800, #FFD700);
+}
+
+/* ---------------- CONGRATS MESSAGE ---------------- */
+.congrats-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFD700;
+  color: #000;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  animation: fadeInOut 5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) scale(0.9); }
+  10% { opacity: 1; transform: translateX(-50%) scale(1); }
+  90% { opacity: 1; transform: translateX(-50%) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) scale(0.9); }
+}
+
+/* ---------------- RESPONSIVE MOBILE ---------------- */
+@media (max-width: 900px) {
+  .deposit-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .payment-method-list {
+    flex-direction: column;
+  }
+  .payment-method-item {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .deposit-left-panel h1 {
+    font-size: 22px;
+  }
+  .deposit-left-panel label {
+    font-size: 14px;
+  }
+  .deposit-left-panel input[type='number'] {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .qr-image {
+    width: 120px;
+    height: 120px;
+  }
+  .copy-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+  .back-btn,
+  .save-btn {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+}
+.screenshot-preview img {
+  width: 250px;       /* fixed width */
+  height: 250px;      /* fixed height */
+  object-fit: cover;  /* ensures image fills the box without stretching */
+  border-radius: 8px; /* optional: rounded corners */
+  border: 1px solid #FFD700; /* optional: gold border to match theme */
+  margin-top: 10px;
 }

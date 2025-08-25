@@ -1,7 +1,8 @@
 .admin-deposits-page {
   padding: 2rem;
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #080808;
+  border: 2px soplid gold ;
 }
 
 .admin-deposits-page h2 {
@@ -15,19 +16,19 @@
 .deposits-table table {
   width: 100%;
   border-collapse: collapse;
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: rgb(9, 9, 9);
+  border: 1px solid gold;
 }
 
 .deposits-table th,
 .deposits-table td {
   padding: 12px 15px;
-  border: 1px solid #ddd;
+  border: 1px solid gold;
   text-align: center;
 }
 
 .deposits-table th {
-  background-color: #007bff;
+  background-color: #0d0d0d;
   color: white;
 }
 

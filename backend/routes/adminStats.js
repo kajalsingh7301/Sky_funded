@@ -10,7 +10,8 @@ router.get("/stats", async (req, res) => {
     const totalUsers = await User.countDocuments();
     const totalDeposits = await Deposit.countDocuments();
     const totalKycPending = await Kyc.countDocuments({ status: "pending" });
-    const totalTicketsPending = await Ticket?.countDocuments({ status: "pending" }) || 0;
+    // Defensive check if Ticket model exists and is not undefined/null
+    const totalTicketsPending = Ticket ? await Ticket.countDocuments({ status: "pending" }) : 0;
 
     res.json({
       totalUsers,
@@ -19,6 +20,7 @@ router.get("/stats", async (req, res) => {
       totalTicketsPending,
     });
   } catch (err) {
+    console.error("Error fetching admin stats:", err);
     res.status(500).json({ error: "Failed to fetch admin stats" });
   }
 });

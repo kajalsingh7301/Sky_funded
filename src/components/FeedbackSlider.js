@@ -10,7 +10,7 @@ const feedbacks = [
     role: "Marketing Manager",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
     quote:
-      "I've been with this company for a long time, and it’s been an incredibly rewarding journey. The company’s dedication to innovation and professional growth is exceptional.",
+      "I've been with this company for a long time, and it’s been an incredibly rewarding journey.",
   },
   {
     name: "Jane Cooper",
@@ -95,7 +95,7 @@ const FeedbackSlider = () => {
                 <p className="feedback-role">{feedback.role}</p>
               </div>
             </div>
-            <p className="feedback-quote">❝ {feedback.quote} ❞</p>
+            <p className="feedback-quote"> {feedback.quote} </p>
           </div>
         ))}
       </Slider>

@@ -25,7 +25,8 @@ import Homepage from './components/Homepage';
 import Tablesteps from './components/Tablesteps';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Profile from './pages/Profile';
-import AdminChallengePage from './pages/AdminChallengePage';
+// import AdminChallengePage from './pages/AdminChallengePage';
+import AdminWithdrawlsPage from './pages/AdminWithdrawlsPage';
 import Transaction from './pages/Transactions';
 import Settings from './pages/Settings';
 import Deposit from './pages/Deposit';
@@ -35,10 +36,11 @@ import Layout from './components/Layout';
 import HeadAdminpanel from './HeadAdminpanel/HeadAdminpanel';
 import Adminlogin from './HeadAdminpanel/Adminlogin';
 import UsersPage from './HeadAdminpanel/UsersPage';
-import ReferEarn from "./pages/ReferEarn"; 
+// import ReferEarn from "./pages/ReferEarn"; 
 import Certificates from "./pages/Certificates";
 import SupportTickets from './pages/SupportTickets';
 import Kyc from './pages/Kyc';
+// import Comparision from './components/Comparision';
 
 
 const App = () => {
@@ -91,7 +93,17 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
+           <Route
+          path="/withdrawls"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <AdminWithdrawlsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        {/* <Route
           path="/refer-earn"
           element={
             <ProtectedRoute>
@@ -100,7 +112,7 @@ const App = () => {
               </Layout>
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/support"
           element={
@@ -131,7 +143,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/admin/challenge-page"
           element={
             <ProtectedRoute>
@@ -140,7 +152,7 @@ const App = () => {
               </Layout>
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/transaction"
           element={

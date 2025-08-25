@@ -9,7 +9,7 @@ const AdminTransactionsPage = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    fetch("https://api.treassurefunded.com/api/transactions", {
+    fetch("http://localhost:5000/api/deposits", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ const AdminTransactionsPage = () => {
         return res.json();
       })
       .then((data) => {
-        setTransactions(Array.isArray(data) ? data : data.transactions || []);
+        setTransactions(Array.isArray(data) ? data : data.deposits || []);
         setError(null);
       })
       .catch((err) => setError(err.message))
@@ -41,31 +41,29 @@ const AdminTransactionsPage = () => {
         <table>
           <thead>
             <tr>
-              <th>Transaction ID</th>
               <th>User</th>
               <th>Amount</th>
+              <th>Payment Method</th>
               <th>Status</th>
               <th>Date</th>
-              <th>Created At</th>
             </tr>
           </thead>
           <tbody>
             {transactions.length === 0 ? (
               <tr>
-                <td colSpan="6" style={{ textAlign: "center" }}>No transactions found.</td>
+                <td colSpan="5" style={{ textAlign: "center" }}>No transactions found.</td>
               </tr>
             ) : (
               transactions.map((tx) => (
                 <tr key={tx._id}>
-                  <td>{tx.transactionId || "N/A"}</td>
                   <td>
-                    {tx.userId?.fullName
-                      ? `${tx.userId.fullName} (${tx.userId.username})`
+                    {tx.userId?.username
+                      ? `${tx.userId.username} (${tx.userId.email})`
                       : "N/A"}
                   </td>
                   <td>${typeof tx.amount === "number" ? tx.amount.toFixed(2) : "0.00"}</td>
+                  <td>{tx.paymentMethod || "N/A"}</td>
                   <td>{tx.status || "Pending"}</td>
-                  <td>{tx.date ? new Date(tx.date).toLocaleDateString() : "N/A"}</td>
                   <td>{tx.createdAt ? new Date(tx.createdAt).toLocaleString() : "N/A"}</td>
                 </tr>
               ))

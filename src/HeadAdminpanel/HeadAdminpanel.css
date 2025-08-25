@@ -1,9 +1,9 @@
-/* Base Global Styles */
+/* ================== GLOBAL STYLES ================== */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
-  background: black;
-  color: #222;
+  background: #0b0b0b;
+  color: #fff;
   overflow-x: hidden;
 }
 
@@ -14,15 +14,15 @@ body {
   user-select: none;
 }
 
-/* Sidebar */
+/* ================== SIDEBAR ================== */
 .sidebar {
   width: 250px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(18px);
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  border-right: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-right: 1.5px solid rgba(255, 215, 0, 0.2);
   color: #ddd;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
 }
@@ -30,7 +30,7 @@ body {
 .sidebar h2 {
   font-size: 26px;
   font-weight: 700;
-  color: #fff;
+  color: #ffd700;
   margin-bottom: 10px;
   text-align: center;
   letter-spacing: 1.5px;
@@ -40,7 +40,7 @@ body {
   content: "Your Treasure Funded Account";
   display: block;
   font-size: 12px;
-  color: #5a58fa;
+  color: #ffda6b;
   margin-top: 4px;
   font-style: italic;
   font-weight: 600;
@@ -62,24 +62,24 @@ body {
 
 .sidebar a:hover,
 .sidebar a.active {
-  background-color: #5a58fa;
-  color: #fff;
+  background-color: #ffd700;
+  color: #0b0b0b;
   transform: translateX(8px);
-  box-shadow: 0 6px 12px rgba(90, 88, 250, 0.4);
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4);
 }
 
-/* Main Panel */
+/* ================== MAIN PANEL ================== */
 .main-panel {
   flex-grow: 1;
   padding: 36px 40px;
   overflow-y: auto;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(14px);
   border-radius: 0 20px 20px 0;
   box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.05);
 }
 
-/* Topbar */
+/* ================== TOPBAR ================== */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -90,7 +90,7 @@ body {
 .topbar h1 {
   font-size: 30px;
   font-weight: 700;
-  color: #fff;
+  color: #ffd700;
   letter-spacing: 0.03em;
 }
 
@@ -99,7 +99,7 @@ body {
   color: #bbb;
 }
 
-/* Dashboard */
+/* ================== DASHBOARD ================== */
 .dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -108,7 +108,7 @@ body {
 }
 
 .chart-box {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 22px;
   padding: 20px;
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.1);
@@ -118,13 +118,13 @@ body {
 
 .chart-box:hover {
   transform: scale(1.03);
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 215, 0, 0.05);
 }
 
 .chart-box h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: #ffd700;
   margin-bottom: 14px;
 }
 
@@ -132,14 +132,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
-  color: #222;
+  color: #fff;
 }
 
 .notifications,
 .actions {
   flex: 1;
   min-width: 280px;
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.07);
   padding: 26px 28px;
   border-radius: 22px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
@@ -150,7 +150,7 @@ body {
 .actions h3 {
   font-size: 20px;
   margin-bottom: 20px;
-  color: #fff;
+  color: #ffd700;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -171,10 +171,10 @@ body {
 }
 
 .notifications ul li:hover {
-  color: #5a58fa;
+  color: #ffd700;
 }
 
-/* Buttons */
+/* ================== BUTTONS ================== */
 .actions {
   display: flex;
   flex-direction: column;
@@ -185,8 +185,8 @@ body {
   padding: 14px 26px;
   border: none;
   border-radius: 18px;
-  background: #5a58fa;
-  color: white;
+  background: #ffd700;
+  color: #0b0b0b;
   font-weight: 700;
   font-size: 16px;
   display: flex;
@@ -197,21 +197,22 @@ body {
 }
 
 .actions button:hover {
-  background: #453dff;
-  box-shadow: 0 10px 30px rgba(90, 88, 250, 0.4);
+  background: #e6c200;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
 }
 
 .actions button.secondary {
-  background: #00feba;
+  background: #ffda6b;
   color: #111;
-  box-shadow: 0 6px 16px rgba(0, 254, 186, 0.35);
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.35);
 }
 
 .actions button.secondary:hover {
-  background: #00d6c4;
-  box-shadow: 0 10px 28px rgba(0, 214, 196, 0.6);
+  background: #ffd600;
+  box-shadow: 0 10px 28px rgba(255, 215, 0, 0.6);
 }
 
+/* ================== ANIMATION ================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -223,7 +224,7 @@ body {
   }
 }
 
-/* Chart Container */
+/* ================== CHART CONTAINER ================== */
 .dashboard-wrapper {
   padding: 20px;
   display: flex;
@@ -232,7 +233,7 @@ body {
 }
 
 .chart-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.06);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -241,14 +242,14 @@ body {
 .chart-container h3 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #333;
+  color: #ffd700;
 }
 
 .notify-btn {
   align-self: flex-end;
   margin-bottom: 10px;
-  background-color: #4caf50;
-  color: white;
+  background-color: #ffd700;
+  color: #0b0b0b;
   padding: 10px 18px;
   border: none;
   border-radius: 6px;
@@ -257,10 +258,10 @@ body {
 }
 
 .notify-btn:hover {
-  background-color: #45a049;
+  background-color: #e6c200;
 }
 
-/* Responsive Layout */
+/* ================== RESPONSIVE ================== */
 @media (max-width: 768px) {
   .chart-container {
     padding: 15px;
@@ -271,38 +272,38 @@ body {
   }
 }
 
-/* DataTable Styling */
+/* ================== DATATABLE ================== */
 .rd-table {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
   border-radius: 16px !important;
-  box-shadow: 0 4px 16px rgba(90, 88, 250, 0.15) !important;
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.15) !important;
   font-size: 14px !important;
   color: #ddd !important;
   overflow: hidden !important;
 }
 
 .rd-table thead tr {
-  background: rgba(90, 88, 250, 0.6);
-  color: #fff;
+  background: rgba(255, 215, 0, 0.2);
+  color: #0b0b0b;
   font-weight: 700;
   letter-spacing: 0.03em;
 }
 
 .rd-table thead th {
   padding: 10px 14px !important;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.4) !important;
 }
 
 .rd-table tbody tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
   transition: background-color 0.3s ease;
   cursor: default;
   height: 40px;
 }
 
 .rd-table tbody tr:hover {
-  background: rgba(90, 88, 250, 0.2);
-  color: #fff;
+  background: rgba(255, 215, 0, 0.1);
+  color: #0b0b0b;
 }
 
 .rd-table td,
@@ -312,12 +313,12 @@ body {
 }
 
 .rd-pagination {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 215, 0, 0.05);
   border-radius: 12px;
   padding: 6px 10px;
   margin-top: 8px;
-  box-shadow: 0 4px 12px rgba(90, 88, 250, 0.15);
-  color: #bbb;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+  color: #ddd;
   font-weight: 600;
   display: flex;
   gap: 6px;
@@ -327,7 +328,7 @@ body {
 .rd-pagination button {
   background: transparent;
   border: none;
-  color: #bbb;
+  color: #ddd;
   cursor: pointer;
   font-weight: 600;
   padding: 4px 10px;
@@ -338,8 +339,8 @@ body {
 
 .rd-pagination button:hover,
 .rd-pagination button:focus {
-  background: #5a58fa;
-  color: #fff;
+  background: #ffd700;
+  color: #0b0b0b;
   outline: none;
 }
 
@@ -348,7 +349,7 @@ body {
 }
 
 .rd-table th.sortable:hover {
-  color: #5a58fa;
+  color: #ffd700;
 }
 
 .rd-table-responsive {
@@ -357,42 +358,42 @@ body {
 }
 
 .rd-table input[type="checkbox"] {
-  accent-color: #5a58fa;
+  accent-color: #ffd700;
   cursor: pointer;
 }
 
 .rd-filter-input {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ddd;
-  border: 1.5px solid #5a58fa;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1.5px solid #ffd700;
   border-radius: 14px;
   padding: 8px 14px;
   margin-bottom: 16px;
   font-weight: 600;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .rd-filter-input:focus {
-  border-color: #453dff;
+  border-color: #e6c200;
   outline: none;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  background: rgba(255, 215, 0, 0.08);
+  color: #0b0b0b;
 }
 
-/* Table Action Buttons */
+/* ================== TABLE ACTION BUTTONS ================== */
 .action-btn {
   padding: 6px 12px;
   font-size: 13px;
   border-radius: 10px;
-  background: #5a58fa;
-  color: white;
+  background: #ffd700;
+  color: #0b0b0b;
   border: none;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .action-btn:hover {
-  background: #453dff;
+  background: #e6c200;
   transform: scale(1.05);
 }
 

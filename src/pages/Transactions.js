@@ -1,277 +1,113 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import logo from "../Assets/tfl.png"; // Add your logo in Assets folder
 import "./Transactions.css";
 
 const Transactions = () => {
-  const [transactions, setTransactions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [editingId, setEditingId] = useState(null);
-  const [editedData, setEditedData] = useState({});
-  const [newTransaction, setNewTransaction] = useState({
-    transactionId: "",
-    amount: "",
-    status: "pending",
-    date: "",
-  });
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [deposits, setDeposits] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username"); 
+  const token = localStorage.getItem("token"); 
 
   useEffect(() => {
-    if (!token) {
-      console.error("No token found. Please login.");
-      return;
-    }
-    fetchTransactions();
-  }, [token]);
+    if (!username) return;
+    fetchDeposits();
+  }, [username]);
 
-  const fetchTransactions = async () => {
-    if (!token) return; // extra safety check
+  const fetchDeposits = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("/api/transactions", {
-        headers: { Authorization: `Bearer ${token}` },
+      const res = await axios.get(`/api/deposits/user/${username}`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
-      setTransactions(res.data);
+      setDeposits(res.data);
     } catch (err) {
-      console.error("Error fetching transactions:", err.response?.data || err.message);
+      console.error("Error fetching deposits:", err.response?.data || err.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const validateForm = (data) => {
-    const err = {};
-    if (!data.transactionId?.trim()) err.transactionId = "Transaction ID is required.";
-    if (!data.amount || isNaN(data.amount) || Number(data.amount) <= 0) err.amount = "Valid amount required.";
-    if (!data.date) err.date = "Date is required.";
-    return err;
+  const downloadReceipt = (deposit) => {
+    const element = document.createElement("div");
+    element.className = "receipt-container";
+    element.innerHTML = `
+      <div class="receipt-header">
+        <img src="${logo}" alt="Logo" style="width:150px; height:auto; margin-bottom:20px;" />
+        <div>
+          <h2>Deposit Receipt</h2>
+          <p>Date: ${new Date(deposit.createdAt).toLocaleDateString()}</p>
+          <p>Receipt #: ${deposit._id.slice(-6).toUpperCase()}</p>
+        </div>
+      </div>
+      <table class="receipt-table">
+        <tr>
+          <th>Username</th>
+          <td>${username}</td>
+        </tr>
+        <tr>
+          <th>Amount</th>
+          <td>$${deposit.amount}</td>
+        </tr>
+        <tr>
+          <th>Payment Method</th>
+          <td>${deposit.paymentMethod.toUpperCase()}</td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <td>${deposit.status}</td>
+        </tr>
+        ${deposit.screenshot ? `<tr><th>Proof</th><td><a href="${deposit.screenshot}" target="_blank">View</a></td></tr>` : ""}
+      </table>
+      <div class="receipt-footer">
+        Thank you for your deposit!
+      </div>
+    `;
+
+    document.body.appendChild(element);
+
+    html2canvas(element, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth() - 20; // margin 10
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      pdf.addImage(imgData, "PNG", 10, 10, pdfWidth, pdfHeight);
+      pdf.save(`deposit_${deposit._id}.pdf`);
+      document.body.removeChild(element);
+    });
   };
-
-  const handleEdit = (tx) => {
-    setEditingId(tx._id);
-    setEditedData({ ...tx });
-    setErrors({});
-  };
-
-  const handleCancelEdit = () => {
-    setEditingId(null);
-    setEditedData({});
-    setErrors({});
-  };
-
-  const handleSaveEdit = async () => {
-    const validationErrors = validateForm(editedData);
-    if (Object.keys(validationErrors).length) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    if (!token) {
-      console.error("No token found. Please login.");
-      return;
-    }
-
-    try {
-      await axios.put(`/api/transactions/${editingId}`, editedData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      await fetchTransactions();
-      handleCancelEdit();
-    } catch (err) {
-      console.error("Error updating transaction:", err.response?.data || err.message);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this transaction?")) return;
-
-    if (!token) {
-      console.error("No token found. Please login.");
-      return;
-    }
-
-    try {
-      await axios.delete(`/api/transactions/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      await fetchTransactions();
-    } catch (err) {
-      console.error("Error deleting transaction:", err.response?.data || err.message);
-    }
-  };
-
-  const handleAddTransaction = async () => {
-    const validationErrors = validateForm(newTransaction);
-    if (Object.keys(validationErrors).length) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    if (!token) {
-      console.error("No token found. Please login.");
-      return;
-    }
-
-    try {
-      await axios.post("/api/transactions", newTransaction, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      await fetchTransactions();
-      setNewTransaction({ transactionId: "", amount: "", status: "pending", date: "" });
-      setShowAddModal(false);
-      setErrors({});
-    } catch (err) {
-      console.error("Error adding transaction:", err.response?.data || err.message);
-    }
-  };
-
-  const filteredTransactions = transactions.filter((t) =>
-    t.transactionId?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div className="transactions-container">
-      <h2>Transactions</h2>
-
-      <div className="controls">
-        <input
-          type="text"
-          placeholder="Search by Transaction ID"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          disabled={loading}
-        />
-        <button onClick={() => setShowAddModal(true)} disabled={editingId !== null || loading}>
-          + Add Transaction
-        </button>
-      </div>
+      <h2>Your Deposits</h2>
 
       {loading ? (
-        <p>Loading transactions...</p>
+        <p>Loading deposits...</p>
+      ) : deposits.length === 0 ? (
+        <p>No deposits found.</p>
       ) : (
-        <div className="transaction-list">
-          {filteredTransactions.length === 0 ? (
-            <p>No transactions found.</p>
-          ) : (
-            filteredTransactions.map((tx) => (
-              <div key={tx._id} className="transaction-card">
-                {editingId === tx._id ? (
-                  <>
-                    <input
-                      type="text"
-                      value={editedData.transactionId}
-                      onChange={(e) =>
-                        setEditedData({ ...editedData, transactionId: e.target.value })
-                      }
-                    />
-                    {errors.transactionId && <small className="error">{errors.transactionId}</small>}
-
-                    <input
-                      type="number"
-                      value={editedData.amount}
-                      onChange={(e) =>
-                        setEditedData({ ...editedData, amount: e.target.value })
-                      }
-                    />
-                    {errors.amount && <small className="error">{errors.amount}</small>}
-
-                    <select
-                      value={editedData.status}
-                      onChange={(e) =>
-                        setEditedData({ ...editedData, status: e.target.value })
-                      }
-                    >
-                      <option value="approved">Approved</option>
-                      <option value="pending">Pending</option>
-                      <option value="failed">Failed</option>
-                    </select>
-
-                    <input
-                      type="date"
-                      value={editedData.date?.split("T")[0]}
-                      onChange={(e) =>
-                        setEditedData({ ...editedData, date: e.target.value })
-                      }
-                    />
-                    {errors.date && <small className="error">{errors.date}</small>}
-
-                    <div className="actions">
-                      <button onClick={handleSaveEdit}>Save</button>
-                      <button onClick={handleCancelEdit}>Cancel</button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <p><strong>ID:</strong> {tx.transactionId}</p>
-                    <p><strong>Amount:</strong> ${tx.amount}</p>
-                    <p><strong>Status:</strong> {tx.status}</p>
-                    <p><strong>Date:</strong> {new Date(tx.date).toLocaleDateString()}</p>
-                    <div className="actions">
-                      <button onClick={() => handleEdit(tx)}>Edit</button>
-                      <button onClick={() => handleDelete(tx._id)}>Delete</button>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))
-          )}
-        </div>
-      )}
-
-      {showAddModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>Add New Transaction</h3>
-            <input
-              placeholder="Transaction ID"
-              value={newTransaction.transactionId}
-              onChange={(e) =>
-                setNewTransaction({ ...newTransaction, transactionId: e.target.value })
-              }
-            />
-            {errors.transactionId && <small className="error">{errors.transactionId}</small>}
-
-            <input
-              type="number"
-              placeholder="Amount"
-              value={newTransaction.amount}
-              onChange={(e) =>
-                setNewTransaction({ ...newTransaction, amount: e.target.value })
-              }
-            />
-            {errors.amount && <small className="error">{errors.amount}</small>}
-
-            <select
-              value={newTransaction.status}
-              onChange={(e) =>
-                setNewTransaction({ ...newTransaction, status: e.target.value })
-              }
-            >
-              <option value="pending">Pending</option>
-              <option value="approved">Approved</option>
-              <option value="failed">Failed</option>
-            </select>
-
-            <input
-              type="date"
-              value={newTransaction.date}
-              onChange={(e) =>
-                setNewTransaction({ ...newTransaction, date: e.target.value })
-              }
-            />
-            {errors.date && <small className="error">{errors.date}</small>}
-
-            <div className="actions">
-              <button onClick={handleAddTransaction}>Add</button>
-              <button onClick={() => {
-                setShowAddModal(false);
-                setErrors({});
-              }}>Cancel</button>
+        <div className="deposit-list">
+          {deposits.map((dep) => (
+            <div key={dep._id} className="deposit-card">
+              <p><strong>Amount:</strong> ${dep.amount}</p>
+              <p><strong>Payment Method:</strong> {dep.paymentMethod.toUpperCase()}</p>
+              <p><strong>Status:</strong> {dep.status}</p>
+              <p><strong>Date:</strong> {new Date(dep.createdAt).toLocaleDateString()}</p>
+              {dep.screenshot && (
+                <p>
+                  <strong>Proof:</strong>{" "}
+                  <a href={dep.screenshot} target="_blank" rel="noopener noreferrer">View</a>
+                </p>
+              )}
+              <button onClick={() => downloadReceipt(dep)} className="download-btn">
+                Download Receipt
+              </button>
             </div>
-          </div>
+          ))}
         </div>
       )}
     </div>

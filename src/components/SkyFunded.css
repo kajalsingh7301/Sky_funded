@@ -1,553 +1,296 @@
-/* Base Styles */
+/* ------------------- BASE ------------------- */
 .Skyfunded-parent-div {
   background-color: #000;
-  height: 180vh;
+  color: #fff;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes zoomIn {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Container Styles */
+/* ------------------- HEADER ------------------- */
 .sky-funded-container {
-  background-color: transparent;
-  height: 30vh;
-  width: 55vw;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: center;
-  align-items: center;
-  left: 23%;
-  top: 1%;
-  overflow-wrap: break-word;
+  padding: 60px 20px 40px;
 }
 
 .sky-fund-head-div {
-  background: linear-gradient(90deg, #ffd700, #fff2a8);
+    background: linear-gradient(90deg, #ffd700, #fff2a8);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-weight: 700;
   font-size: 3rem;
   font-family: 'sans-serif';
-  animation: zoomIn 2s ease-in-out;
-  word-wrap: break-word;
 }
 
-/* Paragraph Styles */
 .sky-fund-head-down-para1,
 .sky-fund-head-down-para2 {
+  color: #fff;
   font-size: 1.1rem;
   margin-top: 10px;
-  padding: 0 10px;
-  word-wrap: break-word;
 }
 
-/* Guaranteed Side Styles */
-.guaranteed-side-div {
-  height: 80vh;
-  width: auto;
-  position: relative;
-  top: 5%;
+/* ------------------- MAIN WRAPPER ------------------- */
+.left-right-wrapper {
   display: flex;
-  flex-direction: column;
-  animation: slide-left 2.5s ease-in-out;
-  /* border: 2px solid white; */
-}
-
-.guaranteed-side-div1,
-.guaranteed-side-div2 {
-  width: 36vw;
-  height: 38vh;
-  position: relative;
-  left: 6.5%;
-  /* gap: 10%; */
-  /* margin-right: 110px; */
-  border-radius: 20px;
-  border: 2px solid #ffd700;
-  box-sizing: border-box;
-  overflow-wrap: break-word;
-}
-
-.guaranteed-side-div1 {
-  background: linear-gradient(180deg, #333, #111);
-  height: 37vh;
-}
-
-
-
-/* Animation Keyframes */
-@keyframes slide-left {
-  from {
-    margin-left: -100%;
-  }
-  to {
-    margin-left: 0%;
-  }
-}
-
-/* Image Styles */
-.guaranteed-side-div1-img {
-  display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px; /* increased spacing */
   flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto 50px;
 }
 
-.guarantee-img,
-.shake-hand-img {
-  height: 12vh;
-  width: 5vw;
-  margin-top: 5%;
-  margin-left: 35px;
-}
-
-/* Paragraph Div Styles */
-.guaranteed-para-div {
-  margin-left: 6%;
-  width: 40vw;
-  height: 35vh;
-  overflow-wrap: break-word;
-}
-
-.guarantee-p1 {
-  font-size: 2rem;
-  font-weight: bolder;
-  color: #ffd700;
-  margin-top: 3px;
-  margin-left: 10px;
-}
-
-/* Paragraphs and Shakes Styles */
-.guarantee-p2,
-.guarantee-p3,
-.shake-p1,
-.shake-p2,
-.shake-p3 {
-  color: #fff;
-  font-size: 1rem;
-  margin-left: 10px;
-  word-wrap: break-word;
-  max-width: 100%;
-}
-
-/* Fix overlap and alignment for shake texts */
-.shake-para-div {
+/* ------------------- GUARANTEED BOXES ------------------- */
+.guaranteed-side-div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 8px;
-  padding-left: 15px;
-  box-sizing: border-box;
-  margin-left: 0 !important; /* reset margin */
+  gap: 25px; /* increased gap */
+  flex: 1;
+  min-width: 300px;
 }
 
-.shake-p1 {
-  font-size: 2rem;
-  font-weight: bolder;
+.guaranteed-box {
+  display: flex;
+  gap: 30px; /* increased gap */
+  background: linear-gradient(180deg, #111, #222);
+  border: 2px solid #ffd700;
+  border-radius: 20px;
+  padding: 25px; /* increased padding */
+  align-items: center;
+  animation: slide-left 2s ease-in-out;
+  height: 40vh;
+}
+
+.icon-img {
+  width: 80px;  /* increased */
+  height: 80px; /* increased */
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.guaranteed-text .title {
+  font-size: 2rem; /* increased */
+  font-weight: 700;
   color: #ffd700;
-  margin-left: 0 !important; /* reset margin */
 }
 
-.shake-p2,
-.shake-p3 {
-  margin-left: 0 !important;
-  padding-left: 10px;
-}
-
-/* Name Div Style */
-.name-div {
-  position: relative !important; /* changed from absolute */
-  left: 0 !important;
-  width: 100% !important;
+.guaranteed-text .subtitle,
+.guaranteed-text .description {
+  font-size: 1.2rem; /* increased */
+  color: #fff;
   margin-top: 5px;
 }
 
-/* Right Side Div Styles */
+/* ------------------- RIGHT SIDE DIV ------------------- */
 .sky-fund-right-div {
-  background: linear-gradient(180deg, #1a1a1a, #000);
-  height: 75vh;
-  width: 52vw;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 0;
-  right: 5%;
-  animation: slide-right 2.5s ease-in-out;
+  background: linear-gradient(180deg, #111, #222);
   border: 2px solid #ffd700;
-  overflow-wrap: break-word;
-  padding: 20px; /* added padding for inner spacing */
-  box-sizing: border-box;
-}
-
-/* Animation Keyframes for Right Side */
-@keyframes slide-right {
-  from {
-    margin-left: 100%;
-  }
-  to {
-    margin-left: 0%;
-  }
-}
-
-/* Inside Div Styles */
-.Skyfund-right-side-inside-div1 {
-  height: 30vh;
-  width: 30vw;
-  margin-top: 5%;
+  border-radius: 20px;
+  flex: 1;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 25px; /* increased gap */
+  padding: 25px; /* increased padding */
+  animation: slide-right 2s ease-in-out;
 }
 
-.Skyfund-right-side-inside-div2 {
-  height: 45vh;
-  width: 42vw;
-  margin-top: 7%;
-  margin-right: 8px;
-  border-radius: 20px;
-}
-
-/* Video Styles */
-.mt_5_video {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-}
-
-/* Trade Paragraph Styles */
-.Trade-p,
-.Trade-p1,
-.Trade-p2 {
-  margin-left: 15px;
-  overflow-wrap: break-word;
+.Skyfund-right-side-inside-div1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .Trade-p {
+  font-size: 2.5rem; /* increased */
+  font-weight: 700;
   color: #fff;
-  margin-top: 10px;
-  font-size: 2rem;
-  font-weight: bold;
+ 
 }
 
 .Trade-p1 {
+  font-size: 2rem; /* increased */
+  font-weight: 700;
   color: #ffd700;
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-top: 15px;
 }
 
 .Trade-p2 {
+  font-size: 1.2rem; /* increased */
   color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 2px;
 }
 
-/* Download Button Div Styles */
 .download-button-div {
   background-color: #1c1c1c;
-  color: #ffd700;
+  border: 2px solid #ffd700;
   border-radius: 40px;
-  font-size: 1rem;
-  width: 12vw;
-  height: 7vh;
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 1.2rem; /* increased */
+  width: 220px; /* increased */
+  height: 60px; /* increased */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
-  margin-top: 35px;
-  margin-left: 15px;
-  border: 2px solid #ffd700;
-  transition: 0.3s ease-in-out;
   cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
 }
-
+.link-download{
+  text-decoration: none;
+}
 .download-button-div:hover {
   background-color: #ffd700;
   color: #000;
-  border: 2px solid rgb(11, 11, 11);
+  border: 2px solid #000;
 }
 
-/* Down Div Styles */
+.mt_5_video {
+  width: 100%;
+  height: 250px; /* increased */
+  border-radius: 20px;
+  object-fit: cover;
+}
+
 .down-div {
-  height: 20vh;
-  width: 50vw;
-  position: absolute;
-  right: 0;
-  top: 70%;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  padding: 0 10px;
-  box-sizing: border-box;
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 10px;
   text-align: center;
 }
 
-/* Full Div Styles */
+/* ------------------- STATS & COMMUNITY ------------------- */
 .down-full-div {
-  height: auto;
-  width: 90vw;
-  position: relative;
-  top: 10%;
-  left: 6%;
-  animation: slideUp 2s ease-in-out forwards;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  box-sizing: border-box;
+  gap: 25px; /* increased */
+  justify-content: space-between;
+  width: 90%;
+  margin: 50px auto;
 }
 
-/* Animation Keyframes for Full Div */
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Full Side Div Styles */
 .down-full-side-div1,
 .down-full-side-div2,
 .down-full-side-div3 {
-  height: auto;
-  min-height: 47vh;
-  width: 28vw;
-  border-radius: 20px;
+  background: #111;
   border: 2px solid #ffd700;
-  padding: 20px;
-  box-sizing: border-box;
-  background: #1c1c1c;
-  border: 2px solid white;
+  border-radius: 20px;
+  padding: 25px; /* increased padding */
+  flex: 1;
+  min-width: 280px;
 }
 
-.down-full-side-div1 {
-  background: linear-gradient(140deg, #222, #111);
-}
-
-/* Side Div Paragraph Styles */
-.down-side-div-p1 {
-  color: #ffd700;
-  font-size: 2.5rem;
-  font-weight: bolder;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-/* Funded Stats Styles */
-.sky-funded-stats {
-  color: white;
-  display: flex;
-  flex-direction: row;
-  gap: 60px;
-  margin-left: 35px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-/* Stat Value Styles */
-.stat-value {
-  font-size: 1.5rem;
-  color: white;
-  margin-top: 10px;
-}
-
-/* Sky and Time Image Styles */
-.sky-img,
-.time-img {
-  display: flex;
-  margin-top: 30px;
-  margin-left: 30px;
-}
-
-/* Sky and Time Paragraph Styles */
+.down-side-div-p1,
 .sky-funded-p1,
 .time-p1 {
   color: #ffd700;
-  font-size: 1.8rem;
   font-weight: bold;
-  margin-left: 20px;
+  font-size: 2rem; /* increased */
 }
 
 .sky-funded-p2,
 .time-p2 {
-  color: white;
+  color: #fff;
+  font-size: 1.2rem; /* increased */
+  margin-top: 5px;
+}
+
+.sky-funded-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-value {
+  color: #ffd700;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-left: 20px;
-  margin-top: 15px;
 }
 
-/* Download Link Style */
-.link-download {
-  text-decoration: none;
-  cursor: pointer;
+.stat-label {
+  color: #fff;
+  font-size: 1rem;
 }
 
-/* ------------------- MEDIA QUERIES --------------------- */
+/* ------------------- ANIMATIONS ------------------- */
+@keyframes zoomIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slide-left {
+  0% { transform: translateX(-50%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-right {
+  0% { transform: translateX(50%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* ------------------- RESPONSIVE ------------------- */
 @media (max-width: 768px) {
-  .Skyfunded-parent-div {
-    height: auto;
-    padding-bottom: 40px;
-  }
-
-  .sky-funded-container {
-    width: 90vw;
-    left: 5%;
-    height: auto;
-    padding: 20px 0;
-    text-align: center;
-    top: 3%;
-  }
-
-  .sky-fund-head-div {
-    font-size: 2.5rem;
-    text-align: center;
-  }
-
-  /* Parent containers to stack vertically */
-  .guaranteed-side-div,
-  .sky-fund-right-div,
+  .left-right-wrapper,
   .down-full-div {
     flex-direction: column;
     align-items: center;
-    height: auto;
-    width: 100vw;
-    left: 0;
-    padding: 0 10px;
-    position: static !important;
-    margin: 0 auto 20px auto;
   }
 
-  /* Guaranteed Divs width */
-  .guaranteed-side-div1,
-  .guaranteed-side-div2,
-  .Skyfund-right-side-inside-div1,
-  .Skyfund-right-side-inside-div2,
+  .guaranteed-side-div,
+  .sky-fund-right-div,
   .down-full-side-div1,
   .down-full-side-div2,
   .down-full-side-div3 {
-    width: 90vw;
-    margin: 15px auto;
-    height: auto;
+    width: 90% !important;
+    padding: 20px; /* slightly smaller for mobile */
   }
 
-  /* Images */
-  .guarantee-img,
-  .shake-hand-img {
-    width: 40vw;
-    height: auto;
-    margin: 10px auto;
-  }
-
-  /* Text divs */
-  .guaranteed-para-div {
-    width: 90vw;
-    margin: 0 auto;
-    padding: 10px;
+  /* Fix for stats & community content */
+  .down-full-side-div1 p,
+  .down-full-side-div1 .down-side-div-p1,
+  .down-full-side-div1 .sky-funded-p2,
+  .down-full-side-div2 p,
+  .down-full-side-div2 .sky-funded-p1,
+  .down-full-side-div2 .sky-funded-p2,
+  .down-full-side-div3 p,
+  .down-full-side-div3 .time-p1,
+  .down-full-side-div3 .time-p2 {
     text-align: center;
+    margin: 5px 0;
+    font-size: 1.2rem;
   }
 
-  .guarantee-p1,
-  .shake-p1 {
-    font-size: 1.8rem;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  .guarantee-p2,
-  .guarantee-p3,
-  .shake-p2,
-  .shake-p3 {
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 10px;
-    margin-left: 0;
-  }
-
-  /* Trade paragraph */
-  .Trade-p {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  .Trade-p1 {
-    font-size: 1.4rem;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  .Trade-p2 {
-    font-size: 1rem;
-    text-align: center;
-    margin-left: 0;
-  }
-
-  /* Download button */
-  .download-button-div {
-    width: 80vw;
-    height: auto;
-    font-size: 1rem;
-    padding: 10px 0;
-    margin-left: 0;
-    text-align: center;
-  }
-
-  /* Stats container */
-  .sky-funded-stats {
-    flex-direction: column;
-    gap: 20px;
-    margin-left: 0;
-    align-items: center;
-  }
-
-  /* Images alignment */
-  .sky-img,
-  .time-img {
-    margin: 20px auto;
-    justify-content: center;
-  }
-
-  /* Stats Text */
+  .Trade-p,
+  .Trade-p1,
+  .Trade-p2,
+  .down-side-div-p1,
   .sky-funded-p1,
-  .time-p1 {
-    font-size: 1.4rem;
-    text-align: center;
-    margin-left: 0;
-  }
-
+  .time-p1,
   .sky-funded-p2,
   .time-p2 {
-    font-size: 1rem;
     text-align: center;
-    margin-left: 0;
+    font-size: 1.2rem;
   }
 
-  /* Down div */
-  /* .down-div {
-    font-size: 0.95rem;
-    padding: 0 15px;
-    text-align: justify;
-    width: 90vw;
-    position: static;
-    margin: 30px auto;
-  } */
+  .mt_5_video {
+    height: 180px;
+  }
+
+  .download-button-div {
+    width: 80%;
+    margin: 0 auto;
+    height: 50px;
+    font-size: 1rem;
+  }
+
+  .icon-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .sky-funded-stats {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
 }

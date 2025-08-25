@@ -1,97 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './NotificationsPage.css';
 
-const NotificationsPage = () => {
-  const [notifications, setNotifications] = useState([]);
-  const [filter, setFilter] = useState('all');
+const AdminNotificationForm = () => {
+  const [title, setTitle] = useState('');
+  const [message, setMessage] = useState('');
+  const [type, setType] = useState('alert');
 
-  useEffect(() => {
-    fetchNotifications();
-  }, []);
-
-  const fetchNotifications = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const res = await axios.get('https://api.treassurefunded.com/api/notifications');
-      setNotifications(res.data);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const markAsRead = async (id) => {
-    try {
-      await axios.patch(`https://api.treassurefunded.com/api/notifications/${id}/read`);
-      setNotifications(prev => prev.map(n => n._id === id ? { ...n, isRead: true } : n));
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const markAllAsRead = async () => {
-    try {
-      await Promise.all(
-        notifications
-          .filter(n => !n.isRead)
-          .map(n => axios.patch(`https://api.treassurefunded.com/api/notifications/${n._id}/read`))
-      );
-      setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+      await axios.post('http://localhost:5000/api/notifications', {
+        title,
+        message,
+        type
+      });
+      setTitle('');
+      setMessage('');
+      setType('alert');
+      alert('Notification sent locally!');
     } catch (err) {
-      console.error('Error:', err);
+      console.error(err);
+      alert('Error sending notification locally');
     }
   };
-
-  const getIcon = (type) => {
-    switch (type) {
-      case 'user_signup': return '👤';
-      case 'deposit_request': return '💰';
-      case 'support_message': return '📩';
-      case 'kyc_submitted': return '🆔';
-      case 'alert': return '⚠️';
-      default: return '🔔';
-    }
-  };
-
-  const filtered = notifications.filter(n =>
-    filter === 'all' ? true : filter === 'read' ? n.isRead : !n.isRead
-  );
 
   return (
-    <div className="notifications-container">
-      <div className="header">
-        <h2>🔔 Admin Notifications</h2>
-        <button className="mark-all-btn" onClick={markAllAsRead}>Mark All as Read</button>
-      </div>
-
-      <div className="filter-buttons">
-        <button onClick={() => setFilter('all')} className={filter === 'all' ? 'active' : ''}>All</button>
-        <button onClick={() => setFilter('unread')} className={filter === 'unread' ? 'active' : ''}>Unread</button>
-        <button onClick={() => setFilter('read')} className={filter === 'read' ? 'active' : ''}>Read</button>
-      </div>
-
-      {filtered.length === 0 ? (
-        <p className="no-notifications">No notifications to show.</p>
-      ) : (
-        <div className="notification-list">
-          {filtered.map(n => (
-            <div className={`notification-card ${!n.isRead ? 'unread' : ''}`} key={n._id}>
-              <div className="notification-icon">{getIcon(n.type)}</div>
-              <div className="notification-content">
-                <h4>{n.title}</h4>
-                <p>{n.message}</p>
-                <small>{new Date(n.createdAt).toLocaleString()}</small>
-              </div>
-              {!n.isRead && (
-                <button className="mark-read" onClick={() => markAsRead(n._id)}>
-                  Mark as Read
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
+    <div className="admin-notification-form">
+      <h3>Create Notification</h3>
+      <form onSubmit={handleSubmit}>
+        <input 
+          value={title} 
+          onChange={e => setTitle(e.target.value)} 
+          placeholder="Title" 
+          required 
+        />
+        <textarea 
+          value={message} 
+          onChange={e => setMessage(e.target.value)} 
+          placeholder="Message" 
+          required 
+        />
+        <select value={type} onChange={e => setType(e.target.value)}>
+          <option value="alert">Alert</option>
+          <option value="user_signup">User Signup</option>
+          <option value="deposit_request">Deposit Request</option>
+          <option value="support_message">Support Message</option>
+          <option value="kyc_submitted">KYC Submitted</option>
+        </select>
+        <button type="submit">Send Notification</button>
+      </form>
     </div>
   );
 };
 
-export default NotificationsPage;
+export default AdminNotificationForm;

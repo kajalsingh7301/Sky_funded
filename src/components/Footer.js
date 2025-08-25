@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      {/* Top Section with "Join our community" and Social Icons */}
+      {/* Top Section */}
       <div className="footer-top">
         <h3 className="footer-title">Join our community</h3>
         <div className="footer-social">
@@ -19,6 +19,7 @@ const Footer = () => {
 
       {/* Footer Links */}
       <div className="footer-container">
+
         <div className="footer-section">
           <h3>Markets</h3>
           <ul>
@@ -27,6 +28,8 @@ const Footer = () => {
             <li>Currency Pairs (FX)</li>
             <li>Indices</li>
             <li>Commodities</li>
+            <li>Cryptocurrencies</li>
+            <li>ETFs</li>
           </ul>
         </div>
 
@@ -36,9 +39,12 @@ const Footer = () => {
             <li>Full Library</li>
             <li>Trading Videos</li>
             <li>Ebooks</li>
+            <li>Webinars</li>
             <li>Trading Tools</li>
             <li>Pip Calculator</li>
             <li>Glossary</li>
+            <li>Blog & Insights</li>
+            <li>Market Analysis</li>
           </ul>
         </div>
 
@@ -50,66 +56,88 @@ const Footer = () => {
             <li>Cookie Policy</li>
             <li>Risk Disclosure</li>
             <li>Terms and Conditions</li>
+            <li>AML/KYC Policy</li>
+            <li>Complaint Handling</li>
           </ul>
         </div>
 
         <div className="footer-section">
-          <h3>About</h3>
+          <h3>About Us</h3>
           <ul>
-          <li>📞 Contact Us: +44 20 3734 1025</li>
-          <li>📍 Exinity Limited</li>
-          <li>🗺️ 5th Floor, 355 NEX Tower</li>
-         
-
+            <li>📞 Contact Us: +44 20 3734 1025</li>
+            <li>📍 Exinity Limited</li>
+            <li>🗺️ 5th Floor, 355 NEX Tower, London, UK</li>
+            <li>About Company</li>
+            <li>Our Mission & Vision</li>
+            <li>Careers</li>
+            <li>Press & Media</li>
           </ul>
         </div>
-       
+
       </div>
+
       <div className="footer-container">
+
         <div className="footer-section">
           <h3>Trading</h3>
           <ul>
             <li>Accounts Overview & Comparison</li>
             <li>Advantage Account</li>
             <li>Demo Trading</li>
-            </ul>
+            <li>Islamic Account</li>
+            <li>Copy Trading</li>
+          </ul>
         </div>
 
         <div className="footer-section">
           <h3>Platform</h3>
           <ul>
-            
             <li>MT4</li>
             <li>MT5</li>
-            <li> Mobile Trading</li>
+            <li>Mobile Trading</li>
+            <li>Web Trader</li>
+            <li>API Trading</li>
           </ul>
         </div>
 
-        <div className="footer-section">
+        {/* <div className="footer-section">
           <h3>Pricing</h3>
           <ul>
             <li>Performance Statistics</li>
             <li>Commissions and Fees</li>
             <li>Deposits and Withdrawals</li>
-            
+            <li>Spreads Overview</li>
+            <li>Account Funding Options</li>
           </ul>
-        </div>
+        </div> */}
 
         <div className="footer-section">
           <h3>Careers</h3>
           <ul>
-          <li>“Join our innovative team and grow your career in prop trading.”</li>
-         
-          
-
+            <li>Join our innovative team and grow your career in prop trading</li>
+            <li>Open Positions</li>
+            <li>Internship Programs</li>
+            <li>Culture & Benefits</li>
+            <li>Employee Testimonials</li>
           </ul>
         </div>
+
         <div className="footer-section">
-          
+          <h3>Support</h3>
+          <ul>
+            <li>Help Center</li>
+            <li>Live Chat</li>
+            <li>FAQ</li>
+            <li>Submit a Ticket</li>
+            <li>Community Forum</li>
+          </ul>
         </div>
+
       </div>
 
-      <div className="footer-note">© 2025 Treasure Funded. All rights reserved.</div>
+      <div className="footer-note">
+        © 2025 Treasure Funded. All rights reserved. | Designed with ❤️ by Treasure Funded Team
+      </div>
     </footer>
   );
 };

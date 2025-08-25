@@ -1,30 +1,36 @@
-// models/Deposit.js
-
 const mongoose = require("mongoose");
 
 const depositSchema = new mongoose.Schema(
   {
     amount: {
       type: Number,
-      required: true,
-      min: [10, 'Amount must be at least $10'],
+      required: [true, "Amount is required"],
+      min: [10, "Amount must be at least $10"],
     },
     paymentMethod: {
       type: String,
-      required: true,
-      enum: ['usdt', 'eth', 'btc'],
+      required: [true, "Payment method is required"],
+      enum: ["usdt", "eth", "btc"],
     },
-    screenshotUrl: {
+    screenshot: {
       type: String,
-      required: true,
+      required: [true, "Screenshot proof is required"],
+      trim: true,
     },
-    user: { // Changed from userId to user
+    userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true,
+      ref: "User",
+      required: [true, "User reference is required"],
+    },
+    status: {
+      type: String,
+      enum: ["pending", "approved", "declined"],
+      default: "pending",
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Deposit", depositSchema);
+depositSchema.index({ userId: 1, status: 1 });
+
+module.exports = mongoose.models.Deposit || mongoose.model("Deposit", depositSchema);

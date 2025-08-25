@@ -15,13 +15,16 @@ import Tablesteps from './Tablesteps';
 import { Link } from "react-router-dom";
 // import coin from '../Assets/coin.gif';
 import bg from '../Assets/bg.mp4';
+import Comparision from './Comparision';
 
 const Homepage = () => {
   const [backendMessage, setBackendMessage] = useState('');
 
   useEffect(() => {
 
-    fetch('https://api.treassurefunded.com')
+    // fetch('https://api.treassurefunded.com')
+    
+    fetch('http://localhost:5000')
       .then((res) => res.text())
       .then((data) => setBackendMessage(data))
       .catch((err) => console.error('Error fetching backend:', err));
@@ -86,6 +89,7 @@ const Homepage = () => {
       <TradersFeedback />
       <ExpertBanner/>
       <Tablesteps />
+      <Comparision/>
     </>
   );
 };

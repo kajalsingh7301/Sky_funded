@@ -1,8 +1,10 @@
+// src/pages/Deposit.js
 import React, { useState } from 'react';
 import './Deposit.css';
 import btc from '../Assets/btc.jpg';
 import eth from '../Assets/eth.jpg';
 import usdt from '../Assets/usdt.jpeg';
+import trx from '../Assets/trx.png'; 
 
 const paymentData = {
   usdt: {
@@ -26,6 +28,13 @@ const paymentData = {
     icon: btc,
     description: 'Original Bitcoin network payment.',
   },
+  trx: {
+    label: 'Tron (TRX)',
+    walletAddress: 'TXYZ1234abcdef5678ghijkl9012mnop3456',
+    network: 'TRON',
+    icon: trx,
+    description: 'Fast TRON network with minimal fees.',
+  },
 };
 
 const Deposit = () => {
@@ -38,6 +47,8 @@ const Deposit = () => {
   const [amountError, setAmountError] = useState('');
   const [showCongrats, setShowCongrats] = useState(false);
   const [copyMessage, setCopyMessage] = useState('');
+
+  const username = localStorage.getItem('username'); // Automatically get logged-in user
 
   const resetForm = () => {
     setAmount('');
@@ -123,10 +134,12 @@ const Deposit = () => {
       formData.append('screenshot', screenshotFile);
       formData.append('amount', amount);
       formData.append('paymentMethod', selectedMethod);
+      formData.append('username', username); // send username to backend
 
       const token = localStorage.getItem('token');
 
-      const response = await fetch('https://api.treassurefunded.com/api/deposit/save', {
+      const response = await fetch('http://localhost:5000/api/deposits/save', {
+        // const response = await fetch('http://treassurefunded/api/deposits/save', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -231,7 +244,7 @@ const Deposit = () => {
 
             <div className="upload-section" style={{ marginTop: '30px' }}>
               <label htmlFor="screenshot-upload" className="upload-label">
-                Upload Payment Screenshot:
+                Upload Payment Proof:
               </label>
               <input
                 type="file"
@@ -242,7 +255,7 @@ const Deposit = () => {
 
               {screenshot && (
                 <div className="screenshot-preview">
-                  <img src={screenshot} alt="Uploaded screenshot" />
+                  <img src={screenshot} alt="Uploaded Proof" />
                 </div>
               )}
             </div>
@@ -251,7 +264,7 @@ const Deposit = () => {
 
             {showCongrats && (
               <p className="congrats-message">
-                Deposit screenshot saved successfully! Thank you!
+                Deposit saved successfully! Thank you!
               </p>
             )}
 
@@ -265,7 +278,7 @@ const Deposit = () => {
                 onClick={handleSaveScreenshot}
                 disabled={isSaveDisabled}
               >
-                {saving ? 'Saving...' : 'Save Screenshot'}
+                {saving ? 'Saving...' : 'Submit'}
               </button>
             </div>
           </>
@@ -275,7 +288,7 @@ const Deposit = () => {
       <div className="challenge-plans-section">
         <h2>Or Select a Challenge Plan</h2>
         <div className="plan-cards">
-          {[
+          {[ 
             { account: "$6,000", fee: 59, target: "$144", dailyLoss: "$300", overallLoss: "$600" },
             { account: "$15,000", fee: 119, target: "$360", dailyLoss: "$750", overallLoss: "$1,500" },
             { account: "$25,000", fee: 199, target: "$600", dailyLoss: "$1,250", overallLoss: "$2,500" },
@@ -284,7 +297,7 @@ const Deposit = () => {
             { account: "$200,000", fee: 999, target: "$4,800", dailyLoss: "$10,000", overallLoss: "$20,000" },
           ].map((plan, idx) => (
             <div className="plan-card" key={idx}>
-              <h3>{plan.account} Account</h3>
+              <h3 style={{ textAlign: 'center' }}>{plan.account} Account</h3>
               <p className="plan-fee">Fee: ${plan.fee}</p>
               <ul className="plan-details">
                 <li><strong>Profit Target:</strong> {plan.target}</li>
@@ -296,7 +309,7 @@ const Deposit = () => {
                 className="buy-now-btn"
                 onClick={() => {
                   setAmount(String(plan.fee));
-                  setSelectedMethod('');
+                  setSelectedMethod('usdt'); // default method selected
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               >

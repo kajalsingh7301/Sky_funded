@@ -7,17 +7,14 @@ body, html {
 }
 
 .slider-container {
-  width: 100vw;
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #000;
-  color: #ffd700;
-  padding: 50px 0;
-  position: relative;
+    height: auto;
+    min-height: 50vh;
+    padding: 30px 15px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid golden; */
 }
 
 .slider-title {
@@ -33,7 +30,7 @@ body, html {
 }
 
 .slider-subtitle {
-  font-size:1.1rem ;
+  font-size:0.9rem ;
   color: #e0e0e0;
   margin-bottom: 40px;
   max-width: 600px;
@@ -136,32 +133,62 @@ body, html {
   right: -10px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
+  /* Slider Container */
   .slider-container {
-    height: 110vh;
+    height: auto;               /* fit content */
+    min-height: 0;              /* remove minimum height */
+    padding: 10px 15px 10px 15px; /* minimal padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* align content to top */
+    align-items: center;
   }
 
+  /* Slider Title & Subtitle */
   .slider-title {
-    font-size: 30px;
+    font-size: 2rem;
+    margin: 0 0 10px 0;          /* remove top margin, reduce bottom */
+    text-align: center;
   }
 
   .slider-subtitle {
-    font-size: 16px;
+    font-size: 1rem;
+    margin: 0 0 15px 0;          /* reduce margins */
+    max-width: 95%;
+    text-align: center;
   }
 
+  /* Slick Slider adjustments */
+  .slick-slider {
+    width: 95%;                  /* full width for mobile */
+    padding: 0;
+  }
+
+  .slick-slide {
+    margin: 0 5px;               /* reduce gap between slides */
+  }
+
+  .slick-list {
+    overflow: visible;           /* keep slides visible */
+  }
+
+  /* Feedback Cards */
   .feedback-card1 {
-    padding: 30px;
-    max-width: 450px;
+    max-width: 260px;            
+    padding: 15px;               
+    margin: 10px auto;           
+    min-height: 280px;           /* uniform height */
   }
-
+  /* Profile & Text inside card */
   .profile-pic {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
   }
 
   .feedback-name {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .feedback-role {
@@ -170,25 +197,12 @@ body, html {
 
   .feedback-quote {
     font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .slider-container {
-    height: 100vh;
-    padding: 30px 10px;
+    line-height: 1.4;
+    padding-left: 10px;
   }
 
-  .slider-title {
-    font-size: 26px;
-  }
-
-  .slick-slider {
-    width: 70%;
-  }
-
-  .feedback-card1 {
-    padding: 25px;
-    max-width: 400px;
+  .feedback-quote::before,
+  .feedback-quote::after {
+    font-size: 30px;
   }
 }

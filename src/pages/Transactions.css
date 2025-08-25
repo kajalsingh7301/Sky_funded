@@ -1,229 +1,153 @@
-/* =======================
-   General Container - Black & Gold Theme
-   ======================= */
+/* -------------------- Container -------------------- */
 .transactions-container {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #f5f5dc;
-  background: hsl(0, 0%, 4%);
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.1);
-  animation: fadeInUp 0.5s ease forwards;
+  padding: 40px;
+  font-family: "Poppins", sans-serif;
+  background: #0b0b0b;
+  color: #fff;
+  min-height: 100vh;
+  text-align: center;
 }
 
 .transactions-container h2 {
-  text-align: center;
-  margin-bottom: 25px;
+  font-size: 2.4rem;
+  margin-bottom: 30px;
   font-weight: 700;
-  font-size: 1.8rem;
-  color: #FFD700;
-  text-shadow: 0 0 8px #ffd700aa;
+  color: #ffd700;
 }
 
-/* =======================
-   Controls Section
-   ======================= */
-.controls {
+/* -------------------- Deposit List -------------------- */
+.deposit-list {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  gap: 15px;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
 }
 
-.controls input[type="text"] {
-  flex-grow: 1;
-  min-width: 220px;
-  padding: 10px 14px;
+/* -------------------- Deposit Card -------------------- */
+.deposit-card {
+  background: #0c0c0c;
+  border-radius: 12px;
+  padding: 25px 30px;
+  width: 360px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border-left: 6px solid #ffd700;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.deposit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
+}
+
+.deposit-card p {
+  margin: 10px 0;
   font-size: 1rem;
-  border: 2px solid #FFD70055;
-  border-radius: 8px;
-  background: #000000;
-  color: #f8f8f8;
-  box-shadow: inset 0 0 8px #0008;
+  line-height: 1.5;
 }
 
-.controls input::placeholder {
-  color: #888;
+.deposit-card a {
+  color: #ffd700;
+  text-decoration: underline;
 }
 
-.controls input:focus {
-  border-color: #FFD700;
-  outline: none;
-  box-shadow: 0 0 10px #ffd700aa, inset 0 0 8px #0008;
-  background: #111;
-}
-
-/* Golden Button */
-.controls button {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: #111;
+.download-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #ffd700;
+  color: #1f1f3b;
   border: none;
-  border-radius: 8px;
-  padding: 12px 22px;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.controls button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.6);
-  background: linear-gradient(135deg, #FFC107, #FFB300);
-}
-
-/* =======================
-   Transaction Card
-   ======================= */
-.transaction-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.transaction-card {
-  background: #151515;
-  padding: 18px 22px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(255, 215, 0, 0.1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  transition: background 0.4s ease, box-shadow 0.3s ease;
-}
-
-.transaction-card:hover {
-  background: #1f1f1f;
-  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.3);
-}
-
-.transaction-card p {
-  flex: 1 1 180px;
-  margin: 4px 0;
-  font-size: 1rem;
-  color: #ffe680;
-  text-shadow: 0 0 3px #ffd70088;
-}
-
-.transaction-card p strong {
-  color: #fff0a3;
-}
-
-/* Inputs inside Cards */
-.transaction-card input,
-.transaction-card select {
-  flex: 1 1 160px;
-  padding: 8px 12px;
-  font-size: 1rem;
   border-radius: 6px;
-  border: 2px solid #FFD70055;
-  background: #1b1b1b;
-  color: #fff7c0;
-  box-shadow: inset 0 0 5px #0009;
-}
-
-.transaction-card input:focus,
-.transaction-card select:focus {
-  border-color: #FFD700;
-  background: #111;
-  box-shadow: 0 0 10px #FFD700aa;
-}
-
-/* =======================
-   Buttons Inside Cards
-   ======================= */
-.actions {
-  display: flex;
-  gap: 12px;
-  margin-left: auto;
-}
-
-.actions button {
-  background-color: #FFD700;
-  color: #111;
-  border: none;
-  border-radius: 7px;
-  padding: 8px 15px;
-  font-weight: 600;
-  font-size: 0.9rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+  font-weight: 600;
+  width: 100%;
+  transition: 0.3s;
 }
 
-.actions button:hover {
-  background-color: #FFC107;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+.download-btn:hover {
+  background: #ffec70;
 }
 
-/* Delete Button */
-.actions button:last-child {
-  background-color: #a97c00;
-  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+/* -------------------- Responsive -------------------- */
+@media (max-width: 1024px) {
+  .deposit-card {
+    width: 45%;
+  }
 }
 
-.actions button:last-child:hover {
-  background-color: #8d6700;
-  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.7);
+@media (max-width: 768px) {
+  .deposit-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .deposit-card {
+    width: 95%;
+  }
 }
 
-/* =======================
-   Modal
-   ======================= */
-.modal {
-  background-color: rgba(0, 0, 0, 0.8);
+/* -------------------- Receipt Styles (Real Invoice) -------------------- */
+.receipt-container {
+  width: 650px;
+  max-width: 90%;
+  padding: 30px;
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.modal-content {
-  background: #1c1c1c;
-  color: #fff7cc;
-  box-shadow: 0 12px 25px rgba(255, 215, 0, 0.25);
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
-.modal-content h3 {
-  color: #FFD700;
-  text-shadow: 0 0 8px #ffd70088;
+.receipt-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
 }
 
-.modal-content input,
-.modal-content select {
-  background: #1a1a1a;
-  color: #fff7c0;
-  border: 2px solid #FFD70055;
+.receipt-header p {
+  font-size: 0.9rem;
+  color: #555;
 }
 
-.modal-content input:focus,
-.modal-content select:focus {
-  border-color: #FFD700;
-  background: #121212;
-  box-shadow: 0 0 12px #FFD700cc;
+.receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
 }
 
-.modal-content .actions button:first-child {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  color: #111;
+.receipt-table th,
+.receipt-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 0.95rem;
 }
 
-.modal-content .actions button:last-child {
-  background-color: #a97c00;
-  color: #fff8e1;
+.receipt-table th {
+  background-color: #f7f7f7;
+  font-weight: 600;
 }
 
-/* =======================
-   Error Text (optional tweak)
-   ======================= */
-.error-text {
-  color: #ffb300;
-  text-shadow: 0 0 5px #ffb30088;
+.receipt-footer {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1rem;
+  border-top: 2px solid #ddd;
+  padding-top: 10px;
 }
 
-/* =======================
-   Animations, Responsive - no change
-   ======================= */
-/* Keep your @keyframes and media queries here — they’re reusable */
+.receipt-note {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 15px;
+  text-align: left;
+}

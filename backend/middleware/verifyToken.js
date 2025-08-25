@@ -1,10 +1,8 @@
-//verify token
-
 const jwt = require('jsonwebtoken');
 
 function verifyToken(req, res, next) {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer <token>
+  const token = authHeader?.startsWith('Bearer ') ? authHeader.split(' ')[1] : authHeader;
 
   if (!token) {
     return res.status(401).json({ success: false, msg: 'No token provided' });
@@ -16,15 +14,17 @@ function verifyToken(req, res, next) {
       return res.status(401).json({ success: false, msg: 'Token is invalid or expired' });
     }
 
-    console.log('Decoded JWT payload:', decoded);  // <-- add this debug
+    console.log('Decoded JWT payload:', decoded);
 
-    // Normalize user info to always have _id
     req.user = {
       ...decoded,
-      _id: decoded.id || decoded._id || decoded.userId,  // <-- add userId fallback just in case
+      _id: decoded.id || decoded._id || decoded.userId,
     };
 
-    console.log('Normalized req.user:', req.user);  // <-- add this debug
+    // Add `id` for consistency
+    req.user.id = req.user.id || req.user._id;
+
+    console.log('Normalized req.user:', req.user);
 
     next();
   });

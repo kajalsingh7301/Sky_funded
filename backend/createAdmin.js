@@ -9,8 +9,8 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 })
 .then(async () => {
-  const email = 'skyfunded@admin.com';
-  const plainPassword = 'skyfunded1234';
+  const email = 'skyfundedadmin@gmailcom';
+  const plainPassword = 'skyfunded12345';
 
   const existing = await Admin.findOne({ email });
   if (existing) {

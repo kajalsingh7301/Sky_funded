@@ -1,8 +1,8 @@
-// Same imports
-import React, { useEffect, useState } from "react";
+// src/pages/AdminDepositsPage.js
+import React, { useState, useEffect } from "react";
 import "./AdminDepositPage.css";
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://api.treassurefunded.com";
+const BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
 
 const AdminDepositsPage = () => {
   const [deposits, setDeposits] = useState([]);
@@ -10,80 +10,83 @@ const AdminDepositsPage = () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [isAdminView, setIsAdminView] = useState(false);
-  const [statuses, setStatuses] = useState({}); // NEW STATE
-  const limit = 1000;
-
-  const getSafe = (value, fallback = "N/A") => value || fallback;
+  const limit = 10; // You can change this
 
   const totalPages = Math.ceil(total / limit);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      setError("No token found. Please login.");
-      setLoading(false);
-      return;
-    }
+  const getSafe = (value, fallback = "N/A") => (value ? value : fallback);
 
+  // Fetch deposits from backend
+  const fetchDeposits = async () => {
     setLoading(true);
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found. Please login.");
 
-    fetch(`${BASE_URL}/api/deposit?page=${page}&limit=${limit}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then(async (res) => {
-        if (res.status === 401) {
-          setError("Unauthorized access. Please login again.");
-          localStorage.removeItem("token");
-          window.location.href = "/login";
-          return;
+      const res = await fetch(
+        `${BASE_URL}/api/deposits?page=${page}&limit=${limit}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
         }
-        if (!res.ok) {
-          const errorData = await res.json().catch(() => null);
-          const msg = errorData?.msg || "Failed to fetch deposits";
-          throw new Error(msg);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (data && Array.isArray(data.deposits)) {
-          const sorted = data.deposits.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-          setDeposits(sorted);
-          setTotal(data.total || 0);
-          setError(null);
+      );
 
-          if (sorted.length > 0 && sorted[0].userId) {
-            setIsAdminView(true);
-          } else {
-            setIsAdminView(false);
-          }
-        } else {
-          setDeposits([]);
-          setError("Unexpected data format from server");
-        }
-      })
-      .catch((err) => {
-        setError(err.message || "Error fetching deposits");
-        setDeposits([]);
-      })
-      .finally(() => setLoading(false));
+      const data = await res.json();
+      console.log("🔍 API Deposits Response:", data);
+
+      if (!res.ok) throw new Error(data.msg || "Failed to fetch deposits");
+
+      const sorted = Array.isArray(data.deposits)
+        ? data.deposits.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          )
+        : [];
+
+      setDeposits(sorted);
+      setTotal(data.total || sorted.length);
+      setError(null);
+    } catch (err) {
+      setError(err.message || "Error fetching deposits");
+      setDeposits([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDeposits();
   }, [page]);
 
-  const handleStatus = (id, type) => {
-    setStatuses((prev) => ({
-      ...prev,
-      [id]: prev[id] === type ? null : type,
-    }));
+  // Approve/Reject deposit
+  const handleStatus = async (id, status) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch(`${BASE_URL}/api/deposits/${id}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ status }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.msg || "Failed to update status");
+
+      setDeposits((prev) =>
+        prev.map((dep) => (dep._id === id ? { ...dep, status } : dep))
+      );
+    } catch (err) {
+      alert(err.message || "Error updating status");
+    }
   };
 
   const handlePrev = () => setPage((prev) => Math.max(prev - 1, 1));
-  const handleNext = () => setPage((prev) => (prev < totalPages ? prev + 1 : prev));
+  const handleNext = () =>
+    setPage((prev) => (prev < totalPages ? prev + 1 : prev));
 
   return (
     <div className="admin-deposits-page">
-      <h2>{isAdminView ? "All Deposits (Admin)" : "My Deposit History"}</h2>
+      <h2>All Deposits (Admin)</h2>
 
       {loading ? (
         <div className="loading">Loading deposits...</div>
@@ -95,37 +98,43 @@ const AdminDepositsPage = () => {
             <table>
               <thead>
                 <tr>
-                  {isAdminView && <th>User</th>}
-                  {isAdminView && <th>Email</th>}
+                  <th>User</th>
+                  <th>Email</th>
                   <th>Payment Method</th>
                   <th>Amount</th>
                   <th>Screenshot</th>
                   <th>Date</th>
-                  {isAdminView && <th>Action</th>}
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {deposits.length === 0 ? (
                   <tr>
-                    <td colSpan={isAdminView ? 7 : 5} style={{ textAlign: "center" }}>
+                    <td colSpan={8} style={{ textAlign: "center" }}>
                       No deposits found.
                     </td>
                   </tr>
                 ) : (
                   deposits.map((dep) => {
-                    const status = statuses[dep._id];
+                    const username = getSafe(dep.userId?.username);
+                    const email = getSafe(dep.userId?.email);
 
                     return (
                       <tr key={dep._id}>
-                        {isAdminView && <td>{getSafe(dep.userId?.username)}</td>}
-                        {isAdminView && <td>{getSafe(dep.userId?.email)}</td>}
+                        <td>{username}</td>
+                        <td>{email}</td>
                         <td>{getSafe(dep.paymentMethod)}</td>
-                        <td>${parseFloat(dep.amount).toFixed(2)}</td>
+                        <td>${dep.amount ? parseFloat(dep.amount).toFixed(2) : "0.00"}</td>
                         <td>
-                          {dep.screenshotUrl ? (
-                            <a href={`${BASE_URL}${dep.screenshotUrl}`} target="_blank" rel="noreferrer">
+                          {dep.screenshot ? (
+                            <a
+                              href={`${BASE_URL}${dep.screenshot}`}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
                               <img
-                                src={`${BASE_URL}${dep.screenshotUrl}`}
+                                src={`${BASE_URL}${dep.screenshot}`}
                                 alt="screenshot"
                                 className="screenshot-thumb"
                               />
@@ -135,24 +144,23 @@ const AdminDepositsPage = () => {
                           )}
                         </td>
                         <td>{dep.createdAt ? new Date(dep.createdAt).toLocaleString() : "N/A"}</td>
-                        {isAdminView && (
-                          <td>
-                            <div className="action-buttons">
-                              <button
-                                className={`approve-btn ${status === "approved" ? "active" : ""}`}
-                                onClick={() => handleStatus(dep._id, "approved")}
-                              >
-                                Approve
-                              </button>
-                              <button
-                                className={`decline-btn ${status === "declined" ? "active" : ""}`}
-                                onClick={() => handleStatus(dep._id, "declined")}
-                              >
-                                Decline
-                              </button>
-                            </div>
-                          </td>
-                        )}
+                        <td>{dep.status || "pending"}</td>
+                        <td>
+                          <div className="action-buttons">
+                            <button
+                              className={`approve-btn ${dep.status === "approved" ? "active" : ""}`}
+                              onClick={() => handleStatus(dep._id, "approved")}
+                            >
+                              Approve
+                            </button>
+                            <button
+                              className={`decline-btn ${dep.status === "declined" ? "active" : ""}`}
+                              onClick={() => handleStatus(dep._id, "declined")}
+                            >
+                              Reject
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     );
                   })

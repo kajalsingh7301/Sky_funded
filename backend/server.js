@@ -1,20 +1,22 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const helmet = require("helmet");
+const http = require("http");
+const { Server } = require("socket.io");
 
 // Load environment variables
+dotenv.config();
 
 // Create express app
 const app = express();
 
-// ✅ Middleware to parse JSON and URL-encoded data
+// ✅ Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // ✅ VERY IMPORTANT!
+app.use(express.urlencoded({ extended: true }));
 
-// Enable CORS
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "http://localhost:3000",
@@ -22,18 +24,17 @@ app.use(
   })
 );
 
-// Set security headers
 app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
+  helmet({ contentSecurityPolicy: false })
 );
 
-// Serve uploads folder
 app.use(
   "/uploads",
   (req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_URL || "http://localhost:3000");
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      process.env.FRONTEND_URL || "http://localhost:3000"
+    );
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
     next();
@@ -41,8 +42,9 @@ app.use(
   express.static(path.join(__dirname, "uploads"))
 );
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI)
+// MongoDB connection
+mongoose
+  .connect(process.env.MONGO_URI) // no options needed in v4+
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err);
@@ -52,17 +54,22 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 const verifyToken = require("./middleware/verifyToken");
-
 const authRoutes = require("./routes/auth");
 const contactRoutes = require("./routes/contact");
 const userRoutes = require("./routes/userroutes");
 const statsRoutes = require("./routes/stats");
-const transactionRoutes = require("./routes/transactions");
+const transactionRoutes = require("./routes/transaction");
 const depositRoutes = require("./routes/deposit");
 const adminRoutes = require("./routes/admin");
 const kycRoutes = require("./routes/Kyc");
 const approvedUsersRoutes = require("./routes/approvedUsers");
 const userStatusRoutes = require("./routes/userStatus");
+const ticketRoutes = require("./routes/tickets");
+const notificationsRoutes = require("./routes/notifications");
+const certificateRoute = require("./routes/certificate");
+
+
+
 
 // Mount Routes
 app.use("/api/auth", authRoutes);
@@ -70,11 +77,17 @@ app.use("/api/contact", contactRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/stats", statsRoutes);
 app.use("/api/transactions", verifyToken, transactionRoutes);
-app.use("/api/deposit", depositRoutes);
+
+// ✅ Corrected: deposits route must be plural
+app.use("/api/deposits", depositRoutes);
+
 app.use("/api/admin", adminRoutes);
 app.use("/api/kyc", kycRoutes);
 app.use("/api/approved-users", approvedUsersRoutes);
 app.use("/api/user-status", userStatusRoutes);
+app.use("/api/tickets", ticketRoutes);
+app.use("/api/notifications", notificationsRoutes);
+app.use("/api/certificate", certificateRoute);
 
 // Default route
 app.get("/", (req, res) => {
@@ -92,8 +105,25 @@ app.use((err, req, res, next) => {
   res.status(500).json({ msg: "Internal server error", error: err.message });
 });
 
-// Start Server
+// ------------------- SOCKET.IO SETUP -------------------
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: { origin: process.env.FRONTEND_URL || "http://localhost:3000" },
+});
+
+// Make io available in routes
+app.set("io", io);
+
+io.on("connection", (socket) => {
+  console.log("✅ User connected:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("❌ User disconnected:", socket.id);
+  });
+});
+
+// ------------------- START SERVER -------------------
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Server is running at http://localhost:${PORT}`);
+server.listen(PORT, () => {
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });

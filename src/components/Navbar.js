@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-import tf1 from "../Assets/tf1.png"; 
+// import tf1 from "../Assets/tf1.png"; 
+import tfl from "../Assets/tfl.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +31,7 @@ const Navbar = () => {
     >
       <div className="sky-funded-logop">
         <Link to="/">
-          <img src={tf1} alt="SkyFunded Logo" className="sky-funded-logo-img" />
+          <img src={tfl} alt="SkyFunded Logo" className="sky-funded-logo-img" />
         </Link>
       </div>
 

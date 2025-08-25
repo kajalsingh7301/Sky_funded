@@ -2,38 +2,40 @@
 
 .kyc-container {
   max-width: 600px;
-  margin: 50px auto;
-  padding: 35px 30px;
-  background: #f9f9ff;
+  width: 90%; /* full width on mobile */
+  margin: 40px auto;
+  padding: 30px 25px;
+  background: #0b0b0b; /* black background */
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15); /* subtle golden shadow */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: all 0.3s ease;
+  color: #FFD700; /* golden text */
 }
 
 .kyc-container:hover {
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 35px rgba(255, 215, 0, 0.25);
 }
 
 .kyc-container h2 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
-  color: #333;
+  color: #FFD700;
   text-align: center;
   margin-bottom: 12px;
 }
 
 .kyc-container p {
-  font-size: 15px;
-  color: #666;
+  font-size: 14px;
+  color: #e0c45c;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .kyc-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .kyc-form .form-group {
@@ -42,26 +44,34 @@
 }
 
 .kyc-form label {
-  margin-bottom: 8px;
-  font-size: 15px;
-  color: #222;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #FFD700;
   font-weight: 500;
 }
 
 .kyc-form input,
 .kyc-form select {
   padding: 12px 14px;
-  border: 1px solid #ccc;
+  border: 1px solid #FFD700;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   transition: all 0.2s ease-in-out;
-  background-color: #fff;
+  background-color: #1a1a1a; /* dark input background */
+  color: #FFD700;
+  width: 100%; /* make inputs full width */
+  box-sizing: border-box;
+}
+
+.kyc-form input::placeholder,
+.kyc-form select option {
+  color: #e0c45c;
 }
 
 .kyc-form input:focus,
 .kyc-form select:focus {
-  border-color: #4a6eff;
-  box-shadow: 0 0 0 3px rgba(74, 110, 255, 0.15);
+  border-color: #FFD700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
   outline: none;
 }
 
@@ -69,19 +79,56 @@
   padding: 14px;
   font-size: 16px;
   font-weight: 600;
-  background-color: #4a6eff;
-  color: #fff;
+  background-color: #FFD700;
+  color: #0b0b0b;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%; /* full width button */
 }
 
 .submit-btn:hover {
-  background-color: #3a58d6;
+  background-color: #e0c45c;
   transform: translateY(-1px);
 }
 
 .submit-btn:active {
   transform: scale(0.98);
+}
+
+/* Fully mobile responsive */
+@media (max-width: 600px) {
+  .kyc-container {
+    margin: 20px auto;
+    padding: 20px 15px;
+  }
+
+  .kyc-container h2 {
+    font-size: 22px;
+  }
+
+  .kyc-container p {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .kyc-form {
+    gap: 14px;
+  }
+
+  .kyc-form label {
+    font-size: 13px;
+  }
+
+  .kyc-form input,
+  .kyc-form select {
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+
+  .submit-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
 }

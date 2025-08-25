@@ -9,27 +9,24 @@ const AdminLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await fetch("https://api.treassurefunded.com/api/admin/login", {
+      const res = await fetch("http://localhost:5000/api/admin/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (response.ok) {
-        localStorage.setItem("adminToken", data.token);
-        navigate("/headadmin");
+      if (res.ok) {
+        localStorage.setItem("adminToken", data.token); // ✅ save admin token
+        navigate("/headadmin"); // redirect to admin panel
       } else {
-        alert("Login failed: " + (data.message || "Invalid credentials"));
+        alert(data.message || "Login failed");
       }
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Error logging in. Try again.");
+    } catch (err) {
+      console.error("Admin login error:", err);
+      alert("Error logging in");
     }
   };
 

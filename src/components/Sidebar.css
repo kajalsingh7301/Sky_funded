@@ -82,3 +82,79 @@
 .sidebar-link.active .icon {
   color: #FFD700;
 }
+/* ====== HAMBURGER BUTTON ====== */
+.menu-btn {
+  display: none;
+  position: fixed;
+  top: -5px;
+  left: 22px;
+  z-index: 300; /* above sidebar */
+  font-size: 18px; /* smaller than before */
+  color: #FFD700;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+
+/* ====== MOBILE ====== */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 250; /* above content but below menu button */
+    min-height: 100vh;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .page-content {
+    margin-left: 0; /* full width content on mobile */
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  /* Optional overlay when sidebar is open */
+  body.sidebar-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 200; /* below sidebar, above content */
+  }
+
+  /* Prevent scrolling when sidebar is open */
+  body.sidebar-open {
+    overflow: hidden;
+  }
+}
+/* Sidebar Logo Container */
+.sidebar-logo {
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */
+  padding: 20px 0;          /* space around the logo */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* subtle bottom border */
+}
+
+/* Sidebar Logo Image */
+.sidebar-logo img {
+  max-width: 160px;        /* maximum width */
+  width: 100%;             /* responsive scaling */
+  height: auto;            /* maintain aspect ratio */
+  object-fit: contain;     /* ensures logo fits without distortion */
+  display: block;
+  user-select: none;       /* prevent dragging text selection */
+  pointer-events: none;    /* prevent accidental clicks */
+}

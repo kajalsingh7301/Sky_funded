@@ -1,17 +1,19 @@
+/* ===================== Footer CSS ===================== */
+
+/* Global Footer Styles */
 .footer {
-  background-color: #000; /* fallback if image fails */
-  background-image: url('../Assets/footer-bg.png'); /* dark/golden-styled image recommended */
-  background-size: cover;
-  background-position: center;
+  background-color: #000; /* solid black background */
   padding: 60px 25px;
   color: #ffd700; /* Gold */
   font-family: Arial, sans-serif;
   position: relative;
   bottom: 0;
   animation: slideUp 1s ease-in-out;
+  /* height: 140vh; */
+  /* border: 2px solid gold; */
 }
 
-/* Top Section: Join Community + Icons */
+/* Top Section: Join Community + Social Icons */
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -19,7 +21,7 @@
   padding-bottom: 25px;
   border-bottom: 3px solid rgba(255, 215, 0, 0.3);
   margin-top: -20px;
-  height: 35px;
+  height: 50px;
 }
 
 .footer-title {
@@ -58,9 +60,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
   width: 90vw;
-  margin: auto;
+  margin: 30px auto 0 auto;
   padding-top: 20px;
-  gap: 5px;
+  gap: 15px;
 }
 
 .footer-section {
@@ -91,6 +93,7 @@
 .footer-section ul {
   list-style: none;
   font-size: 16px;
+  padding: 0;
 }
 
 .footer-section ul li {
@@ -111,7 +114,7 @@
 /* Footer Bottom Note */
 .footer-note {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 35px;
   font-size: 10px;
   color: #aaa;
   opacity: 0.7;
@@ -128,18 +131,17 @@
     opacity: 1;
   }
 }
-/* Mobile view fixes for footer */
+
+/* ===================== Mobile Responsive ===================== */
 @media (max-width: 768px) {
   .footer {
     padding: 40px 15px;
-    background-position: center;
     text-align: center;
   }
 
   .footer-top {
     flex-direction: column;
     align-items: center;
-    text-align: center;
     height: auto;
     padding-bottom: 15px;
     gap: 10px;
@@ -173,17 +175,13 @@
     margin: 10px 0;
     min-width: unset;
     width: 100%;
-    opacity: 1; /* ensure visible without scroll delay */
+    opacity: 1;
     transform: none;
     animation: none;
   }
 
   .footer-section h3 {
     font-size: 0.95rem;
-  }
-
-  .footer-section ul {
-    padding: 0;
   }
 
   .footer-section ul li {
@@ -198,7 +196,7 @@
   }
 }
 
-/* Extra small devices */
+/* Extra Small Devices */
 @media (max-width: 480px) {
   .footer-title {
     font-size: 20px;
