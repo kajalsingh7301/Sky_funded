@@ -21,7 +21,7 @@ const ChallengePage = () => {
         Start a Challenge
       </h1>
       <p className="subtitle">
-        Choose your account and funds to begin your trading journey with Bullion funded.
+        Choose your account and funds to begin your trading journey with Treasure funded.
       </p>
       <div className="challenge-grid">
         {/* Challenge 1 - Popular Plan */}

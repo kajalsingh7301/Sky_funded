@@ -36,7 +36,7 @@ const EarningsPage = () => {
 
           <div className="overlay-text">
             <h1>$100+ Million</h1>
-            <p className="subtext">Earned by Traders Globally at FundingPips</p>
+            <p className="subtext">Earned by Traders Globally at Treasure Funded</p>
             <p className="description">Quick and reliable. Zero reward denials.</p>
           </div>
         </div>

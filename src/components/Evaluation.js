@@ -28,7 +28,7 @@ const SkyFundedEvaluationPage = () => {
       <div className='evaluation-main-2'>
         <h3 className='evaluation-main-head'>Evaluation Challenge Rules</h3>
         <p className='evaluation-main-para'>
-          Discover why TreasureFunded’s Evaluation Challenge stands out from the rest!
+          Discover why Treasure Funded’s Evaluation Challenge stands out from the rest!
         </p>
       </div>
 
@@ -130,7 +130,7 @@ const SkyFundedEvaluationPage = () => {
             <img src={iconimg2} alt="icon" className="icon-2-img" />
             <h3 className="heading-3">Top-Tier Trading Conditions</h3>
             <p className="box-para">
-              With dedicated main-level servers like “Growth Next” and “Sky-Funded,” enjoy faster execution, ultra-low spreads, and only $3 commissions — making us a leader in prop firm excellence.
+               Enjoy faster execution, ultra-low spreads, and only $3 commissions — making us a leader in prop firm excellence.
             </p>
           </div>
         </div>

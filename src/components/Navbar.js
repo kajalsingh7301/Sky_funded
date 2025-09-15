@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-// import tf1 from "../Assets/tf1.png"; 
 import tfl from "../Assets/tfl.png";
 
 const Navbar = () => {
@@ -10,6 +9,7 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [isPlatformOpen, setIsPlatformOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // ✅ for mobile menu toggle
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
@@ -35,9 +35,17 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="sky-funded-nav-links">
-        <Link to="/">Home</Link>
-        <Link to="/how-it-works">How It Works</Link>
+      {/* ✅ Hamburger Button (Visible in Mobile) */}
+      <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div className={`bar ${isMenuOpen ? "open" : ""}`}></div>
+        <div className={`bar ${isMenuOpen ? "open" : ""}`}></div>
+        <div className={`bar ${isMenuOpen ? "open" : ""}`}></div>
+      </div>
+
+      {/* ✅ Nav Links (Hide in mobile when menu closed) */}
+      <div className={`sky-funded-nav-links ${isMenuOpen ? "active" : ""}`}>
+        <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+        <Link to="/how-it-works" onClick={() => setIsMenuOpen(false)}>How It Works</Link>
 
         <div
           className="dropdown"
@@ -47,35 +55,34 @@ const Navbar = () => {
           <span className="dropdown-title">Model</span>
           {isModelOpen && (
             <div className="dropdown-content">
-              <Link to="/skyfunded-challenge">Funded</Link>
-              <Link to="/express">Express</Link>
-              <Link to="/evaluation">Evaluation</Link>
+              <Link to="/skyfunded-challenge" onClick={() => setIsMenuOpen(false)}>Funded</Link>
+              <Link to="/express" onClick={() => setIsMenuOpen(false)}>Express</Link>
+              <Link to="/evaluation" onClick={() => setIsMenuOpen(false)}>Evaluation</Link>
             </div>
           )}
         </div>
 
-        <Link to="/faq">Faq</Link>
-        <Link to="/contact">Contact Us</Link>
-      </div>
+        <Link to="/faq" onClick={() => setIsMenuOpen(false)}>Faq</Link>
+        <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
 
-      <div className="button-div">
-        <div
-          className="dropdown"
-          onMouseEnter={() => setIsPlatformOpen(true)}
-          onMouseLeave={() => setIsPlatformOpen(false)}
-        >
-          <div className="platform-buttonn">Platform</div>
-          {isPlatformOpen && (
-            <div className="dropdown-content">
-              <Link to="/login">Login</Link>
-            </div>
-          )}
+        <div className="button-div">
+          <div
+            className="dropdown"
+            onMouseEnter={() => setIsPlatformOpen(true)}
+            onMouseLeave={() => setIsPlatformOpen(false)}
+          >
+            <div className="platform-buttonn">Platform</div>
+            {isPlatformOpen && (
+              <div className="dropdown-content">
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+              </div>
+            )}
+          </div>
+
+          <Link to="/login" className="login-buttonss" onClick={() => setIsMenuOpen(false)}>
+            Login
+          </Link>
         </div>
-
-        <Link to="/login" className="login-buttons">
-  Login
-</Link>
-
       </div>
     </nav>
   );

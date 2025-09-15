@@ -19,7 +19,7 @@ const HowItWorks = () => {
           </p>
 
           <p className="content-para">
-            Kickstart your trading journey with Sky Funded. Choose the ideal funding
+            Kickstart your trading journey with Treasure Funded. Choose the ideal funding
           </p>
 
           <p className="content-para">

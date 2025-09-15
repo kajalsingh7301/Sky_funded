@@ -19,6 +19,21 @@ const NotificationPopup = ({ message, onClose }) => {
   );
 };
 
+// ✅ Logout Confirmation Popup
+const LogoutPopup = ({ onConfirm, onCancel }) => {
+  return (
+    <div className="logout-popup-overlay">
+      <div className="logout-popup">
+        <h3>Are you sure you want to logout?</h3>
+        <div className="logout-buttons">
+          <button className="confirm-btn" onClick={onConfirm}>Yes, Logout</button>
+          <button className="cancel-btn" onClick={onCancel}>Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // ✅ Stat Card Component
 const StatCard = ({ title, icon, value, isCurrency = false }) => (
   <div className="stat-card" role="region" aria-label={title}>
@@ -41,11 +56,12 @@ const AdminPanel = () => {
   const [error, setError] = useState(null);
   const [popupMessage, setPopupMessage] = useState(null);
   const [notifications, setNotifications] = useState([]);
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   const username = localStorage.getItem("username");
   const baseURL = process.env.REACT_APP_BACKEND_URL || "https://api.treassurefunded.com";
 
-  // ✅ Memoize functions to avoid missing dependency warning
+  // ✅ Memoized functions
   const fetchUserData = useCallback(async () => {
     try {
       const response = await axios.get(`${baseURL}/api/users/${username}`);
@@ -105,10 +121,12 @@ const AdminPanel = () => {
   }, [username, baseURL, fetchUserData, fetchUserDeposits, fetchNotifications]);
 
   const handleLogout = () => {
-    if (window.confirm("Do you want to logout?")) {
-      localStorage.clear();
-      window.location.href = "/login";
-    }
+    setShowLogoutPopup(true);
+  };
+
+  const confirmLogout = () => {
+    localStorage.clear();
+    window.location.href = "/login";
   };
 
   if (error) return <div className="loading error-message">{error}</div>;
@@ -121,6 +139,7 @@ const AdminPanel = () => {
   return (
     <div className="user-wrapper">
       {popupMessage && <NotificationPopup message={popupMessage} onClose={() => setPopupMessage(null)} />}
+      {showLogoutPopup && <LogoutPopup onConfirm={confirmLogout} onCancel={() => setShowLogoutPopup(false)} />}
 
       <div className="main-panel">
         {/* ✅ Topbar */}

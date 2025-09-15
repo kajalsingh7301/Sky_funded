@@ -23,26 +23,26 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Markets</h3>
           <ul>
-            <li>Metals</li>
+            {/* <li>Metals</li> */}
             <li>Stocks</li>
             <li>Currency Pairs (FX)</li>
             <li>Indices</li>
             <li>Commodities</li>
             <li>Cryptocurrencies</li>
-            <li>ETFs</li>
+            {/* <li>ETFs</li> */}
           </ul>
         </div>
 
         <div className="footer-section">
           <h3>Knowledge Hub</h3>
           <ul>
-            <li>Full Library</li>
+            {/* <li>Full Library</li> */}
             <li>Trading Videos</li>
             <li>Ebooks</li>
             <li>Webinars</li>
             <li>Trading Tools</li>
             <li>Pip Calculator</li>
-            <li>Glossary</li>
+            {/* <li>Glossary</li> */}
             <li>Blog & Insights</li>
             <li>Market Analysis</li>
           </ul>
@@ -65,12 +65,9 @@ const Footer = () => {
           <h3>About Us</h3>
           <ul>
             <li>📞 Contact Us: +44 20 3734 1025</li>
+            <li>📧 Email: support@treasurefunded.com</li>
             <li>📍 Exinity Limited</li>
             <li>🗺️ 5th Floor, 355 NEX Tower, London, UK</li>
-            <li>About Company</li>
-            <li>Our Mission & Vision</li>
-            <li>Careers</li>
-            <li>Press & Media</li>
           </ul>
         </div>
 
@@ -82,7 +79,7 @@ const Footer = () => {
           <h3>Trading</h3>
           <ul>
             <li>Accounts Overview & Comparison</li>
-            <li>Advantage Account</li>
+            {/* <li>Advantage Account</li> */}
             <li>Demo Trading</li>
             <li>Islamic Account</li>
             <li>Copy Trading</li>
@@ -101,17 +98,6 @@ const Footer = () => {
         </div>
 
         {/* <div className="footer-section">
-          <h3>Pricing</h3>
-          <ul>
-            <li>Performance Statistics</li>
-            <li>Commissions and Fees</li>
-            <li>Deposits and Withdrawals</li>
-            <li>Spreads Overview</li>
-            <li>Account Funding Options</li>
-          </ul>
-        </div> */}
-
-        <div className="footer-section">
           <h3>Careers</h3>
           <ul>
             <li>Join our innovative team and grow your career in prop trading</li>
@@ -120,7 +106,7 @@ const Footer = () => {
             <li>Culture & Benefits</li>
             <li>Employee Testimonials</li>
           </ul>
-        </div>
+        </div> */}
 
         <div className="footer-section">
           <h3>Support</h3>

@@ -142,10 +142,10 @@ const FeedbackSection = () => {
           Treasure Funded stands out with traders like you! Discover what real
           traders are saying about our top-tier prop trading firm.
         </p>
-        <p className="rating">
+        {/* <p className="rating">
           <span className="stars">★★★★★</span> Excellent - Rated 4.9 / 5 based on
           6230 reviews on Trustpilot
-        </p>
+        </p> */}
 
         <div className="feedback-grid">
           {feedbacks.map((feedback, index) => (

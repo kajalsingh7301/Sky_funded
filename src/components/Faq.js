@@ -35,7 +35,7 @@ const FAQItem = () => {
     },
     {
       question: "What payment methods do you support?",
-      answer: "We support various payment methods including Bank Transfer, Crypto, and E-wallets."
+      answer: "We support various payment methods including Crypto, and E-wallets."
     },
     {
       question: "Can I trade news events?",
