@@ -101,7 +101,8 @@ const ContactUs = () => {
               </div>
               <div className="info-box">
                 <img src={imagep2} alt="Email" className="img--1" />
-                <p>Support@treassurefunded.com</p>
+                <p className="email_class">Support@treassurefunded
+                  .com</p>
               </div>
               <div className="info-box">
                 <img src={imagep3} alt="Location" className="img--1" />
@@ -110,7 +111,7 @@ const ContactUs = () => {
             </div>
           </div>
 
-          <div className="social-links">
+          {/* <div className="social-links">
             <p>Our Social Media Platforms</p>
             <div className="icons">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
@@ -129,7 +130,7 @@ const ContactUs = () => {
                 <FaThreads className="social-icon" />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Side */}

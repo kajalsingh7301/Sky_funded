@@ -94,7 +94,7 @@ const SkyFundedPage = () => {
 
         <div className="down-full-side-div2">
           <img src={people} alt="people" className="sky-img" />
-          <p className="sky-funded-p1">Sky Funded Community and Support</p>
+          <p className="sky-funded-p1">Treasure Funded Community and Support</p>
           <p className="sky-funded-p2">
             Empowering traders worldwide to conquer challenges and secure funding.
           </p>

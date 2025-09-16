@@ -12,7 +12,7 @@ const SkyFundedEvaluationPage = () => {
         <div className='eva-1'>
           <div className='eva1-head'>Evaluation Model</div>
           <div className='eva1-pra'>
-            Showcase your trading skills with realistic profit targets. Once achieved, you’ll gain access to a Sky-Funded account with an initial 80% profit share — which can scale up to 90% based on your performance.
+            Showcase your trading skills with realistic profit targets. Once achieved, you’ll gain access to a Treasure-Funded account with an initial 80% profit share — which can scale up to 90% based on your performance.
           </div>
           <div className='eva1-bars'>
             Challenge Model <span>| Evaluation Model </span>| Express Model
