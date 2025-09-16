@@ -101,8 +101,7 @@ const ContactUs = () => {
               </div>
               <div className="info-box">
                 <img src={imagep2} alt="Email" className="img--1" />
-                <p>info@treasurefunded
-                  .com</p>
+                <p>Support@treassurefunded.com</p>
               </div>
               <div className="info-box">
                 <img src={imagep3} alt="Location" className="img--1" />

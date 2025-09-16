@@ -1,20 +1,31 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Firstnextpage.css";
-import helo from "../Assets/helo.png"
+import helo from "../Assets/helo.png";
 import helo1 from "../Assets/helo1.png";
 import helo2 from "../Assets/helo2.png";
 import helo3 from "../Assets/helo3.png";
-import arrow from "../Assets/arrow.png";
+
+import d_logo from "../Assets/d_logo.mp4";
+
 
 const Firstnextpage = () => {
-  const navigate = useNavigate(); // ✅ Initialize navigate
+  const navigate = useNavigate();
 
   return (
     <div className="first-fullpage">
+      {/* 👇 Arrow ki jagah video */}
       <div className="coin-side-div">
-        <img className="arrow" src={arrow} alt="arrow" />
+        <video
+          className="rotating-video"
+          src={d_logo}
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
       </div>
+
       <div className="box-side-div">
         <div className="Key-highlight">Key Highlights</div>
         <div className="gradient-text-div">
@@ -46,18 +57,18 @@ const Firstnextpage = () => {
             <img className="e3" src={helo2} alt="e3" />
             <p className="head-p1">24/7 Customer Support</p>
             <p className="head-paragraph">
-              At TreasureFunded, trading never stops, and neither does our support!
-              Our 24/7 expert team is always available to assist with questions,
-              technical issues.
+              At TreasureFunded, trading never stops, and neither does our
+              support! Our 24/7 expert team is always available to assist with
+              questions, technical issues.
             </p>
           </div>
           <div className="under-box-main-div2">
             <img className="e1" src={helo3} alt="e1" />
             <p className="head-p1">No Time Limit</p>
             <p className="head-paragraph">
-              At TreasureFunded, we believe in flexibility and freedom for traders.
-              Unlike other firms that rush you with deadlines, no time limits on
-              reaching your profit targets.
+              At TreasureFunded, we believe in flexibility and freedom for
+              traders. Unlike other firms that rush you with deadlines, no time
+              limits on reaching your profit targets.
             </p>
           </div>
         </div>
@@ -70,8 +81,8 @@ const Firstnextpage = () => {
         </div>
         <div
           className="start-a-challenge"
-          onClick={() => navigate("/login")} // ✅ Click navigates to login
-          style={{ cursor: "pointer" }} // 👈 Optional: visual cue
+          onClick={() => navigate("/login")}
+          style={{ cursor: "pointer" }}
         >
           Start a Challenge
         </div>

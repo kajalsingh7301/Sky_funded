@@ -13,13 +13,28 @@ dotenv.config();
 // Create express app
 const app = express();
 
+// ✅ Allowed Origins
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://treassurefunded.com"
+];
+
 // ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like Postman or curl)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("❌ Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -31,10 +46,7 @@ app.use(
 app.use(
   "/uploads",
   (req, res, next) => {
-    res.setHeader(
-      "Access-Control-Allow-Origin",
-      process.env.FRONTEND_URL || "http://localhost:3000"
-    );
+    res.setHeader("Access-Control-Allow-Origin", allowedOrigins.join(","));
     res.setHeader("Access-Control-Allow-Credentials", "true");
     res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
     next();
@@ -44,13 +56,12 @@ app.use(
 
 // MongoDB connection
 mongoose
-  .connect(process.env.MONGO_URI) // no options needed in v4+
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err);
     process.exit(1);
   });
-
 
 // Routes
 const verifyToken = require("./middleware/verifyToken");
@@ -68,19 +79,13 @@ const ticketRoutes = require("./routes/tickets");
 const notificationsRoutes = require("./routes/notifications");
 const certificateRoute = require("./routes/certificate");
 
-
-
-
 // Mount Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/stats", statsRoutes);
 app.use("/api/transactions", verifyToken, transactionRoutes);
-
-// ✅ Corrected: deposits route must be plural
 app.use("/api/deposits", depositRoutes);
-
 app.use("/api/admin", adminRoutes);
 app.use("/api/kyc", kycRoutes);
 app.use("/api/approved-users", approvedUsersRoutes);
@@ -108,7 +113,10 @@ app.use((err, req, res, next) => {
 // ------------------- SOCKET.IO SETUP -------------------
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: process.env.FRONTEND_URL || "http://localhost:3000" },
+  cors: {
+    origin: allowedOrigins,
+    credentials: true,
+  },
 });
 
 // Make io available in routes
