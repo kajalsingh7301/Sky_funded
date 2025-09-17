@@ -9,7 +9,7 @@ import trx from '../Assets/trx.png';
 const paymentData = {
   usdt: {
     label: 'USDT (TRC20)',
-    walletAddress: 'TMBSY4QSJthDGVKkGmNwsaMChmSBf6g8sL',
+    walletAddress: 'TBJEe4uTu9DzDvps83QYnEA5qukN3fHL1a',
     network: 'TRC20',
     icon: usdt,
     description: 'Fast & low fee TRC20 network.',
