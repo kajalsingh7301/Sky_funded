@@ -9,8 +9,6 @@
   position: relative;
   bottom: 0;
   animation: slideUp 1s ease-in-out;
-  /* height: 140vh; */
-  /* border: 2px solid gold; */
 }
 
 /* Top Section: Join Community + Social Icons */
@@ -94,21 +92,26 @@
   list-style: none;
   font-size: 16px;
   padding: 0;
+  margin: 0;
+}
+
+/* Links Fix: White by default, Gold on hover, No underline */
+.footer-section ul li a {
+   color: #ffd700;
+  text-decoration: none;
+  font-size: 1rem;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #ffd700;
+  text-decoration: none;
+  opacity: 1;
 }
 
 .footer-section ul li {
   margin: 12px 0;
-  cursor: pointer;
-  transition: 0.3s;
-  opacity: 0.85;
-  font-size: 0.85rem;
-  color: #eee;
-}
-
-.footer-section ul li:hover {
-  opacity: 1;
-  color: #ffd700;
-  text-decoration: underline;
 }
 
 /* Footer Bottom Note */
@@ -184,9 +187,8 @@
     font-size: 0.95rem;
   }
 
-  .footer-section ul li {
+  .footer-section ul li a {
     font-size: 0.8rem;
-    margin: 8px 0;
   }
 
   .footer-note {
@@ -211,7 +213,7 @@
     font-size: 0.9rem;
   }
 
-  .footer-section ul li {
+  .footer-section ul li a {
     font-size: 0.75rem;
   }
 }

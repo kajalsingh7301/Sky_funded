@@ -41,7 +41,11 @@ import Certificates from "./pages/Certificates";
 import SupportTickets from './pages/SupportTickets';
 import Kyc from './pages/Kyc';
 // import Comparision from './components/Comparision';
-
+import PrivacyPolicy from './components/PrivacyPolicy';
+import CookiePolicy from './components/CookiePolicy';
+import RiskDisclosure from './components/RiskDisclosure';
+import TermsAndConditions from './components/TermsAndConditions';
+import ComplaintHandling from './components/ComplaintHandling';
 
 const App = () => {
   return (
@@ -67,6 +71,11 @@ const App = () => {
           <Route path="/feedback-slider" element={<FeedbackSlider />} />
           <Route path="/traders-feedback" element={<TradersFeedback />} />
           <Route path="/expert-banner" element={<ExpertBanner/>}/>
+          <Route path="/privacy" element={<PrivacyPolicy/>}/>
+          <Route path="/cookie" element={<CookiePolicy/>}/>
+          <Route path="/risk-disclosure" element={<RiskDisclosure/>}/>
+          <Route path="/terms-and-conditions" element={<TermsAndConditions/>}/>
+          <Route path="/complaint-handling" element={<ComplaintHandling/>}/>
         </Route>
 
         {/* Admin Login */}
