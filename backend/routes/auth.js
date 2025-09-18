@@ -8,14 +8,17 @@ const Admin = require('../models/Admin');
 
 // ---------- EMAIL TRANSPORTER ----------
 const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST, // e.g., smtp.gmail.com
-  port: 587,
-  secure: false,
+  host: process.env.EMAIL_HOST,
+  port: Number(process.env.EMAIL_PORT), 
+  secure: process.env.EMAIL_PORT === "465", // true if 465, false if 587
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
 });
+
+
+
 
 // Small helper to build a case-insensitive exact match regex
 const exactI = (val) => new RegExp(`^${String(val).replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}$`, 'i');
