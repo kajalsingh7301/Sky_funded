@@ -10,7 +10,8 @@ const SupportPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://api.treassurefunded.com/api/contact") // <-- fixed here
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/contact`)
+
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch messages");
         return res.json();

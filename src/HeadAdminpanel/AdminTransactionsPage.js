@@ -8,8 +8,9 @@ const AdminTransactionsPage = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/deposits`, {
 
-    fetch("https://api.treassurefunded.com/api/deposits", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",

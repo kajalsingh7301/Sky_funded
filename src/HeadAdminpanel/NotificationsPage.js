@@ -10,7 +10,8 @@ const AdminNotificationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://api.treassurefunded.com/api/notifications', {
+     await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/notifications`, {
+
         title,
         message,
         type

@@ -138,7 +138,8 @@ const Deposit = () => {
 
       const token = localStorage.getItem('token');
 
-      const response = await fetch('https://api.treassurefunded.com/api/deposits/save', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/deposits/save`, {
+
         // const response = await fetch('http://treassurefunded/api/deposits/save', {
         method: 'POST',
         headers: {

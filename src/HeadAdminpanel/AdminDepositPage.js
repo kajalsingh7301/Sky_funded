@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./AdminDepositPage.css";
 
-const BASE_URL = process.env.REACT_APP_API_BASE_URL || "https://api.treassurefunded.com";
+const BASE_URL = process.env.REACT_APP_BACKEND_URL || "https://api.treassurefunded.com";
 
 const AdminDepositsPage = () => {
   const [deposits, setDeposits] = useState([]);

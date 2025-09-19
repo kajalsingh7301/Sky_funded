@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 import logo from "../Assets/tfl.png";
 import "./Transactions.css";
 
-const API_URL = process.env.REACT_APP_API_URL || "https://api.treasurefunded.com";
+const API_URL = process.env.REACT_APP_BACKEND_URL || "https://api.treasurefunded.com";
 
 const Transactions = () => {
   const [deposits, setDeposits] = useState([]);

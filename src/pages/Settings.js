@@ -15,7 +15,7 @@ const Settings = () => {
     if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch('https://api.treassurefunded.com/api/delete-account', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/delete-account`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`,

@@ -31,7 +31,7 @@ const Login = () => {
 
       console.log("🔍 Sending payload:", payload); // Debug
 
-      const API_URL = process.env.REACT_APP_API_URL || "https://api.treassurefunded.com";
+      const API_URL = process.env.REACT_APP_BACKEND_URL || "https://api.treassurefunded.com";
       // const API_URL = "https://api.treassurefunded.com";
       const response = await axios.post(`${API_URL}/api/auth/login`, payload, {
         headers: { "Content-Type": "application/json" },

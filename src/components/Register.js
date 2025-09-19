@@ -73,8 +73,8 @@ const Registration = () => {
 
     try {
       // ✅ correct backend API endpoint
-      const res = await axios.post("https://api.treassurefunded.com/api/auth/register", formData);
-      //  const res = await axios.post("http://treassurefunded/api/auth/register", formData);
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/register`, formData);
+
 
       // toastr.success("Registration successful!", "Success"); // ❌ old toastr
       toast.success("Registration successful!", { position: "top-right", autoClose: 3000 }); // ✅ new

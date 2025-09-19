@@ -19,8 +19,9 @@ const TreasureFundedCertificates = () => {
   useEffect(() => {
     if (!username) return;
 
-    axios
-      .get(`https://api.treassurefunded.com/api/certificate/user/${username}`)
+    
+   axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/certificate/user/${username}`)
+
         // .get(`http://treassurefunded/api/certificate/user/${username}`)
       .then((res) => {
         let data = res.data;
