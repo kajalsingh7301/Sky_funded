@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Ticket = require("../models/Ticket");
+const User = require("../models/User");
 const authenticateToken = require("../middleware/authenticateToken");
 const verifyAdmin = require("../middleware/verifyAdmin");
 
@@ -58,10 +59,13 @@ router.get("/", authenticateToken, async (req, res) => {
 // Admin routes
 // ---------------------------
 
-// Get all tickets (admin only, without populate)
+// Get all tickets (admin only, with populated user email)
 router.get("/admin", authenticateToken, verifyAdmin, async (req, res) => {
   try {
-    const tickets = await Ticket.find().sort({ createdAt: -1 }); // no populate
+    const tickets = await Ticket.find()
+      .populate("userId", "email username") // <-- populate email and username
+      .sort({ createdAt: -1 });
+
     res.json({ success: true, tickets });
   } catch (err) {
     console.error("❌ Error fetching all tickets:", err);
@@ -73,9 +77,7 @@ router.get("/admin", authenticateToken, verifyAdmin, async (req, res) => {
 router.put("/:id/resolve", authenticateToken, verifyAdmin, async (req, res) => {
   try {
     const ticket = await Ticket.findById(req.params.id);
-    if (!ticket) {
-      return res.status(404).json({ success: false, message: "Ticket not found" });
-    }
+    if (!ticket) return res.status(404).json({ success: false, message: "Ticket not found" });
 
     ticket.status = "resolved";
     await ticket.save();
@@ -91,9 +93,7 @@ router.put("/:id/resolve", authenticateToken, verifyAdmin, async (req, res) => {
 router.put("/:id/close", authenticateToken, verifyAdmin, async (req, res) => {
   try {
     const ticket = await Ticket.findById(req.params.id);
-    if (!ticket) {
-      return res.status(404).json({ success: false, message: "Ticket not found" });
-    }
+    if (!ticket) return res.status(404).json({ success: false, message: "Ticket not found" });
 
     ticket.status = "closed";
     await ticket.save();

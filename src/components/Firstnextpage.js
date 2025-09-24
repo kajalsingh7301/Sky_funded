@@ -27,7 +27,7 @@ const Firstnextpage = () => {
       </div>
 
       <div className="box-side-div">
-        <div className="Key-highlight">Key Highlights</div>
+        {/* <div className="Key-highlight">Key Highlights</div> */}
         <div className="gradient-text-div">
           Maximize Your Trading Success with Treasure Funded.
         </div>
@@ -89,6 +89,7 @@ const Firstnextpage = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Firstnextpage;

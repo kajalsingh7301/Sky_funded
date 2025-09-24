@@ -72,7 +72,7 @@ const AdminTicketsPage = () => {
         <table className="admin-ticket-table">
           <thead>
             <tr>
-              <th>User ID</th>
+              <th>User Email</th>
               <th>Subject</th>
               <th>Message</th>
               <th>Status</th>
@@ -82,7 +82,7 @@ const AdminTicketsPage = () => {
           <tbody>
             {tickets.map((t) => (
               <tr key={t._id}>
-                <td>{t.userId || "N/A"}</td>
+                <td>{t.userId?.email || "N/A"}</td>
                 <td>{t.subject}</td>
                 <td>{t.message}</td>
                 <td>{t.status}</td>
