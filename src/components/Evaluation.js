@@ -12,7 +12,7 @@ const SkyFundedEvaluationPage = () => {
         <div className='eva-1'>
           <div className='eva1-head'>Evaluation Model</div>
           <div className='eva1-pra'>
-            Showcase your trading skills with realistic profit targets. Once achieved, you’ll gain access to a Treasure-Funded account with an initial 80% profit share — which can scale up to 90% based on your performance.
+            Showcase your trading skills with realistic profit targets. Once achieved, you’ll gain access to a Treassure-Funded account with an initial 80% profit share — which can scale up to 90% based on your performance.
           </div>
           <div className='eva1-bars'>
             Challenge Model <span>| Evaluation Model </span>| Express Model
@@ -28,7 +28,7 @@ const SkyFundedEvaluationPage = () => {
       <div className='evaluation-main-2'>
         <h3 className='evaluation-main-head'>Evaluation Challenge Rules</h3>
         <p className='evaluation-main-para'>
-          Discover why Treasure Funded’s Evaluation Challenge stands out from the rest!
+          Discover why Treassure Funded’s Evaluation Challenge stands out from the rest!
         </p>
       </div>
 
@@ -83,7 +83,7 @@ const SkyFundedEvaluationPage = () => {
       </div>
 
       <div className="express-container-3">
-        Why Choose TreasureFunded <br/>as Your Prop Firm?
+        Why Choose TreassureFunded <br/>as Your Prop Firm?
       </div>
 
       <div className="express-3">

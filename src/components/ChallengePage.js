@@ -21,7 +21,7 @@ const ChallengePage = () => {
         Start a Challenge
       </h1>
       <p className="subtitle">
-        Choose your account and funds to begin your trading journey with Treasure funded.
+        Choose your account and funds to begin your trading journey with Treassure funded.
       </p>
       <div className="challenge-grid">
         {/* Challenge 1 - Popular Plan */}
@@ -29,8 +29,8 @@ const ChallengePage = () => {
           {/* <div className="popular-tag">Popular Plan</div> */}
           <div className="card-content">
             <img src={d1} alt="Billionaire Challenge" className="challenge-image" />
-            <h3 className="card-title">Treasure Funded Challenge</h3>
-            <p className="card-description">The most popular package amongst Treasure Funded traders</p>
+            <h3 className="card-title">Treassure Funded Challenge</h3>
+            <p className="card-description">The most popular package amongst Treassure Funded traders</p>
             <ul className="feature-list">
               <li className="feature">Upto 95% Profit Split</li>
               <li className="feature">20% Profit Share in Challenge Phase</li>
@@ -48,7 +48,7 @@ const ChallengePage = () => {
         <div className="challenge-card3">
           <div className="card-content">
             <img src={d2} alt="Billionaire Lite Challenge" className="challenge-image" />
-            <h3 className="card-title">Treasure Funded Lite Challenge</h3>
+            <h3 className="card-title">Treassure Funded Lite Challenge</h3>
             <p className="card-description">The most affordable package for new and upcoming traders</p>
             <ul className="feature-list">
               <li className="feature">Upto 95% Profit Split</li>
@@ -103,7 +103,7 @@ const ChallengePage = () => {
       </div>
 
       <div className="steps-container">
-  <h2 className="section-title">How Treasure Funded Works</h2>
+  <h2 className="section-title">How Treassure Funded Works</h2>
   <div className="step-flow">
     {[
       {

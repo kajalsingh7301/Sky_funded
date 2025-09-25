@@ -11,7 +11,7 @@ const SkyFundedPage = () => {
     <div className="Skyfunded-parent-div">
       <div className="sky-funded-container">
         <div className="sky-fund-head-div">
-          Why Treasure Funded?
+          Why Treassure Funded?
           <div className="sky-fund-head-down-para1">
             Trade with the most trusted, reliable, and highest-paying prop firm
           </div>
@@ -94,7 +94,7 @@ const SkyFundedPage = () => {
 
         <div className="down-full-side-div2">
           <img src={people} alt="people" className="sky-img" />
-          <p className="sky-funded-p1">Treasure Funded Community and Support</p>
+          <p className="sky-funded-p1">Treassure Funded Community and Support</p>
           <p className="sky-funded-p2">
             Empowering traders worldwide to conquer challenges and secure funding.
           </p>

@@ -24,7 +24,7 @@ const ExpertBanner = () => {
       </div>
 
       <div className="banner-text">
-        <h2>Treasure Funded</h2>
+        <h2>Treassure Funded</h2>
         <p>EMPOWERING SMART TRADERS, EVERY STEP OF THE WAY</p>
       </div>
 

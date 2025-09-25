@@ -131,7 +131,7 @@ const Login = () => {
             </p>
           </form>
           <div className="loginUnique-copyright">
-            <p>© 2025 TreasureFunded. All Rights Reserved.</p>
+            <p>© 2025 TreassureFunded. All Rights Reserved.</p>
           </div>
         </div>
       </div>

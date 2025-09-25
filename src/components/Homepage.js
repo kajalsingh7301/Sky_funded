@@ -40,12 +40,12 @@ const Homepage = () => {
         </video>
 
         <div className="sky-funded-left">
-          <span className="sky-funded-badge">TREASURE FUNDED</span>
+          <span className="sky-funded-badge">TREASSURE FUNDED</span>
           <div className='where-trust-meet-trading'>
             Where Trust Meets Trading
           </div>
           <h1 className="sky-funded-title">
-            <span>Treasure Funded:</span> Trusted Accounts, Highest Payouts, Get Certified
+            <span>Treassure Funded:</span> Trusted Accounts, Highest Payouts, Get Certified
           </h1>
           <p className="sky-funded-desc">
             Know the highest possibilities of your trading. Trade with assurance when working with a financially secure trading prop firm like us.

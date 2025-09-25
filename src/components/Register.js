@@ -112,7 +112,7 @@ const Registration = () => {
         </div>
 
         <div className="sky-funded-register-right">
-          <h1 className="sky-funded-logo">TreasureFunded</h1>
+          <h1 className="sky-funded-logo">TreassureFunded</h1>
           <form className="sky-funded-register-form" onSubmit={handleSubmit}>
             <div className="sky-funded-form-row">
               <div className="sky-funded-input-group">

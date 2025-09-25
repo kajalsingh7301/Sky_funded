@@ -32,8 +32,8 @@ const TreasureFundedCertificates = () => {
             {
               _id: "challenge2",
               userName: username,
-              challengeName: "Treasure Challenge",
-              achievement: "Completed Treasure Challenge",
+              challengeName: "Treassure Challenge",
+              achievement: "Completed Treassure Challenge",
               profitShare: "",
               date: new Date(),
             },
@@ -132,7 +132,7 @@ const TreasureFundedCertificates = () => {
           style={{ backgroundImage: `url(${certificateBg})` }}
         >
           <div className="certificate-header">
-            <h1>TreasureFunded</h1>
+            <h1>TreassureFunded</h1>
             <h2>PROFIT SPLIT CERTIFICATE</h2>
           </div>
 
@@ -151,7 +151,7 @@ const TreasureFundedCertificates = () => {
               Awarded on: {new Date(currentCert.date).toLocaleDateString()}
             </p>
             <p className="formal-text">
-              In recognition of outstanding performance and contribution to TreasureFunded.
+              In recognition of outstanding performance and contribution to TreassureFunded.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ const TreasureFundedCertificates = () => {
 
           <div className="certificate-signature">
             <p>David Rechards</p>
-            <small>CEO, TreasureFunded</small>
+            <small>CEO, TreassureFunded</small>
           </div>
         </div>
       )}

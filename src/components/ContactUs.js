@@ -70,10 +70,10 @@ const ContactUs = () => {
       {/* Heading */}
       <div className="contact-main-header">
         <h1 className="container2div">
-          Contact Us for Expert <span className="rest-head">Treasure Funded Guidance & Support</span>
+          Contact Us for Expert <span className="rest-head">Treassure Funded Guidance & Support</span>
         </h1>
         <p className="container-contact-para">
-          Need assistance with Treasure Funded? Our team is ready to help! <br />
+          Need assistance with Treassure Funded? Our team is ready to help! <br />
           Get expert guidance and support tailored to your needs. Expect responsive <br />
           service and seamless communication every step of the way.
         </p>

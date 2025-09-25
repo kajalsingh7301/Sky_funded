@@ -4,12 +4,12 @@ import "./Tablesteps.css";
 
 const ChallengePlans = () => {
   const [activeStep, setActiveStep] = useState("step1");
-  const [activeMainTab, setActiveMainTab] = useState("TreasureFunded Challenge");
+  const [activeMainTab, setActiveMainTab] = useState("TreassureFunded Challenge");
   const navigate = useNavigate();
 
   const mainTabs = [
-    "TreasureFunded Challenge",
-    "TreasureFunded Lite Challenge",
+    "TreassureFunded Challenge",
+    "TreassureFunded Lite Challenge",
     "Evaluation",
     "Express"
   ];
@@ -90,7 +90,7 @@ const ChallengePlans = () => {
 
   const renderContent = () => {
     switch (activeMainTab) {
-      case "TreasureFunded Challenge":
+      case "TreassureFunded Challenge":
         return (
           <>
             <div className="tabs">
@@ -111,7 +111,7 @@ const ChallengePlans = () => {
           </>
         );
 
-      case "TreasureFunded Lite Challenge":
+      case "TreassureFunded Lite Challenge":
         return renderTable(liteChallengeData);
 
       case "Evaluation":

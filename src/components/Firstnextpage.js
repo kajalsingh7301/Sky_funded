@@ -29,7 +29,7 @@ const Firstnextpage = () => {
       <div className="box-side-div">
         {/* <div className="Key-highlight">Key Highlights</div> */}
         <div className="gradient-text-div">
-          Maximize Your Trading Success with Treasure Funded.
+          Maximize Your Trading Success with Treassure Funded.
         </div>
 
         <div className="box-main-div1">
@@ -37,7 +37,7 @@ const Firstnextpage = () => {
             <img className="e1" src={helo} alt="e1" />
             <p className="head-p1">High Profit Splits</p>
             <p className="head-paragraph">
-              At TreasureFunded, we believe in maximizing your earnings. Our
+              At TreassureFunded, we believe in maximizing your earnings. Our
               profit-sharing model is designed to give you the highest returns
               in the industry.
             </p>
@@ -57,7 +57,7 @@ const Firstnextpage = () => {
             <img className="e3" src={helo2} alt="e3" />
             <p className="head-p1">24/7 Customer Support</p>
             <p className="head-paragraph">
-              At TreasureFunded, trading never stops, and neither does our
+              At TreassureFunded, trading never stops, and neither does our
               support! Our 24/7 expert team is always available to assist with
               questions, technical issues.
             </p>
@@ -66,7 +66,7 @@ const Firstnextpage = () => {
             <img className="e1" src={helo3} alt="e1" />
             <p className="head-p1">No Time Limit</p>
             <p className="head-paragraph">
-              At TreasureFunded, we believe in flexibility and freedom for
+              At TreassureFunded, we believe in flexibility and freedom for
               traders. Unlike other firms that rush you with deadlines, no time
               limits on reaching your profit targets.
             </p>

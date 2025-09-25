@@ -15,11 +15,11 @@ const HowItWorks = () => {
 
         <div className="how-para1">
           <p className="how-para">
-            How to Get Started with <br /> Treasure Funded
+            How to Get Started with <br /> Treassure Funded
           </p>
 
           <p className="content-para">
-            Kickstart your trading journey with Treasure Funded. Choose the ideal funding
+            Kickstart your trading journey with Treassure Funded. Choose the ideal funding
           </p>
 
           <p className="content-para">

@@ -21,7 +21,7 @@ export default function FundedTradingAd() {
           <span className="highlight-blue">are here</span>
         </h1>
         <p className="ad-text">
-          Treasure Funded is not only a prop trading company. We are a group of traders that are enthusiastic about our
+          Treassure Funded is not only a prop trading company. We are a group of traders that are enthusiastic about our
           group's development. We are committed to helping our traders at every turn. Visit us and introduce yourself to
           a community of like-minded people. If you lost your funded account, you may return 60% of your withdrawal and
           instantly regain access to it thanks to our special buyback feature.

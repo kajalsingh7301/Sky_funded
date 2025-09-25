@@ -22,7 +22,7 @@ const TreasureFundedComparison = () => {
   return (
     <div className="comparison-container">
       <div className="comparison-header">
-        <h1>Why Choose Treasure Funded</h1>
+        <h1>Why Choose Treassure Funded</h1>
         <p>Explore our key advantages over the competition in the comparison chart.</p>
       </div>
 

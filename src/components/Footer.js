@@ -105,7 +105,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-note">
-        © 2025 Treasure Funded. All rights reserved. | Designed with ❤️ by Treasure Funded Team
+        © 2025 Treassure Funded. All rights reserved. | Designed with ❤️ by Treasure Funded Team
       </div>
     </footer>
   );

@@ -6,7 +6,7 @@ const CookiePolicy = () => {
     <div className="policy-container">
       <h1>Cookie Policy</h1>
       <p>
-        At <strong>Treasure Funded</strong>, we use cookies to improve your
+        At <strong>Treassure Funded</strong>, we use cookies to improve your
         browsing experience, provide personalized content, and analyze our
         website traffic. This Cookie Policy explains what cookies are, how we
         use them, and your choices regarding their usage.
@@ -41,7 +41,7 @@ const CookiePolicy = () => {
 
       <h2>How We Use Cookies</h2>
       <p>
-        Treasure Funded uses cookies to enhance user experience, track website
+        Treassure Funded uses cookies to enhance user experience, track website
         performance, and deliver targeted services. Cookies may also be used by
         trusted third-party providers, such as analytics or advertising
         partners.

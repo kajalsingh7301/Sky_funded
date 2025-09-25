@@ -139,7 +139,7 @@ const FeedbackSection = () => {
       <div className="feed-back-div">
         <h2 className="feedback-title-1">Traders Feedback</h2>
         <p className="feedback-subtitle">
-          Treasure Funded stands out with traders like you! Discover what real
+          Treassure Funded stands out with traders like you! Discover what real
           traders are saying about our top-tier prop trading firm.
         </p>
         {/* <p className="rating">

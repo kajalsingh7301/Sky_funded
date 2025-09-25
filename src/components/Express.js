@@ -13,7 +13,7 @@ const Express = () => {
 
                     <div className="model-express-para">
                         Your goal in this model will be to hit a 25% profit target with no time limit. Once you
-                         achieve the target, you will start trading on Treasure Funded’s funded account with a
+                         achieve the target, you will start trading on Treassure Funded’s funded account with a
                         60% profit split. The profit split percentage can be increased all the way up to 90%
                          based on your performance.
                     </div>
@@ -58,7 +58,7 @@ const Express = () => {
                     </div>
                     <div className="big-box-div-1-3"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">No Unrealistic profit targets</h3>
-                    <p className="box-para">Fewer restrictions lead to better performance. Keeping that in mind, Treasure Funded requires only a 25% growth target. You can trade at your own pace.</p>
+                    <p className="box-para">Fewer restrictions lead to better performance. Keeping that in mind, Treassure Funded requires only a 25% growth target. You can trade at your own pace.</p>
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@ const Express = () => {
                     </div>
                     <div className="big-boxes-div2-2"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">Up to 90% Profit Sharing</h3>
-                    <p className="box-para">After getting the Treasure Funded Account, you start with a 60% profit split to begin with. As you qualify for the scale-up plan, your profit share can increase all the way up to 90%, based on your performance.</p>
+                    <p className="box-para">After getting the Treassure Funded Account, you start with a 60% profit split to begin with. As you qualify for the scale-up plan, your profit share can increase all the way up to 90%, based on your performance.</p>
                     </div>
                     <div className="big-boxes-div2-3"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">Instant funding as fast as 10 trading days</h3>
@@ -78,7 +78,7 @@ const Express = () => {
                 </div>
             </div>
             <div className="express-container-3">
-            Why Choose Treasure Funded
+            Why Choose Treassure Funded
             <br/>as Your Prop Firm?
             </div>
             <div className="express-3">
@@ -90,8 +90,8 @@ const Express = () => {
                     </div>
                     <div className="big-box-div-1-2">
                     <img src={iconimg2} alt="img" className="icon-2-img" />
-                    <h3 className="heading-3">Treasure Funded Pro Support</h3>
-                    <p className="box-para">Easily access our expert technical support team whenever you need assistance. The Sky-Funded Pro Support option is conveniently located on your dashboard for quick access.</p>
+                    <h3 className="heading-3">Treassure Funded Pro Support</h3>
+                    <p className="box-para">Easily access our expert technical support team whenever you need assistance. The Treassure-Funded Pro Support option is conveniently located on your dashboard for quick access.</p>
                     </div>
                     <div className="big-box-div-1-3"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">Reset Top-up</h3>
@@ -101,11 +101,11 @@ const Express = () => {
                  <div className="big-boxes-div2">
                     <div className="big-boxes-div2-1"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">Fastest Reward</h3>
-                    <p className="box-para">At Treasure-Funded, we provide the fastest rewards with multiple options: Bank Transfer, Wise, Crypto, Perfect Money, and Rise. Your satisfaction is our priority.</p>
+                    <p className="box-para">At Treassure-Funded, we provide the fastest rewards with multiple options: Bank Transfer, Wise, Crypto, Perfect Money, and Rise. Your satisfaction is our priority.</p>
                     </div>
                     <div className="big-boxes-div2-2"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">Trader-Friendly Leverage</h3>
-                    <p className="box-para">At Treasure-Funded, we provide leverage of 1:100 on all our trading accounts. This allows traders to use appropriate lot sizes even with small stop losses, making the overall trading experience smooth.</p>
+                    <p className="box-para">At Treassure-Funded, we provide leverage of 1:100 on all our trading accounts. This allows traders to use appropriate lot sizes even with small stop losses, making the overall trading experience smooth.</p>
                     </div>
                     <div className="big-boxes-div2-3"><img src={iconimg2} alt="img" className="icon-2-img" />
                     <h3 className="heading-3">Best Trading Condition</h3>
