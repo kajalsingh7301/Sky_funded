@@ -186,10 +186,13 @@ const AdminPanel = () => {
         {active === "KYC / Verification" && <KycPage />}
         {active === "Notifications" && <NotificationsPage />}
         {active === "Approvals" && <Approvals />}
-        {active === "Tickets Raised" && <AdminTicketsPage />} {/* Tickets */}
+        {active === "Tickets Raised" && <AdminTicketsPage />} 
       </main>
     </div>
   );
 };
 
 export default AdminPanel;
+
+
+

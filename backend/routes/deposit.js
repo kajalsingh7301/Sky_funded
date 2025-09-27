@@ -92,7 +92,7 @@ router.get("/", async (req, res) => {
     page = parseInt(page) || 1;
     limit = parseInt(limit) || 10;
     const skip = (page - 1) * limit;
-
+    
     const deposits = await Deposit.find()
       .populate("userId", "username email balance totalDeposit")
       .skip(skip)

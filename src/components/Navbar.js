@@ -62,7 +62,7 @@ const Navbar = () => {
           )}
         </div>
 
-        <Link to="/faq" onClick={() => setIsMenuOpen(false)}>Faq</Link>
+        <Link to="/faq" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
         <Link to="/contact" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
 
         <div className="button-div">
