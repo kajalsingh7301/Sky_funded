@@ -76,7 +76,7 @@ const SkyFundedPage = () => {
           <p className="down-side-div-p1">Empowering Traders in 195+ Countries</p>
           <div className="sky-funded-stats">
             <div className="stat-item">
-              <p className="stat-value">$100+</p>
+              <p className="stat-value">$100K+</p>
               <p className="stat-label">Total Payouts</p>
             </div>
             <div className="stat-divider"></div>
