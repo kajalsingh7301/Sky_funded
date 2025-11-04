@@ -14,50 +14,106 @@ const ChallengePlans = () => {
     "Express"
   ];
 
-  const step1Data = [
-    ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
-    ["Get Plan", "Fee: $50", "Fee: $99", "Fee: $199", "Fee: $299", "Fee: $599", "Fee: $999"],
-    ["Profit Target", "$144", "$360", "$600", "$1,200", "$2,400", "$4,800"],
-    ["Max Daily Loss", "$300", "$750", "$1,250", "$2,500", "$5,000", "$10,000"],
-    ["Max Overall Loss", "$600", "$1,500", "$2,500", "$5,000", "$10,000", "$20,000"],
-    ["Profit Split", "95%", "95%", "95%", "95%", "95%", "95%"],
-    ["Minimum Days", "2 Days", "2 Days", "2 Days", "2 Days", "2 Days", "2 Days"],
-    ["First Reward", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days"],
-  ];
+const step1Data = [
+  ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
+  ["Get Plan", "Fee: $49", "Fee: $99", "Fee: $199", "Fee: $299", "Fee: $499", "Fee: $999"],
 
-  const step2Data = [
-    ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
-    ["Get Plan", "Fee: $39", "Fee: $99", "Fee: $169", "Fee: $259", "Fee: $499", "Fee: $899"],
-    ["Profit Target", "$120", "$300", "$500", "$1,000", "$2,000", "$4,000"],
-    ["Max Daily Loss", "$250", "$600", "$1,000", "$2,000", "$4,000", "$8,000"],
-    ["Max Overall Loss", "$500", "$1,200", "$2,000", "$4,000", "$8,000", "$16,000"],
-    ["Profit Split", "90%", "90%", "90%", "90%", "90%", "90%"],
-    ["Minimum Days", "2 Days", "2 Days", "2 Days", "2 Days", "2 Days", "2 Days"],
-    ["First Reward", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days"],
-  ];
+  ["20% Profit Share From Challenge Phase", "$120", "$300", "$500", "$1,000", "$2,000", "$4,000"],
 
-  const liteChallengeData = [
-    ["Account Size", "$5,000", "$10,000", "$20,000"],
-    ["Fee", "$49", "$89", "$169"],
-    ["Profit Target", "$250", "$500", "$1,000"],
-    ["Max Drawdown", "$150", "$300", "$600"],
-    ["Profit Split", "85%", "85%", "85%"],
-  ];
+  ["Profit Target", "10%", "10%", "10%", "10%", "10%", "10%"],
 
-  const evaluationData = [
-    ["Account Size", "$25,000", "$50,000"],
-    ["Fee", "$129", "$249"],
-    ["Profit Target", "$1,500", "$3,000"],
-    ["Max Loss", "$1,000", "$2,000"],
-    ["Profit Split", "88%", "88%"],
-  ];
+  ["Maximum Daily Loss", "3% [$180]", "3% [$450]", "3% [$750]", "3% [$1,500]", "3% [$3,000]", "3% [$6,000]"],
+
+  ["Maximum Overall Loss", "6% [$360]", "6% [$900]", "6% [$1,500]", "6% [$3,000]", "6% [$6,000]", "6% [$12,000]"],
+
+  ["Balance Based Drawdown", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+
+  ["Minimum Trading Days", "2 Days", "2 Days", "2 Days", "2 Days", "2 Days", "2 Days"],
+
+  ["Profit Split Upto", "95%", "95%", "95%", "95%", "95%", "95%"],
+
+  ["News Trading", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+
+  ["First Reward", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days"],
+];
+
+const step2Data = [
+  ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
+
+  ["Get Plan", "Fee: $59", "Fee: $119", "Fee: $199", "Fee: $299", "Fee: $549", "Fee: $999"],
+
+  ["20% Profit Share From Challenge Phase", "$144", "$360", "$600", "$1200", "$2400", "$4800"],
+
+  ["Profit Target", "P1: 7%, P2: 5%", "P1: 7%, P2: 5%", "P1: 7%, P2: 5%", "P1: 7%, P2: 5%", "P1: 7%, P2: 5%", "P1: 7%, P2: 5%"],
+
+  ["Maximum Daily Loss", "5% [$300]", "5% [$750]", "5% [$1,250]", "5% [$2,500]", "5% [$5,000]", "5% [$10,000]"],
+
+  ["Maximum Overall Loss", "10% [$600]", "10% [$1,500]", "10% [$2,500]", "10% [$5,000]", "10% [$10,000]", "10% [$20,000]"],
+
+  ["Balance Based Drawdown", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+
+  ["Minimum Trading Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days"],
+
+  ["Profit Split Upto", "95%", "95%", "95%", "95%", "95%", "95%"],
+
+  ["News Trading", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+
+  ["First Reward", "Monthly", "Monthly", "Monthly", "Monthly", "Monthly", "Monthly"],
+];
+
+
+ const liteChallengeData = [
+  ["Account Size", "$5,000", "$10,000", "$25,000", "$50,000", "$100,000", "$200,000"],
+
+  ["Get Plan", "Fee: $32", "Fee: $59", "Fee: $139", "Fee: $229", "Fee: $399", "Fee: $599"],
+
+  ["Profit Target", "P1: 7%, P2: 4%", "P1: 7%, P2: 4%", "P1: 7%, P2: 4%", "P1: 7%, P2: 4%", "P1: 7%, P2: 4%", "P1: 7%, P2: 4%"],
+
+  ["Maximum Daily Loss", "4% [$200]", "4% [$400]", "4% [$1,000]", "4% [$2,000]", "4% [$4,000]", "4% [$8,000]"],
+
+  ["Maximum Overall Loss", "8% [$400]", "8% [$800]", "8% [$2,000]", "8% [$4,000]", "8% [$8,000]", "8% [$16,000]"],
+
+  ["Balance Based Drawdown", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+
+  ["Minimum Trading Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days", "5 Days"],
+
+  ["Profit Split Upto", "95%", "95%", "95%", "95%", "95%", "95%"],
+
+  ["News Trading", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+
+  ["First Reward", "21 Days", "21 Days", "21 Days", "21 Days", "21 Days", "21 Days"],
+];
+
+
+const evaluationData = [
+  ["Account Size", "$6K", "$15K", "$25K", "$50K", "$100K", "$200K"],
+  ["Plan Fee", "$49", "$99", "$199", "$299", "$549", "$999"],
+  ["20% Profit Share", "$180", "$450", "$750", "$1,500", "$3,000", "$6,000"],
+  ["Profit Target", "P1:10%, P2:5%", "P1:10%, P2:5%", "P1:10%, P2:5%", "P1:10%, P2:5%", "P1:10%, P2:5%", "P1:10%, P2:5%"],
+  ["Time Limit", "P1:4W, P2:8W", "P1:4W, P2:8W", "P1:4W, P2:8W", "P1:4W, P2:8W", "P1:4W, P2:8W", "P1:4W, P2:8W"],
+  ["Max Daily Loss", "5%[$300]", "5%[$750]", "5%[$1.2K]", "5%[$2.5K]", "5%[$5K]", "5%[$10K]"],
+  ["Max Overall Loss", "10%[$600]", "10%[$1.5K]", "10%[$2.5K]", "10%[$5K]", "10%[$10K]", "10%[$20K]"],
+  ["Drawdown", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+  ["Min Days", "5", "5", "5", "5", "5", "5"],
+  ["Profit Split", "95%", "95%", "95%", "95%", "95%", "95%"],
+  ["News Trade", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+  ["First Reward", "Monthly", "Monthly", "Monthly", "Monthly", "Monthly", "Monthly"]
+];
+
+
 
   const expressData = [
-    ["Account Size", "$10,000", "$30,000"],
-    ["Fee", "$99", "$249"],
-    ["Profit Target", "$700", "$2,100"],
-    ["Max Drawdown", "$500", "$1,500"],
-    ["Profit Split", "92%", "92%"],
+    ["Account Size", "$6,000", "$15,000", "$25,000", "$50,000", "$100,000", "$200,000"],
+  ["Get Plan Fee", "$49", "$99", "$199", "$299", "$549", "$999"],
+  ["20% Profit Share From Challenge Phase", "$300", "$750", "$1,250", "$2,500", "$5,000", "$10,000"],
+  ["Profit Target", "25%", "25%", "25%", "25%", "25%", "25%"],
+  ["Maximum Daily Loss", "5% [$300]", "5% [$750]", "5% [$1,250]", "5% [$2,500]", "5% [$5,000]", "5% [$10,000]"],
+  ["Maximum Overall Loss", "10% [$600]", "10% [$1,500]", "10% [$2,500]", "10% [$5,000]", "10% [$10,000]", "10% [$20,000]"],
+  ["Balance Based Drawdown", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes"],
+  ["Minimum Trading Days", "10 Days", "10 Days", "10 Days", "10 Days", "10 Days", "10 Days"],
+  ["Profit Split Upto", "95%", "95%", "95%", "95%", "95%", "95%"],
+  ["News Trading", "No", "No", "No", "No", "No", "No"],
+  ["First Reward", "Monthly", "Monthly", "Monthly", "Monthly", "Monthly", "Monthly"]
   ];
 
   const renderTable = (data) => (
