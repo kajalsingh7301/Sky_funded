@@ -70,7 +70,9 @@ const Homepage = () => {
            <Link to="/register" className="sky-funded-primary-btn1">
   Get Funded
 </Link>
-            <div className="sky-funded-secondary-btn1">Join Us</div>
+            <Link to="/login" className="sky-funded-secondary-btn1">
+  Join Us
+</Link>
           </div>
         </div>
 

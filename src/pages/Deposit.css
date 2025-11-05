@@ -651,3 +651,58 @@ button:hover {
   border: 1px solid #FFD700; /* optional: gold border to match theme */
   margin-top: 10px;
 }
+/* Wallet Address Box Responsive Fix */
+.wallet-address-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+  background: #111;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+/* Wallet text shrink properly */
+.wallet-address-box span {
+  flex: 1;
+  font-size: 14px;
+  overflow-wrap: break-word;
+}
+
+/* copy button */
+.copy-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ✅ Mobile Responsive */
+@media (max-width: 768px) {
+  .wallet-address-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .copy-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ✅ Smaller phone screens */
+@media (max-width: 480px) {
+  .wallet-address-box span {
+    font-size: 13px;
+  }
+
+  .copy-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+}

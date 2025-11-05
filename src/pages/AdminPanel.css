@@ -344,3 +344,92 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
+/* --------- EXTRA MOBILE FIXES --------- */
+
+/* General mobile readability */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .main-panel {
+    padding: 1rem !important;
+  }
+
+  .topbar {
+    gap: 10px;
+    border-radius: 10px;
+  }
+
+  .topbar h1 {
+    font-size: 1.2rem !important;
+  }
+
+  .user-welcome, .username {
+    font-size: 1rem !important;
+  }
+
+  .logout-btn {
+    width: 100%;
+    padding: 10px !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Fix stat cards */
+  .stat-card {
+    width: 100% !important;
+    padding: 1rem !important;
+  }
+
+  .stat-card-icon {
+    min-width: 45px;
+    min-height: 45px;
+  }
+
+  .count-up {
+    font-size: 1.1rem !important;
+  }
+
+  /* Notifications */
+  .notifications {
+    width: 100% !important;
+    padding: 1.2rem !important;
+  }
+
+  .notifications ul {
+    max-height: 200px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .topbar {
+    padding: 12px !important;
+  }
+
+  .topbar h1 {
+    font-size: 1.1rem !important;
+  }
+
+  .logout-btn {
+    padding: 8px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .stat-card {
+    padding: .9rem !important;
+  }
+
+  .stat-card-icon {
+    font-size: 18px !important;
+  }
+
+  .notifications li {
+    font-size: 0.82rem !important;
+  }
+
+  /* Prevent overflow issue */
+  .user-wrapper, .main-panel {
+    overflow-x: hidden !important;
+  }
+}
