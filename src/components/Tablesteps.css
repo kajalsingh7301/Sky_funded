@@ -256,3 +256,89 @@
     width: auto;                   /* button width fits content */
     min-width: 80px;               /* optional, makes button visible */
 }
+/* Wrapper scroll fix */
+.table-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table responsive grid */
+.table-grid {
+  display: grid;
+  min-width: 700px; /* force scroll on mobile */
+}
+
+/* Make grid cells readable */
+.cell {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap; /* prevent text breaking */
+  border: 1px solid #ddd;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  .cell {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .plan-btn {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .main-tab-header button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .tabs button {
+    font-size: 12px;
+  }
+}
+/* ✅ Force table scroll on mobile */
+@media (max-width: 768px) {
+  .table-scroll-wrapper {
+    overflow-x: auto !important;
+    display: block;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-grid {
+    min-width: 900px !important;  /* force horizontal scroll */
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+  }
+
+  .cell {
+    white-space: nowrap !important; /* prevent text wrap breaking layout */
+    font-size: 12px !important;
+    padding: 8px !important;
+  }
+
+  .header {
+    font-size: 13px !important;
+  }
+
+  .plan-btn {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+  }
+}
+
+/* ✅ Extra Small Device Support (Below 480px) */
+@media (max-width: 480px) {
+  .table-grid {
+    min-width: 1000px !important; /* more width for tiny screens */
+  }
+
+  .tabs button, 
+  .main-tab {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+  }
+}
