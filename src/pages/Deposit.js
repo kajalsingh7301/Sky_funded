@@ -290,12 +290,12 @@ const Deposit = () => {
         <h2>Or Select a Challenge Plan</h2>
         <div className="plan-cards">
           {[ 
-            { account: "$6,000", fee: 49, target: "$144", dailyLoss: "$300", overallLoss: "$600" },
-            { account: "$15,000", fee: 99, target: "$360", dailyLoss: "$750", overallLoss: "$1,500" },
-            { account: "$25,000", fee: 199, target: "$600", dailyLoss: "$1,250", overallLoss: "$2,500" },
-            { account: "$50,000", fee: 299, target: "$1,200", dailyLoss: "$2,500", overallLoss: "$5,000" },
-            { account: "$100,000", fee: 549, target: "$2,400", dailyLoss: "$5,000", overallLoss: "$10,000" },
-            { account: "$200,000", fee: 999, target: "$4,800", dailyLoss: "$10,000", overallLoss: "$20,000" },
+            { account: "$6,000", fee: 49, target: "$600", dailyLoss: "$300", overallLoss: "$600" },
+            { account: "$15,000", fee: 99, target: "$1500", dailyLoss: "$750", overallLoss: "$1,500" },
+            { account: "$25,000", fee: 199, target: "$2500", dailyLoss: "$1,250", overallLoss: "$2,500" },
+            { account: "$50,000", fee: 299, target: "$5000", dailyLoss: "$2,500", overallLoss: "$5,000" },
+            { account: "$100,000", fee: 549, target: "$10000", dailyLoss: "$5,000", overallLoss: "$10,000" },
+            { account: "$200,000", fee: 999, target: "$20000", dailyLoss: "$10,000", overallLoss: "$20,000" },
           ].map((plan, idx) => (
             <div className="plan-card" key={idx}>
               <h3 style={{ textAlign: 'center' }}>{plan.account} Account</h3>
